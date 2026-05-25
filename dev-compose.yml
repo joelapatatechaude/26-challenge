@@ -1,0 +1,254 @@
+# 26-Challenge — Development Compose
+#
+# Uses stock base images + bind-mounts. No custom image builds needed.
+# Source changes are picked up automatically (Python: uvicorn --reload, Node: Vite HMR).
+#
+# ── QUICK START ────────────────────────────────────────────────────────────────
+#
+#   cp .env.dev.example .env
+#   # fill in at minimum: LLM_MODEL + one of OPENAI_API_KEY / ANTHROPIC_API_KEY
+#
+#   podman compose -f dev-compose.yml up -d          # core: ppt-agent + UI
+#
+# ── OPTIONAL PROFILES ──────────────────────────────────────────────────────────
+#
+#   --profile db       PostgreSQL + Geo API server
+#   --profile office   ONLYOFFICE Document Server + file-bridge
+#   --profile mockup   Mockup-sandbox Vite app
+#
+#   All at once:
+#   COMPOSE_PROFILES=db,office,mockup podman compose -f dev-compose.yml up -d
+#
+# ── PORTS ──────────────────────────────────────────────────────────────────────
+#
+#   8200   ppt-agent          FastAPI LangGraph presentation agent
+#   5173   sovereignty-demo   Vite React UI (proxies /api → ppt-agent)
+#   5174   mockup-sandbox     Vite mockup preview       [profile: mockup]
+#   3000   file-bridge        ONLYOFFICE file-bridge    [profile: office]
+#   8081   onlyoffice         ONLYOFFICE Document Server [profile: office]
+#   3001   geo-api            Express API server         [profile: db]
+#   5432   postgres           PostgreSQL                 [profile: db]
+#
+# ── STOP ───────────────────────────────────────────────────────────────────────
+#
+#   podman compose -f dev-compose.yml down
+#   podman compose -f dev-compose.yml down -v   # also wipe volumes
+#
+# ─────────────────────────────────────────────────────────────────────────────
+
+services:
+
+  # ─── PPT Skills Agent (FastAPI + LangGraph) ─────────────────────────────────
+  ppt-agent:
+    image: docker.io/library/python:3.11-slim
+    container_name: 26-ppt-agent
+    restart: unless-stopped
+    working_dir: /app
+    environment:
+      - LLM_MODEL=${LLM_MODEL:-gpt-4o}
+      - LLM_API_BASE=${LLM_API_BASE:-}
+      - LLM_MAX_TOKENS=${LLM_MAX_TOKENS:-4096}
+      - LLM_TEMPERATURE=${LLM_TEMPERATURE:-0.1}
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
+      - AZURE_API_KEY=${AZURE_API_KEY:-}
+      - AZURE_API_BASE=${AZURE_API_BASE:-}
+      - AZURE_API_VERSION=${AZURE_API_VERSION:-}
+      - CORS_ALLOWED_ORIGINS=${CORS_ALLOWED_ORIGINS:-http://localhost:5173}
+      - PYTHONPATH=/app/src
+      - PYTHONUNBUFFERED=1
+      - DECKS_DIR=/app/decks
+      - SKILLS_ROOT=/app/skills
+    ports:
+      - "8200:8080"
+    volumes:
+      # Full source mount — uvicorn --reload picks up every save
+      - ./ppt-skills-extractor:/app
+      # pip cache persists between restarts so reinstall is near-instant
+      - ppt_pip_cache:/root/.cache/pip
+      # Writable deck output — shared with file-bridge when office profile is active
+      - ppt_decks:/app/decks
+    command: >
+      bash -c "apt-get update -qq && apt-get install -y -qq curl &&
+               pip install --quiet -r /app/requirements.txt &&
+               uvicorn api.app:app --host 0.0.0.0 --port 8080 --reload"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 60s
+    networks:
+      - challenge_net
+
+  # ─── Sovereignty Demo (Vite React UI) ───────────────────────────────────────
+  sovereignty-demo:
+    image: docker.io/library/node:22-slim
+    platform: linux/amd64
+    container_name: 26-sovereignty-demo
+    restart: unless-stopped
+    working_dir: /workspace
+    environment:
+      - PORT=5173
+      # Vite proxy targets use Docker service names (resolved inside the network)
+      - PPT_AGENT_URL=http://ppt-agent:8080
+      - OFFICE_BRIDGE_URL=http://file-bridge:3000
+      - NODE_ENV=development
+    ports:
+      - "5173:5173"
+    volumes:
+      # Full workspace mount for Vite HMR
+      - ./Geo-Persistence:/workspace
+      # Named volume keeps Linux-native node_modules off the host tree
+      - geo_node_modules:/workspace/node_modules
+    command: >
+      bash -c "npm install -g pnpm@10 --silent &&
+               pnpm install --no-frozen-lockfile &&
+               pnpm --filter @workspace/sovereignty-demo run dev"
+    depends_on:
+      ppt-agent:
+        condition: service_healthy
+    networks:
+      - challenge_net
+
+  # ─── Mockup Sandbox (Vite preview app) ──────────────────────────[profile: mockup]
+  mockup-sandbox:
+    profiles: [mockup]
+    image: docker.io/library/node:22-slim
+    platform: linux/amd64
+    container_name: 26-mockup-sandbox
+    restart: unless-stopped
+    working_dir: /workspace
+    environment:
+      - PORT=5174
+      - BASE_PATH=/
+      - NODE_ENV=development
+    ports:
+      - "5174:5174"
+    volumes:
+      - ./Geo-Persistence:/workspace
+      - geo_node_modules:/workspace/node_modules
+    command: >
+      bash -c "npm install -g pnpm@10 --silent &&
+               pnpm install --no-frozen-lockfile &&
+               pnpm --filter @workspace/mockup-sandbox run dev"
+    networks:
+      - challenge_net
+
+  # ─── PostgreSQL ─────────────────────────────────────────────────[profile: db]
+  postgres:
+    profiles: [db]
+    image: docker.io/library/postgres:16-alpine
+    container_name: 26-postgres
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB:-challenge_dev}
+      - POSTGRES_USER=${POSTGRES_USER:-challenge}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-challenge_dev_secret}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-challenge} -d ${POSTGRES_DB:-challenge_dev}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - challenge_net
+
+  # ─── Geo API Server (Express) ───────────────────────────────────[profile: db]
+  geo-api:
+    profiles: [db]
+    image: docker.io/library/node:22-slim
+    platform: linux/amd64
+    container_name: 26-geo-api
+    restart: unless-stopped
+    working_dir: /workspace
+    environment:
+      - PORT=3001
+      - NODE_ENV=development
+      - DATABASE_URL=postgresql://${POSTGRES_USER:-challenge}:${POSTGRES_PASSWORD:-challenge_dev_secret}@postgres:5432/${POSTGRES_DB:-challenge_dev}
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./Geo-Persistence:/workspace
+      - geo_node_modules:/workspace/node_modules
+    command: >
+      bash -c "npm install -g pnpm@10 --silent &&
+               pnpm install --no-frozen-lockfile &&
+               pnpm --filter @workspace/api-server run dev"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - challenge_net
+
+  # ─── ONLYOFFICE Document Server ─────────────────────────────────[profile: office]
+  onlyoffice:
+    profiles: [office]
+    image: docker.io/onlyoffice/documentserver:latest
+    container_name: 26-onlyoffice
+    restart: unless-stopped
+    environment:
+      - ALLOW_PRIVATE_IP_ADDRESS=true
+      - JWT_SECRET=${ONLYOFFICE_JWT_SECRET:-ppt-skills-dev-secret}
+      - JWT_ENABLED=true
+      - JWT_HEADER=Authorization
+      - JWT_IN_BODY=true
+    ports:
+      - "8081:80"
+    volumes:
+      - onlyoffice_data:/var/www/onlyoffice/Data
+      - onlyoffice_logs:/var/log/onlyoffice
+      - onlyoffice_cache:/var/lib/onlyoffice
+      - onlyoffice_db:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/healthcheck"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+    networks:
+      - challenge_net
+
+  # ─── File Bridge (FastAPI — serves .pptx to/from ONLYOFFICE) ────[profile: office]
+  file-bridge:
+    profiles: [office]
+    build:
+      context: ./ppt-skills-extractor
+      dockerfile: Dockerfile.bridge
+    container_name: 26-file-bridge
+    restart: unless-stopped
+    environment:
+      - ONLYOFFICE_URL=http://onlyoffice:80
+      - ONLYOFFICE_JWT_SECRET=${ONLYOFFICE_JWT_SECRET:-ppt-skills-dev-secret}
+      - BRIDGE_PUBLIC_URL=${BRIDGE_PUBLIC_URL:-http://localhost:3000}
+    ports:
+      - "3000:3000"
+    volumes:
+      # Hot-reload bridge source
+      - ./ppt-skills-extractor/bridge:/app/bridge
+      # Shared deck output with ppt-agent
+      - ppt_decks:/app/decks
+    depends_on:
+      onlyoffice:
+        condition: service_healthy
+    networks:
+      - challenge_net
+
+# ─── Volumes ──────────────────────────────────────────────────────────────────
+volumes:
+  ppt_decks:          # Generated .pptx files shared between ppt-agent and file-bridge
+  ppt_pip_cache:      # pip download cache — makes restarts near-instant
+  geo_node_modules:   # Linux-native node_modules for Geo-Persistence workspace
+  postgres_data:
+  onlyoffice_data:
+  onlyoffice_logs:
+  onlyoffice_cache:
+  onlyoffice_db:
+
+# ─── Network ──────────────────────────────────────────────────────────────────
+networks:
+  challenge_net:
+    driver: bridge

@@ -39,3 +39,5 @@ skills-output/
 .idea/
 *.swp
 *.swo
+.env
+.pnpm-store/

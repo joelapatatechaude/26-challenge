@@ -12,7 +12,7 @@ import sys
 from pathlib import Path
 from typing import AsyncIterator
 
-from langchain_community.chat_models import ChatLiteLLM
+from langchain_litellm import ChatLiteLLM
 from langchain_core.messages import HumanMessage
 from langgraph.checkpoint.memory import MemorySaver
 from langgraph.prebuilt import create_react_agent
