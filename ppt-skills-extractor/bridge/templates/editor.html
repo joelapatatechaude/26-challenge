@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if view_only %}Preview{% else %}Editing{% endif %} — {{ filename }}</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Red Hat Display", "Segoe UI", system-ui, sans-serif;
+      background: #151515;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    header {
+      background: #EE0000;
+      color: #fff;
+      padding: 0.6rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      z-index: 10;
+    }
+
+    body.embed header { display: none; }
+
+    header .title {
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+
+    header .back {
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.8rem;
+      opacity: 0.85;
+      border: 1px solid rgba(255,255,255,0.4);
+      border-radius: 3px;
+      padding: 0.25rem 0.65rem;
+    }
+
+    header .back:hover { opacity: 1; background: rgba(255,255,255,0.15); }
+
+    #editor-frame {
+      flex: 1;
+      width: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body class="{% if embed %}embed{% endif %}">
+  <header>
+    <span class="title">{% if view_only %}Preview{% else %}Edit{% endif %}: {{ filename }}</span>
+    <a class="back" href="/">← All decks</a>
+  </header>
+
+  <!-- ONLYOFFICE editor container -->
+  <div id="placeholder" style="flex:1;width:100%;"></div>
+
+  <!-- ONLYOFFICE DocsAPI script -->
+  <script src="{{ onlyoffice_url }}/web-apps/apps/api/documents/api.js"></script>
+  <script>
+    const config = {{ config_json | safe }};
+
+    // Target the placeholder div, not an iframe — DocsAPI creates its own iframe
+    config.events = {
+      onDocumentReady: function () {
+        console.log("ONLYOFFICE: document ready —", config.document.title);
+      },
+      onError: function (event) {
+        console.error("ONLYOFFICE error:", event.data);
+      },
+    };
+
+    new DocsAPI.DocEditor("placeholder", config);
+  </script>
+</body>
+</html>

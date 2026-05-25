@@ -1,0 +1,85 @@
+template_id: sales-enablement-2022
+name: Sales Enablement 2022
+slide_dimensions:
+  width_emu: 12192000
+  height_emu: 6858000
+theme:
+  font_heading: Red Hat Display
+  font_body: Red Hat Text
+  typography:
+    deck_title: 40
+    deck_subtitle: 20
+    slide_title: 28
+    section_marker: 10
+    body: 13
+    source: 9
+  primary_color: '#EE0000'
+  teal_accent: '#0097A7'
+  amber_accent: '#FFAB40'
+  dark_accent: '#595959'
+  background_light: '#EEEEEE'
+  background_white: '#FFFFFF'
+  colors:
+    dk1: '#000000'
+    lt1: '#FFFFFF'
+    dk2: '#595959'
+    lt2: '#EEEEEE'
+    accent1: '#FFAB40'
+    accent2: '#212121'
+    accent3: '#78909C'
+    accent4: '#FFAB40'
+    accent5: '#0097A7'
+    accent6: '#EEFF41'
+sections:
+- Title and Closing Slides
+- Section Dividers
+- Overview, Agenda, Content, and Quotes
+- Data, Tables, and Timelines
+brand_rules:
+- Primary font is Red Hat Display — do NOT substitute other typefaces.
+- Teal (#0097A7) is the primary accent for the Sales Enablement template.
+- Background images (wave, dots, dashes) are baked into layout backgrounds — do not remove.
+- Red Hat Sales Enablement Team logo appears bottom-right on every slide.
+- Use white backgrounds for content, not dark backgrounds.
+layout_guides:
+- section: ''
+  layout: ''
+  quick_tips: []
+  constraints: []
+- section: ''
+  layout: ''
+  quick_tips: []
+  constraints: []
+- section: ''
+  layout: ''
+  quick_tips: []
+  constraints: []
+- section: ''
+  layout: ''
+  quick_tips: []
+  constraints: []
+- section: ''
+  layout: ''
+  quick_tips: []
+  constraints: []
+- section: ''
+  layout: ''
+  quick_tips: []
+  constraints: []
+- section: ''
+  layout: ''
+  quick_tips: []
+  constraints: []
+- section: ''
+  layout: ''
+  quick_tips: []
+  constraints: []
+- section: ''
+  layout: ''
+  quick_tips: []
+  constraints: []
+- section: ''
+  layout: ''
+  quick_tips: []
+  constraints: []
+general_tips: []

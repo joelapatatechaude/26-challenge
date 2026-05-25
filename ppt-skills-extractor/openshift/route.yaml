@@ -1,0 +1,15 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: ppt-agent
+  labels:
+    app: ppt-agent
+spec:
+  to:
+    kind: Service
+    name: ppt-agent
+  port:
+    targetPort: http
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect

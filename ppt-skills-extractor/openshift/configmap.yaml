@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ppt-agent-config
+  labels:
+    app: ppt-agent
+data:
+  # LLM provider — set LLM_API_BASE to point at an in-cluster vLLM/OpenShift AI endpoint
+  LLM_MODEL: "openai/gpt-4o"
+  LLM_API_BASE: ""
+
+  # Paths inside the container (match Dockerfile defaults)
+  SKILLS_ROOT: "/app/skills-output"
+  DECKS_DIR: "/app/decks"
+
+  # Comma-separated origins allowed by CORS middleware
+  CORS_ALLOWED_ORIGINS: "https://your-ui.apps.cluster.example.com"
+
+  # Optional cluster-wide output language (BCP-47 tag, e.g. "en", "fr", "ja").
+  # Per-request "language" field takes precedence. Leave blank to rely on auto-detect.
+  DEFAULT_LANGUAGE: ""

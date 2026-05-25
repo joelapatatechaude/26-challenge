@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ppt-agent
+  labels:
+    app: ppt-agent
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ppt-agent
+  template:
+    metadata:
+      labels:
+        app: ppt-agent
+    spec:
+      containers:
+        - name: agent
+          image: quay.io/your-org/ppt-agent:latest  # replace with your registry
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+
+          envFrom:
+            - configMapRef:
+                name: ppt-agent-config
+            - secretRef:
+                name: ppt-agent-secrets
+
+          volumeMounts:
+            - name: decks
+              mountPath: /app/decks
+
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 15
+            failureThreshold: 3
+
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 10
+            failureThreshold: 3
+
+          resources:
+            requests:
+              cpu: 250m
+              memory: 512Mi
+            limits:
+              cpu: "2"
+              memory: 2Gi
+
+      volumes:
+        - name: decks
+          persistentVolumeClaim:
+            claimName: ppt-agent-decks
+
+      # OpenShift SCC: run as non-root (UID 1001 matches UBI9 python-311 default)
+      securityContext:
+        runAsNonRoot: true

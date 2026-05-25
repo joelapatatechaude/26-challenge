@@ -1,0 +1,1460 @@
+{
+  "edges": [
+    {
+      "from_file": "lib/api-client-react/src/generated/api.ts",
+      "from_func": "queryFn",
+      "to_file": "lib/api-client-react/src/generated/api.ts",
+      "to_func": "healthCheck"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/src/hooks/use-toast.ts",
+      "from_func": "addToRemoveQueue",
+      "to_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/src/hooks/use-toast.ts",
+      "to_func": "dispatch"
+    },
+    {
+      "from_file": ".local/skills/object-storage/templates/api-server/src/lib/objectStorage.ts",
+      "from_func": "ObjectStorageService.searchPublicObject",
+      "to_file": ".local/skills/object-storage/templates/api-server/src/lib/objectStorage.ts",
+      "to_func": "parseObjectPath"
+    },
+    {
+      "from_file": "lib/api-client-react/src/custom-fetch.ts",
+      "from_func": "inferResponseType",
+      "to_file": "lib/api-client-react/src/custom-fetch.ts",
+      "to_func": "getMediaType"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/automation/files/src/triggers/slackTriggers.ts",
+      "from_func": "createReactToMessage",
+      "to_file": ".local/skills/artifacts/artifacts/automation/files/src/triggers/slackTriggers.ts",
+      "to_func": "isWebAPICallError"
+    },
+    {
+      "from_file": "artifacts/mockup-sandbox/mockupPreviewPlugin.ts",
+      "from_func": "mockupPreviewPlugin",
+      "to_file": "artifacts/mockup-sandbox/mockupPreviewPlugin.ts",
+      "to_func": "onFileAddedOrRemoved"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-react/src/audio/useVoiceStream.ts",
+      "from_func": "handleVoiceStreamEvent",
+      "to_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-react/src/audio/useVoiceStream.ts",
+      "to_func": "isDoneEvent"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-gemini/templates/lib/integrations-gemini-ai/src/batch/utils.ts",
+      "from_func": "batchProcess",
+      "to_file": ".local/skills/ai-integrations-gemini/templates/lib/integrations-gemini-ai/src/batch/utils.ts",
+      "to_func": "isRateLimitError"
+    },
+    {
+      "from_file": ".local/skills/object-storage/templates/api-server/src/lib/objectStorage.ts",
+      "from_func": "ObjectStorageService.searchPublicObject",
+      "to_file": ".local/skills/object-storage/templates/api-server/src/lib/objectStorage.ts",
+      "to_func": "getPublicObjectSearchPaths"
+    },
+    {
+      "from_file": "lib/api-client-react/src/custom-fetch.ts",
+      "from_func": "parseSuccessBody",
+      "to_file": "lib/api-client-react/src/custom-fetch.ts",
+      "to_func": "parseJsonBody"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/src/App.tsx",
+      "from_func": "loadComponent",
+      "to_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/src/App.tsx",
+      "to_func": "loader"
+    },
+    {
+      "from_file": "artifacts/sovereignty-demo/src/components/ui/button-group.tsx",
+      "from_func": "ButtonGroup",
+      "to_file": "artifacts/sovereignty-demo/src/components/ui/button-group.tsx",
+      "to_func": "buttonGroupVariants"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-react/src/audio/useVoiceStream.ts",
+      "from_func": "processBlocks",
+      "to_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-react/src/audio/useVoiceStream.ts",
+      "to_func": "readSseDataFromBlock"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-react/src/audio/useVoiceStream.ts",
+      "from_func": "processBlocks",
+      "to_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-react/src/audio/useVoiceStream.ts",
+      "to_func": "handleVoiceStreamEvent"
+    },
+    {
+      "from_file": "artifacts/mockup-sandbox/mockupPreviewPlugin.ts",
+      "from_func": "mockupPreviewPlugin",
+      "to_file": "artifacts/mockup-sandbox/mockupPreviewPlugin.ts",
+      "to_func": "isPreviewTarget"
+    },
+    {
+      "from_file": ".local/skills/replit-auth/templates/api-server/src/middlewares/authMiddleware.ts",
+      "from_func": "authMiddleware",
+      "to_file": ".local/skills/replit-auth/templates/api-server/src/middlewares/authMiddleware.ts",
+      "to_func": "refreshIfExpired"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/slides/files/src/data/slidesManifestSchema.ts",
+      "from_func": "parseSlidesManifest",
+      "to_file": ".local/skills/artifacts/artifacts/slides/files/src/data/slidesManifestSchema.ts",
+      "to_func": "safeParseSlidesManifest"
+    },
+    {
+      "from_file": "artifacts/mockup-sandbox/src/App.tsx",
+      "from_func": "loadComponent",
+      "to_file": "artifacts/mockup-sandbox/src/App.tsx",
+      "to_func": "_resolveComponent"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/expo/files/app/+not-found.tsx",
+      "from_func": "NotFoundScreen",
+      "to_file": ".local/skills/artifacts/artifacts/expo/files/hooks/useColors.ts",
+      "to_func": "useColors"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-react/src/audio/useVoiceStream.ts",
+      "from_func": "blobToBase64",
+      "to_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-react/src/audio/useVoiceStream.ts",
+      "to_func": "createAbortError"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-react/src/audio/useVoiceStream.ts",
+      "from_func": "useVoiceStream",
+      "to_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-react/src/audio/useVoiceStream.ts",
+      "to_func": "blobToBase64"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-react/src/audio/useVoiceStream.ts",
+      "from_func": "throwIfNotCurrent",
+      "to_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-react/src/audio/useVoiceStream.ts",
+      "to_func": "createAbortError"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-react/src/audio/useVoiceStream.ts",
+      "from_func": "useVoiceStream",
+      "to_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-react/src/audio/useVoiceStream.ts",
+      "to_func": "readErrorText"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-openai/templates/lib/integrations/openai_ai_integrations/src/client/audio/useAudioPlayback.ts",
+      "from_func": "useAudioPlayback",
+      "to_file": ".local/skills/ai-integrations-openai/templates/lib/integrations/openai_ai_integrations/src/client/audio/audio-utils.ts",
+      "to_func": "decodePCM16ToFloat32"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/mockupPreviewPlugin.ts",
+      "from_func": "mockupPreviewPlugin",
+      "to_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/mockupPreviewPlugin.ts",
+      "to_func": "isPreviewTarget"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/src/components/ui/badge.tsx",
+      "from_func": "Badge",
+      "to_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/src/components/ui/badge.tsx",
+      "to_func": "badgeVariants"
+    },
+    {
+      "from_file": "lib/api-client-react/src/custom-fetch.ts",
+      "from_func": "inferResponseType",
+      "to_file": "lib/api-client-react/src/custom-fetch.ts",
+      "to_func": "isTextMediaType"
+    },
+    {
+      "from_file": "artifacts/sovereignty-demo/src/hooks/use-toast.ts",
+      "from_func": "dismiss",
+      "to_file": "artifacts/sovereignty-demo/src/hooks/use-toast.ts",
+      "to_func": "dispatch"
+    },
+    {
+      "from_file": ".local/skills/object-storage/templates/api-server/src/lib/objectStorage.ts",
+      "from_func": "ObjectStorageService.trySetObjectEntityAclPolicy",
+      "to_file": ".local/skills/object-storage/templates/api-server/src/lib/objectAcl.ts",
+      "to_func": "setObjectAclPolicy"
+    },
+    {
+      "from_file": "lib/api-client-react/src/custom-fetch.ts",
+      "from_func": "parseErrorBody",
+      "to_file": "lib/api-client-react/src/custom-fetch.ts",
+      "to_func": "isJsonMediaType"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/src/hooks/use-toast.ts",
+      "from_func": "update",
+      "to_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/src/hooks/use-toast.ts",
+      "to_func": "dispatch"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-openai/templates/lib/integrations/openai_ai_integrations/src/server/audio/client.ts",
+      "from_func": "ensureCompatibleFormat",
+      "to_file": ".local/skills/ai-integrations-openai/templates/lib/integrations/openai_ai_integrations/src/server/audio/client.ts",
+      "to_func": "detectAudioFormat"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/src/components/ui/sidebar.tsx",
+      "from_func": "SidebarMenuButton",
+      "to_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/src/components/ui/sidebar.tsx",
+      "to_func": "sidebarMenuButtonVariants"
+    },
+    {
+      "from_file": "lib/api-client-react/src/custom-fetch.ts",
+      "from_func": "resolveUrl",
+      "to_file": "lib/api-client-react/src/custom-fetch.ts",
+      "to_func": "isUrl"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/react-vite/files/src/hooks/use-toast.ts",
+      "from_func": "dispatch",
+      "to_file": ".local/skills/artifacts/artifacts/react-vite/files/src/hooks/use-toast.ts",
+      "to_func": "reducer"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/automation/files/src/triggers/slackTriggers.ts",
+      "from_func": "getClient",
+      "to_file": ".local/skills/artifacts/artifacts/automation/files/src/triggers/slackTriggers.ts",
+      "to_func": "getAccessToken"
+    },
+    {
+      "from_file": "artifacts/mockup-sandbox/src/components/ui/sidebar.tsx",
+      "from_func": "handleKeyDown",
+      "to_file": "artifacts/mockup-sandbox/src/components/ui/sidebar.tsx",
+      "to_func": "toggleSidebar"
+    },
+    {
+      "from_file": "lib/api-client-react/src/custom-fetch.ts",
+      "from_func": "parseJsonBody",
+      "to_file": "lib/api-client-react/src/custom-fetch.ts",
+      "to_func": "stripBom"
+    },
+    {
+      "from_file": ".local/skills/replit-auth/templates/api-server/src/lib/auth.ts",
+      "from_func": "getSession",
+      "to_file": ".local/skills/replit-auth/templates/api-server/src/lib/auth.ts",
+      "to_func": "deleteSession"
+    },
+    {
+      "from_file": "lib/api-client-react/src/custom-fetch.ts",
+      "from_func": "customFetch",
+      "to_file": "lib/api-client-react/src/custom-fetch.ts",
+      "to_func": "_authTokenGetter"
+    },
+    {
+      "from_file": "artifacts/sovereignty-demo/src/hooks/use-toast.ts",
+      "from_func": "toast",
+      "to_file": "artifacts/sovereignty-demo/src/hooks/use-toast.ts",
+      "to_func": "dispatch"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/src/hooks/use-toast.ts",
+      "from_func": "dismiss",
+      "to_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/src/hooks/use-toast.ts",
+      "to_func": "dispatch"
+    },
+    {
+      "from_file": "lib/api-client-react/src/generated/api.ts",
+      "from_func": "getHealthCheckQueryOptions",
+      "to_file": "lib/api-client-react/src/generated/api.ts",
+      "to_func": "healthCheck"
+    },
+    {
+      "from_file": "lib/api-client-react/src/custom-fetch.ts",
+      "from_func": "resolveMethod",
+      "to_file": "lib/api-client-react/src/custom-fetch.ts",
+      "to_func": "isRequest"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/react-vite/files/src/hooks/use-toast.ts",
+      "from_func": "toast",
+      "to_file": ".local/skills/artifacts/artifacts/react-vite/files/src/hooks/use-toast.ts",
+      "to_func": "dismiss"
+    },
+    {
+      "from_file": "lib/api-client-react/src/custom-fetch.ts",
+      "from_func": "customFetch",
+      "to_file": "lib/api-client-react/src/custom-fetch.ts",
+      "to_func": "applyBaseUrl"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/automation/files/src/triggers/slackTriggers.ts",
+      "from_func": "removeAllReactions",
+      "to_file": ".local/skills/artifacts/artifacts/automation/files/src/triggers/slackTriggers.ts",
+      "to_func": "isWebAPICallError"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/slides/files/scripts/validate-slides.ts",
+      "from_func": "main",
+      "to_file": ".local/skills/artifacts/artifacts/slides/files/scripts/validate-slides.ts",
+      "to_func": "validateDuplicateIds"
+    },
+    {
+      "from_file": "lib/api-client-react/src/generated/api.ts",
+      "from_func": "healthCheck",
+      "to_file": "lib/api-client-react/src/generated/api.ts",
+      "to_func": "getHealthCheckUrl"
+    },
+    {
+      "from_file": "lib/api-client-react/src/custom-fetch.ts",
+      "from_func": "ApiError.constructor",
+      "to_file": "lib/api-client-react/src/custom-fetch.ts",
+      "to_func": "buildErrorMessage"
+    },
+    {
+      "from_file": "artifacts/mockup-sandbox/mockupPreviewPlugin.ts",
+      "from_func": "refresh",
+      "to_file": "artifacts/mockup-sandbox/mockupPreviewPlugin.ts",
+      "to_func": "refresh"
+    },
+    {
+      "from_file": ".local/skills/object-storage/templates/api-server/src/lib/objectAcl.ts",
+      "from_func": "canAccessObject",
+      "to_file": ".local/skills/object-storage/templates/api-server/src/lib/objectAcl.ts",
+      "to_func": "getObjectAclPolicy"
+    },
+    {
+      "from_file": ".local/skills/replit-auth/templates/mobile/auth.tsx",
+      "from_func": "AuthProvider",
+      "to_file": ".local/skills/replit-auth/templates/mobile/auth.tsx",
+      "to_func": "fetchUser"
+    },
+    {
+      "from_file": "artifacts/mockup-sandbox/mockupPreviewPlugin.ts",
+      "from_func": "mockupPreviewPlugin",
+      "to_file": "artifacts/mockup-sandbox/mockupPreviewPlugin.ts",
+      "to_func": "generateSource"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-react/src/audio/useVoiceStream.ts",
+      "from_func": "useVoiceStream",
+      "to_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-react/src/audio/useVoiceStream.ts",
+      "to_func": "toError"
+    },
+    {
+      "from_file": "lib/api-client-react/src/custom-fetch.ts",
+      "from_func": "parseErrorBody",
+      "to_file": "lib/api-client-react/src/custom-fetch.ts",
+      "to_func": "stripBom"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/react-vite/files/src/hooks/use-toast.ts",
+      "from_func": "dismiss",
+      "to_file": ".local/skills/artifacts/artifacts/react-vite/files/src/hooks/use-toast.ts",
+      "to_func": "dispatch"
+    },
+    {
+      "from_file": "artifacts/mockup-sandbox/mockupPreviewPlugin.ts",
+      "from_func": "refresh",
+      "to_file": "artifacts/mockup-sandbox/mockupPreviewPlugin.ts",
+      "to_func": "generateSource"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/automation/files/src/triggers/slackTriggers.ts",
+      "from_func": "createReactToMessage",
+      "to_file": ".local/skills/artifacts/artifacts/automation/files/src/triggers/slackTriggers.ts",
+      "to_func": "addReaction"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-server/src/batch/utils.ts",
+      "from_func": "batchProcess",
+      "to_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-server/src/batch/utils.ts",
+      "to_func": "limit"
+    },
+    {
+      "from_file": ".local/skills/object-storage/templates/api-server/src/lib/objectAcl.ts",
+      "from_func": "canAccessObject",
+      "to_file": ".local/skills/object-storage/templates/api-server/src/lib/objectAcl.ts",
+      "to_func": "isPermissionAllowed"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-gemini/templates/lib/integrations/gemini_ai_integrations/src/server/batch/utils.ts",
+      "from_func": "batchProcess",
+      "to_file": ".local/skills/ai-integrations-gemini/templates/lib/integrations/gemini_ai_integrations/src/server/batch/utils.ts",
+      "to_func": "isRateLimitError"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/slides/files/scripts/validate-slides.ts",
+      "from_func": "main",
+      "to_file": ".local/skills/artifacts/artifacts/slides/files/scripts/validate-slides.ts",
+      "to_func": "validateFilepaths"
+    },
+    {
+      "from_file": ".local/skills/object-storage/templates/api-server/src/lib/objectStorage.ts",
+      "from_func": "ObjectStorageService.getObjectEntityUploadURL",
+      "to_file": ".local/skills/object-storage/templates/api-server/src/lib/objectStorage.ts",
+      "to_func": "parseObjectPath"
+    },
+    {
+      "from_file": "artifacts/sovereignty-demo/src/pages/deal-qualifier.tsx",
+      "from_func": "MultiSelect",
+      "to_file": "artifacts/sovereignty-demo/src/pages/deal-qualifier.tsx",
+      "to_func": "toggle"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-react/src/audio/useVoiceStream.ts",
+      "from_func": "useVoiceStream",
+      "to_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-react/src/audio/useVoiceStream.ts",
+      "to_func": "extractCompleteSseBlocks"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-anthropic/templates/lib/integrations-anthropic-ai/src/batch/utils.ts",
+      "from_func": "batchProcess",
+      "to_file": ".local/skills/ai-integrations-anthropic/templates/lib/integrations-anthropic-ai/src/batch/utils.ts",
+      "to_func": "limit"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/mockupPreviewPlugin.ts",
+      "from_func": "refresh",
+      "to_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/mockupPreviewPlugin.ts",
+      "to_func": "generateSource"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-openai/templates/lib/integrations/openai_ai_integrations/src/server/batch/utils.ts",
+      "from_func": "batchProcess",
+      "to_file": ".local/skills/ai-integrations-openai/templates/lib/integrations/openai_ai_integrations/src/server/batch/utils.ts",
+      "to_func": "isRateLimitError"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/mockupPreviewPlugin.ts",
+      "from_func": "isMockupFile",
+      "to_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/mockupPreviewPlugin.ts",
+      "to_func": "getMockupsAbsDir"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-react/src/audio/useVoiceStream.ts",
+      "from_func": "useVoiceStream",
+      "to_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-react/src/audio/useVoiceStream.ts",
+      "to_func": "parseVoiceStreamEvent"
+    },
+    {
+      "from_file": ".local/skills/replit-auth/templates/api-server/src/middlewares/authMiddleware.ts",
+      "from_func": "authMiddleware",
+      "to_file": ".local/skills/replit-auth/templates/api-server/src/lib/auth.ts",
+      "to_func": "clearSession"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-openai/templates/lib/integrations/openai_ai_integrations/src/server/audio/client.ts",
+      "from_func": "ensureCompatibleFormat",
+      "to_file": ".local/skills/ai-integrations-openai/templates/lib/integrations/openai_ai_integrations/src/server/audio/client.ts",
+      "to_func": "convertToWav"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/react-vite/files/src/hooks/use-toast.ts",
+      "from_func": "update",
+      "to_file": ".local/skills/artifacts/artifacts/react-vite/files/src/hooks/use-toast.ts",
+      "to_func": "dispatch"
+    },
+    {
+      "from_file": "lib/api-client-react/src/custom-fetch.ts",
+      "from_func": "customFetch",
+      "to_file": "lib/api-client-react/src/custom-fetch.ts",
+      "to_func": "looksLikeJson"
+    },
+    {
+      "from_file": "artifacts/mockup-sandbox/mockupPreviewPlugin.ts",
+      "from_func": "isMockupFile",
+      "to_file": "artifacts/mockup-sandbox/mockupPreviewPlugin.ts",
+      "to_func": "getMockupsAbsDir"
+    },
+    {
+      "from_file": "artifacts/sovereignty-demo/src/components/ui/sidebar.tsx",
+      "from_func": "handleKeyDown",
+      "to_file": "artifacts/sovereignty-demo/src/components/ui/sidebar.tsx",
+      "to_func": "toggleSidebar"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-anthropic/templates/lib/integrations/anthropic_ai_integrations/src/server/batch/utils.ts",
+      "from_func": "batchProcessWithSSE",
+      "to_file": ".local/skills/ai-integrations-anthropic/templates/lib/integrations/anthropic_ai_integrations/src/server/batch/utils.ts",
+      "to_func": "isRateLimitError"
+    },
+    {
+      "from_file": "artifacts/mockup-sandbox/mockupPreviewPlugin.ts",
+      "from_func": "refresh",
+      "to_file": "artifacts/mockup-sandbox/mockupPreviewPlugin.ts",
+      "to_func": "discoverComponents"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-server/src/audio/client.ts",
+      "from_func": "ensureCompatibleFormat",
+      "to_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-server/src/audio/client.ts",
+      "to_func": "convertToWav"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/mockupPreviewPlugin.ts",
+      "from_func": "mockupPreviewPlugin",
+      "to_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/mockupPreviewPlugin.ts",
+      "to_func": "onFileAddedOrRemoved"
+    },
+    {
+      "from_file": "artifacts/mockup-sandbox/src/hooks/use-toast.ts",
+      "from_func": "dispatch",
+      "to_file": "artifacts/mockup-sandbox/src/hooks/use-toast.ts",
+      "to_func": "reducer"
+    },
+    {
+      "from_file": "artifacts/sovereignty-demo/src/pages/content-library.tsx",
+      "from_func": "handleSend",
+      "to_file": "artifacts/sovereignty-demo/src/pages/content-library.tsx",
+      "to_func": "getAIReply"
+    },
+    {
+      "from_file": "lib/api-client-react/src/custom-fetch.ts",
+      "from_func": "buildErrorMessage",
+      "to_file": "lib/api-client-react/src/custom-fetch.ts",
+      "to_func": "getStringField"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-gemini/templates/lib/integrations-gemini-ai/src/batch/utils.ts",
+      "from_func": "batchProcessWithSSE",
+      "to_file": ".local/skills/ai-integrations-gemini/templates/lib/integrations-gemini-ai/src/batch/utils.ts",
+      "to_func": "isRateLimitError"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/react-vite/files/src/components/ui/sidebar.tsx",
+      "from_func": "SidebarMenuButton",
+      "to_file": ".local/skills/artifacts/artifacts/react-vite/files/src/components/ui/sidebar.tsx",
+      "to_func": "sidebarMenuButtonVariants"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/automation/files/src/triggers/slackTriggers.ts",
+      "from_func": "registerSlackTrigger",
+      "to_file": ".local/skills/artifacts/artifacts/automation/files/src/triggers/slackTriggers.ts",
+      "to_func": "getClient"
+    },
+    {
+      "from_file": ".local/skills/clerk-auth/templates/api-server/src/middlewares/clerkProxyMiddleware.ts",
+      "from_func": "clerkProxyMiddleware",
+      "to_file": ".local/skills/clerk-auth/templates/api-server/src/middlewares/clerkProxyMiddleware.ts",
+      "to_func": "getClerkProxyHost"
+    },
+    {
+      "from_file": "artifacts/mockup-sandbox/src/hooks/use-toast.ts",
+      "from_func": "addToRemoveQueue",
+      "to_file": "artifacts/mockup-sandbox/src/hooks/use-toast.ts",
+      "to_func": "dispatch"
+    },
+    {
+      "from_file": "artifacts/sovereignty-demo/src/hooks/use-toast.ts",
+      "from_func": "toast",
+      "to_file": "artifacts/sovereignty-demo/src/hooks/use-toast.ts",
+      "to_func": "genId"
+    },
+    {
+      "from_file": "lib/api-client-react/src/generated/api.ts",
+      "from_func": "healthCheck",
+      "to_file": "lib/api-client-react/src/custom-fetch.ts",
+      "to_func": "customFetch"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-openai/templates/lib/integrations/openai_ai_integrations/src/server/batch/utils.ts",
+      "from_func": "batchProcessWithSSE",
+      "to_file": ".local/skills/ai-integrations-openai/templates/lib/integrations/openai_ai_integrations/src/server/batch/utils.ts",
+      "to_func": "isRateLimitError"
+    },
+    {
+      "from_file": "lib/api-client-react/src/custom-fetch.ts",
+      "from_func": "customFetch",
+      "to_file": "lib/api-client-react/src/custom-fetch.ts",
+      "to_func": "isRequest"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/src/components/ui/sidebar.tsx",
+      "from_func": "handleKeyDown",
+      "to_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/src/components/ui/sidebar.tsx",
+      "to_func": "toggleSidebar"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/src/hooks/use-toast.ts",
+      "from_func": "toast",
+      "to_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/src/hooks/use-toast.ts",
+      "to_func": "dispatch"
+    },
+    {
+      "from_file": ".local/skills/object-storage/templates/api-server/src/lib/objectStorage.ts",
+      "from_func": "ObjectStorageService.getObjectEntityUploadURL",
+      "to_file": ".local/skills/object-storage/templates/api-server/src/lib/objectStorage.ts",
+      "to_func": "signObjectURL"
+    },
+    {
+      "from_file": "lib/api-client-react/src/custom-fetch.ts",
+      "from_func": "parseErrorBody",
+      "to_file": "lib/api-client-react/src/custom-fetch.ts",
+      "to_func": "isTextMediaType"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-react/src/audio/useVoiceStream.ts",
+      "from_func": "useVoiceStream",
+      "to_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-react/src/audio/useVoiceStream.ts",
+      "to_func": "throwIfNotCurrent"
+    },
+    {
+      "from_file": ".local/skills/object-storage/templates/lib/object-storage-web/src/use-upload.ts",
+      "from_func": "useUpload",
+      "to_file": ".local/skills/object-storage/templates/lib/object-storage-web/src/use-upload.ts",
+      "to_func": "uploadToPresignedUrl"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-openrouter/templates/lib/integrations/openrouter_ai_integrations/src/server/batch/utils.ts",
+      "from_func": "batchProcess",
+      "to_file": ".local/skills/ai-integrations-openrouter/templates/lib/integrations/openrouter_ai_integrations/src/server/batch/utils.ts",
+      "to_func": "limit"
+    },
+    {
+      "from_file": "lib/api-client-react/src/custom-fetch.ts",
+      "from_func": "customFetch",
+      "to_file": "lib/api-client-react/src/custom-fetch.ts",
+      "to_func": "resolveUrl"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-openrouter/templates/lib/integrations-openrouter-ai/src/batch/utils.ts",
+      "from_func": "batchProcess",
+      "to_file": ".local/skills/ai-integrations-openrouter/templates/lib/integrations-openrouter-ai/src/batch/utils.ts",
+      "to_func": "isRateLimitError"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/automation/files/src/triggers/slackTriggers.ts",
+      "from_func": "registerSlackTrigger",
+      "to_file": ".local/skills/artifacts/artifacts/automation/files/src/triggers/slackTriggers.ts",
+      "to_func": "updateDiagnosisSteps"
+    },
+    {
+      "from_file": "artifacts/mockup-sandbox/src/components/ui/sidebar.tsx",
+      "from_func": "SidebarMenuButton",
+      "to_file": "artifacts/mockup-sandbox/src/components/ui/sidebar.tsx",
+      "to_func": "useSidebar"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-server/src/audio/client.ts",
+      "from_func": "ensureCompatibleFormat",
+      "to_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-server/src/audio/client.ts",
+      "to_func": "detectAudioFormat"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-server/src/batch/utils.ts",
+      "from_func": "batchProcessWithSSE",
+      "to_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-server/src/batch/utils.ts",
+      "to_func": "isRateLimitError"
+    },
+    {
+      "from_file": "artifacts/mockup-sandbox/mockupPreviewPlugin.ts",
+      "from_func": "mockupPreviewPlugin",
+      "to_file": "artifacts/mockup-sandbox/mockupPreviewPlugin.ts",
+      "to_func": "originalEnd"
+    },
+    {
+      "from_file": "artifacts/mockup-sandbox/src/components/mockups/geo-sovereignty/ContentLibrary.tsx",
+      "from_func": "handleSend",
+      "to_file": "artifacts/mockup-sandbox/src/components/mockups/geo-sovereignty/ContentLibrary.tsx",
+      "to_func": "getAIReply"
+    },
+    {
+      "from_file": "artifacts/sovereignty-demo/src/components/ui/sidebar.tsx",
+      "from_func": "SidebarMenuButton",
+      "to_file": "artifacts/sovereignty-demo/src/components/ui/sidebar.tsx",
+      "to_func": "sidebarMenuButtonVariants"
+    },
+    {
+      "from_file": "artifacts/mockup-sandbox/mockupPreviewPlugin.ts",
+      "from_func": "mockupPreviewPlugin",
+      "to_file": "artifacts/mockup-sandbox/mockupPreviewPlugin.ts",
+      "to_func": "getMockupsAbsDir"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-react/src/audio/useVoiceStream.ts",
+      "from_func": "useVoiceStream",
+      "to_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-react/src/audio/useVoiceStream.ts",
+      "to_func": "processBlocks"
+    },
+    {
+      "from_file": "artifacts/sovereignty-demo/src/hooks/use-toast.ts",
+      "from_func": "update",
+      "to_file": "artifacts/sovereignty-demo/src/hooks/use-toast.ts",
+      "to_func": "dispatch"
+    },
+    {
+      "from_file": "artifacts/mockup-sandbox/src/components/ui/badge.tsx",
+      "from_func": "Badge",
+      "to_file": "artifacts/mockup-sandbox/src/components/ui/badge.tsx",
+      "to_func": "badgeVariants"
+    },
+    {
+      "from_file": "artifacts/sovereignty-demo/src/hooks/use-toast.ts",
+      "from_func": "addToRemoveQueue",
+      "to_file": "artifacts/sovereignty-demo/src/hooks/use-toast.ts",
+      "to_func": "dispatch"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/slides/files/src/slideLoader.ts",
+      "from_func": "loadManifestSlides",
+      "to_file": ".local/skills/artifacts/artifacts/slides/files/src/data/slidesManifestSchema.ts",
+      "to_func": "parseSlidesManifest"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/mockupPreviewPlugin.ts",
+      "from_func": "mockupPreviewPlugin",
+      "to_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/mockupPreviewPlugin.ts",
+      "to_func": "originalEnd"
+    },
+    {
+      "from_file": "artifacts/mockup-sandbox/mockupPreviewPlugin.ts",
+      "from_func": "mockupPreviewPlugin",
+      "to_file": "artifacts/mockup-sandbox/mockupPreviewPlugin.ts",
+      "to_func": "refresh"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-react/src/audio/useVoiceStream.ts",
+      "from_func": "processBlocks",
+      "to_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-react/src/audio/useVoiceStream.ts",
+      "to_func": "parseVoiceStreamEvent"
+    },
+    {
+      "from_file": ".local/skills/replit-auth/templates/api-server/src/middlewares/authMiddleware.ts",
+      "from_func": "authMiddleware",
+      "to_file": ".local/skills/replit-auth/templates/api-server/src/lib/auth.ts",
+      "to_func": "getSessionId"
+    },
+    {
+      "from_file": ".local/skills/object-storage/templates/api-server/src/lib/objectStorage.ts",
+      "from_func": "ObjectStorageService.getObjectEntityFile",
+      "to_file": ".local/skills/object-storage/templates/api-server/src/lib/objectStorage.ts",
+      "to_func": "getPrivateObjectDir"
+    },
+    {
+      "from_file": ".local/skills/object-storage/templates/api-server/src/lib/objectStorage.ts",
+      "from_func": "ObjectStorageService.trySetObjectEntityAclPolicy",
+      "to_file": ".local/skills/object-storage/templates/api-server/src/lib/objectStorage.ts",
+      "to_func": "normalizeObjectEntityPath"
+    },
+    {
+      "from_file": "lib/api-client-react/src/custom-fetch.ts",
+      "from_func": "customFetch",
+      "to_file": "lib/api-client-react/src/custom-fetch.ts",
+      "to_func": "parseSuccessBody"
+    },
+    {
+      "from_file": "artifacts/mockup-sandbox/mockupPreviewPlugin.ts",
+      "from_func": "mockupPreviewPlugin",
+      "to_file": "artifacts/mockup-sandbox/mockupPreviewPlugin.ts",
+      "to_func": "shouldAutoRescan"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/mockupPreviewPlugin.ts",
+      "from_func": "mockupPreviewPlugin",
+      "to_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/mockupPreviewPlugin.ts",
+      "to_func": "refresh"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/src/hooks/use-toast.ts",
+      "from_func": "useToast",
+      "to_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/src/hooks/use-toast.ts",
+      "to_func": "dispatch"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/mockupPreviewPlugin.ts",
+      "from_func": "refresh",
+      "to_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/mockupPreviewPlugin.ts",
+      "to_func": "refresh"
+    },
+    {
+      "from_file": "artifacts/mockup-sandbox/src/hooks/use-toast.ts",
+      "from_func": "toast",
+      "to_file": "artifacts/mockup-sandbox/src/hooks/use-toast.ts",
+      "to_func": "dispatch"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/mockupPreviewPlugin.ts",
+      "from_func": "mockupPreviewPlugin",
+      "to_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/mockupPreviewPlugin.ts",
+      "to_func": "generateSource"
+    },
+    {
+      "from_file": "artifacts/mockup-sandbox/src/hooks/use-toast.ts",
+      "from_func": "dismiss",
+      "to_file": "artifacts/mockup-sandbox/src/hooks/use-toast.ts",
+      "to_func": "dispatch"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-react/src/audio/useAudioPlayback.ts",
+      "from_func": "useAudioPlayback",
+      "to_file": ".local/skills/ai-integrations-openai/templates/lib/integrations/openai_ai_integrations/src/client/audio/audio-utils.ts",
+      "to_func": "decodePCM16ToFloat32"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/automation/files/src/triggers/slackTriggers.ts",
+      "from_func": "registerSlackTrigger",
+      "to_file": ".local/skills/artifacts/artifacts/automation/files/src/triggers/slackTriggers.ts",
+      "to_func": "checkDuplicateEvent"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/slides/files/scripts/validate-slides.ts",
+      "from_func": "main",
+      "to_file": ".local/skills/artifacts/artifacts/slides/files/src/data/slidesManifestSchema.ts",
+      "to_func": "safeParseSlidesManifest"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-react/src/audio/useVoiceStream.ts",
+      "from_func": "blobToBase64",
+      "to_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-react/src/audio/useVoiceStream.ts",
+      "to_func": "cleanup"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/slides/files/scripts/validate-slides.ts",
+      "from_func": "main",
+      "to_file": ".local/skills/artifacts/artifacts/slides/files/scripts/validate-slides.ts",
+      "to_func": "validateDuplicatePositions"
+    },
+    {
+      "from_file": "lib/api-client-react/src/custom-fetch.ts",
+      "from_func": "customFetch",
+      "to_file": "lib/api-client-react/src/custom-fetch.ts",
+      "to_func": "resolveMethod"
+    },
+    {
+      "from_file": "artifacts/mockup-sandbox/src/App.tsx",
+      "from_func": "loadComponent",
+      "to_file": "artifacts/mockup-sandbox/src/App.tsx",
+      "to_func": "loader"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/mockupPreviewPlugin.ts",
+      "from_func": "mockupPreviewPlugin",
+      "to_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/mockupPreviewPlugin.ts",
+      "to_func": "shouldAutoRescan"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/src/App.tsx",
+      "from_func": "loadComponent",
+      "to_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/src/App.tsx",
+      "to_func": "_resolveComponent"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/slides/files/scripts/validate-slides.ts",
+      "from_func": "validateOrphanedSlideFiles",
+      "to_file": ".local/skills/artifacts/artifacts/slides/files/scripts/validate-slides.ts",
+      "to_func": "relativeToProject"
+    },
+    {
+      "from_file": ".local/skills/replit-auth/templates/api-server/src/middlewares/authMiddleware.ts",
+      "from_func": "authMiddleware",
+      "to_file": ".local/skills/replit-auth/templates/api-server/src/lib/auth.ts",
+      "to_func": "getSession"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-gemini/templates/lib/integrations-gemini-ai/src/batch/utils.ts",
+      "from_func": "batchProcess",
+      "to_file": ".local/skills/ai-integrations-gemini/templates/lib/integrations-gemini-ai/src/batch/utils.ts",
+      "to_func": "limit"
+    },
+    {
+      "from_file": "lib/api-client-react/src/custom-fetch.ts",
+      "from_func": "parseErrorBody",
+      "to_file": "lib/api-client-react/src/custom-fetch.ts",
+      "to_func": "getMediaType"
+    },
+    {
+      "from_file": "artifacts/mockup-sandbox/mockupPreviewPlugin.ts",
+      "from_func": "mockupPreviewPlugin",
+      "to_file": "artifacts/mockup-sandbox/mockupPreviewPlugin.ts",
+      "to_func": "isMockupFile"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/react-vite/files/src/components/ui/sidebar.tsx",
+      "from_func": "handleKeyDown",
+      "to_file": ".local/skills/artifacts/artifacts/react-vite/files/src/components/ui/sidebar.tsx",
+      "to_func": "toggleSidebar"
+    },
+    {
+      "from_file": "artifacts/mockup-sandbox/mockupPreviewPlugin.ts",
+      "from_func": "mockupPreviewPlugin",
+      "to_file": "artifacts/mockup-sandbox/mockupPreviewPlugin.ts",
+      "to_func": "discoverComponents"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-react/src/audio/useVoiceStream.ts",
+      "from_func": "processBlocks",
+      "to_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-react/src/audio/useVoiceStream.ts",
+      "to_func": "throwIfNotCurrent"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-openrouter/templates/lib/integrations/openrouter_ai_integrations/src/server/batch/utils.ts",
+      "from_func": "batchProcessWithSSE",
+      "to_file": ".local/skills/ai-integrations-openrouter/templates/lib/integrations/openrouter_ai_integrations/src/server/batch/utils.ts",
+      "to_func": "isRateLimitError"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/react-vite/files/src/hooks/use-toast.ts",
+      "from_func": "addToRemoveQueue",
+      "to_file": ".local/skills/artifacts/artifacts/react-vite/files/src/hooks/use-toast.ts",
+      "to_func": "dispatch"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/automation/files/src/triggers/slackTriggers.ts",
+      "from_func": "registerSlackTrigger",
+      "to_file": ".local/skills/artifacts/artifacts/automation/files/src/triggers/slackTriggers.ts",
+      "to_func": "createReactToMessage"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-anthropic/templates/lib/integrations-anthropic-ai/src/batch/utils.ts",
+      "from_func": "batchProcessWithSSE",
+      "to_file": ".local/skills/ai-integrations-anthropic/templates/lib/integrations-anthropic-ai/src/batch/utils.ts",
+      "to_func": "isRateLimitError"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/mockupPreviewPlugin.ts",
+      "from_func": "mockupPreviewPlugin",
+      "to_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/mockupPreviewPlugin.ts",
+      "to_func": "isMockupFile"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/react-vite/files/src/components/ui/button-group.tsx",
+      "from_func": "ButtonGroup",
+      "to_file": ".local/skills/artifacts/artifacts/react-vite/files/src/components/ui/button-group.tsx",
+      "to_func": "buttonGroupVariants"
+    },
+    {
+      "from_file": "artifacts/sovereignty-demo/src/hooks/use-toast.ts",
+      "from_func": "toast",
+      "to_file": "artifacts/sovereignty-demo/src/hooks/use-toast.ts",
+      "to_func": "dismiss"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/mockupPreviewPlugin.ts",
+      "from_func": "mockupPreviewPlugin",
+      "to_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/mockupPreviewPlugin.ts",
+      "to_func": "discoverComponents"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/mockupPreviewPlugin.ts",
+      "from_func": "refresh",
+      "to_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/mockupPreviewPlugin.ts",
+      "to_func": "discoverComponents"
+    },
+    {
+      "from_file": ".local/skills/replit-auth/templates/api-server/src/middlewares/authMiddleware.ts",
+      "from_func": "refreshIfExpired",
+      "to_file": ".local/skills/replit-auth/templates/api-server/src/lib/auth.ts",
+      "to_func": "updateSession"
+    },
+    {
+      "from_file": "artifacts/sovereignty-demo/src/pages/deal-qualifier.tsx",
+      "from_func": "next",
+      "to_file": "artifacts/sovereignty-demo/src/pages/deal-qualifier.tsx",
+      "to_func": "generateReport"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/src/components/ui/sidebar.tsx",
+      "from_func": "SidebarMenuButton",
+      "to_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/src/components/ui/sidebar.tsx",
+      "to_func": "useSidebar"
+    },
+    {
+      "from_file": "lib/api-client-react/src/generated/api.ts",
+      "from_func": "getHealthCheckQueryOptions",
+      "to_file": "lib/api-client-react/src/generated/api.ts",
+      "to_func": "getHealthCheckQueryKey"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/automation/files/src/triggers/slackTriggers.ts",
+      "from_func": "createReactToMessage",
+      "to_file": ".local/skills/artifacts/artifacts/automation/files/src/triggers/slackTriggers.ts",
+      "to_func": "removeAllReactions"
+    },
+    {
+      "from_file": ".local/skills/object-storage/templates/api-server/src/lib/objectStorage.ts",
+      "from_func": "ObjectStorageService.downloadObject",
+      "to_file": ".local/skills/object-storage/templates/api-server/src/lib/objectAcl.ts",
+      "to_func": "getObjectAclPolicy"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-anthropic/templates/lib/integrations/anthropic_ai_integrations/src/server/batch/utils.ts",
+      "from_func": "batchProcess",
+      "to_file": ".local/skills/ai-integrations-anthropic/templates/lib/integrations/anthropic_ai_integrations/src/server/batch/utils.ts",
+      "to_func": "isRateLimitError"
+    },
+    {
+      "from_file": "artifacts/mockup-sandbox/mockupPreviewPlugin.ts",
+      "from_func": "mockupPreviewPlugin",
+      "to_file": "artifacts/mockup-sandbox/mockupPreviewPlugin.ts",
+      "to_func": "getGeneratedModuleAbsPath"
+    },
+    {
+      "from_file": ".local/skills/object-storage/templates/api-server/src/lib/objectStorage.ts",
+      "from_func": "ObjectStorageService.normalizeObjectEntityPath",
+      "to_file": ".local/skills/object-storage/templates/api-server/src/lib/objectStorage.ts",
+      "to_func": "getPrivateObjectDir"
+    },
+    {
+      "from_file": "lib/api-client-react/src/custom-fetch.ts",
+      "from_func": "parseErrorBody",
+      "to_file": "lib/api-client-react/src/custom-fetch.ts",
+      "to_func": "hasNoBody"
+    },
+    {
+      "from_file": "artifacts/mockup-sandbox/mockupPreviewPlugin.ts",
+      "from_func": "refresh",
+      "to_file": "artifacts/mockup-sandbox/mockupPreviewPlugin.ts",
+      "to_func": "getGeneratedModuleAbsPath"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-openrouter/templates/lib/integrations-openrouter-ai/src/batch/utils.ts",
+      "from_func": "batchProcess",
+      "to_file": ".local/skills/ai-integrations-openrouter/templates/lib/integrations-openrouter-ai/src/batch/utils.ts",
+      "to_func": "limit"
+    },
+    {
+      "from_file": "artifacts/mockup-sandbox/src/components/ui/button-group.tsx",
+      "from_func": "ButtonGroup",
+      "to_file": "artifacts/mockup-sandbox/src/components/ui/button-group.tsx",
+      "to_func": "buttonGroupVariants"
+    },
+    {
+      "from_file": "lib/api-client-react/src/custom-fetch.ts",
+      "from_func": "parseErrorBody",
+      "to_file": "lib/api-client-react/src/custom-fetch.ts",
+      "to_func": "looksLikeJson"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/react-vite/files/src/hooks/use-toast.ts",
+      "from_func": "useToast",
+      "to_file": ".local/skills/artifacts/artifacts/react-vite/files/src/hooks/use-toast.ts",
+      "to_func": "dispatch"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/slides/files/src/App.tsx",
+      "from_func": "onClick",
+      "to_file": ".local/skills/artifacts/artifacts/slides/files/src/App.tsx",
+      "to_func": "isInteractive"
+    },
+    {
+      "from_file": "artifacts/sovereignty-demo/src/hooks/use-toast.ts",
+      "from_func": "dispatch",
+      "to_file": "artifacts/sovereignty-demo/src/hooks/use-toast.ts",
+      "to_func": "reducer"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/mockupPreviewPlugin.ts",
+      "from_func": "mockupPreviewPlugin",
+      "to_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/mockupPreviewPlugin.ts",
+      "to_func": "getGeneratedModuleAbsPath"
+    },
+    {
+      "from_file": ".local/skills/replit-auth/templates/api-server/src/middlewares/authMiddleware.ts",
+      "from_func": "refreshIfExpired",
+      "to_file": ".local/skills/replit-auth/templates/api-server/src/lib/auth.ts",
+      "to_func": "getOidcConfig"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-react/src/audio/useVoiceRecorder.ts",
+      "from_func": "useVoiceRecorder",
+      "to_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-react/src/audio/useVoiceRecorder.ts",
+      "to_func": "getSupportedMimeType"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-react/src/audio/useVoiceStream.ts",
+      "from_func": "useVoiceStream",
+      "to_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-react/src/audio/useVoiceStream.ts",
+      "to_func": "notifyError"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-server/src/batch/utils.ts",
+      "from_func": "batchProcess",
+      "to_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-server/src/batch/utils.ts",
+      "to_func": "isRateLimitError"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/mockupPreviewPlugin.ts",
+      "from_func": "refresh",
+      "to_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/mockupPreviewPlugin.ts",
+      "to_func": "getGeneratedModuleAbsPath"
+    },
+    {
+      "from_file": "lib/api-client-react/src/custom-fetch.ts",
+      "from_func": "customFetch",
+      "to_file": "lib/api-client-react/src/custom-fetch.ts",
+      "to_func": "parseErrorBody"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-openrouter/templates/lib/integrations-openrouter-ai/src/batch/utils.ts",
+      "from_func": "batchProcessWithSSE",
+      "to_file": ".local/skills/ai-integrations-openrouter/templates/lib/integrations-openrouter-ai/src/batch/utils.ts",
+      "to_func": "isRateLimitError"
+    },
+    {
+      "from_file": "lib/api-client-react/src/generated/api.ts",
+      "from_func": "useHealthCheck",
+      "to_file": "lib/api-client-react/src/generated/api.ts",
+      "to_func": "getHealthCheckQueryOptions"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/slides/files/scripts/validate-slides.ts",
+      "from_func": "validateFilepaths",
+      "to_file": ".local/skills/artifacts/artifacts/slides/files/scripts/validate-slides.ts",
+      "to_func": "getSlideFilenames"
+    },
+    {
+      "from_file": "artifacts/mockup-sandbox/src/hooks/use-toast.ts",
+      "from_func": "update",
+      "to_file": "artifacts/mockup-sandbox/src/hooks/use-toast.ts",
+      "to_func": "dispatch"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-anthropic/templates/lib/integrations-anthropic-ai/src/batch/utils.ts",
+      "from_func": "batchProcess",
+      "to_file": ".local/skills/ai-integrations-anthropic/templates/lib/integrations-anthropic-ai/src/batch/utils.ts",
+      "to_func": "isRateLimitError"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/automation/files/src/triggers/slackTriggers.ts",
+      "from_func": "registerSlackTrigger",
+      "to_file": ".local/skills/artifacts/artifacts/automation/files/src/triggers/slackTriggers.ts",
+      "to_func": "reactToMessage"
+    },
+    {
+      "from_file": ".local/skills/object-storage/templates/lib/object-storage-web/src/use-upload.ts",
+      "from_func": "useUpload",
+      "to_file": ".local/skills/object-storage/templates/lib/object-storage-web/src/use-upload.ts",
+      "to_func": "requestUploadUrl"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/mockupPreviewPlugin.ts",
+      "from_func": "mockupPreviewPlugin",
+      "to_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/mockupPreviewPlugin.ts",
+      "to_func": "getMockupsAbsDir"
+    },
+    {
+      "from_file": "lib/api-client-react/src/custom-fetch.ts",
+      "from_func": "applyBaseUrl",
+      "to_file": "lib/api-client-react/src/custom-fetch.ts",
+      "to_func": "isUrl"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/react-vite/files/src/hooks/use-toast.ts",
+      "from_func": "toast",
+      "to_file": ".local/skills/artifacts/artifacts/react-vite/files/src/hooks/use-toast.ts",
+      "to_func": "dispatch"
+    },
+    {
+      "from_file": ".local/skills/object-storage/templates/api-server/src/lib/objectAcl.ts",
+      "from_func": "canAccessObject",
+      "to_file": ".local/skills/object-storage/templates/api-server/src/lib/objectAcl.ts",
+      "to_func": "createObjectAccessGroup"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-react/src/audio/useVoiceStream.ts",
+      "from_func": "parseVoiceStreamEvent",
+      "to_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-react/src/audio/useVoiceStream.ts",
+      "to_func": "isVoiceStreamEvent"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-gemini/templates/lib/integrations/gemini_ai_integrations/src/server/batch/utils.ts",
+      "from_func": "batchProcess",
+      "to_file": ".local/skills/ai-integrations-gemini/templates/lib/integrations/gemini_ai_integrations/src/server/batch/utils.ts",
+      "to_func": "limit"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-react/src/audio/useVoiceStream.ts",
+      "from_func": "onAbort",
+      "to_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-react/src/audio/useVoiceStream.ts",
+      "to_func": "createAbortError"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-openai/templates/lib/integrations/openai_ai_integrations/src/server/batch/utils.ts",
+      "from_func": "batchProcess",
+      "to_file": ".local/skills/ai-integrations-openai/templates/lib/integrations/openai_ai_integrations/src/server/batch/utils.ts",
+      "to_func": "limit"
+    },
+    {
+      "from_file": "lib/api-client-react/src/custom-fetch.ts",
+      "from_func": "parseSuccessBody",
+      "to_file": "lib/api-client-react/src/custom-fetch.ts",
+      "to_func": "inferResponseType"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/src/hooks/use-toast.ts",
+      "from_func": "toast",
+      "to_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/src/hooks/use-toast.ts",
+      "to_func": "dismiss"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/mockupPreviewPlugin.ts",
+      "from_func": "onFileAddedOrRemoved",
+      "to_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/mockupPreviewPlugin.ts",
+      "to_func": "refresh"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/src/hooks/use-toast.ts",
+      "from_func": "toast",
+      "to_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/src/hooks/use-toast.ts",
+      "to_func": "genId"
+    },
+    {
+      "from_file": ".local/skills/object-storage/templates/api-server/src/lib/objectStorage.ts",
+      "from_func": "ObjectStorageService.getObjectEntityUploadURL",
+      "to_file": ".local/skills/object-storage/templates/api-server/src/lib/objectStorage.ts",
+      "to_func": "getPrivateObjectDir"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/slides/files/src/App.tsx",
+      "from_func": "onTouchEnd",
+      "to_file": ".local/skills/artifacts/artifacts/slides/files/src/App.tsx",
+      "to_func": "isInteractive"
+    },
+    {
+      "from_file": "lib/api-client-react/src/custom-fetch.ts",
+      "from_func": "buildErrorMessage",
+      "to_file": "lib/api-client-react/src/custom-fetch.ts",
+      "to_func": "truncate"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/src/components/ui/button-group.tsx",
+      "from_func": "ButtonGroup",
+      "to_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/src/components/ui/button-group.tsx",
+      "to_func": "buttonGroupVariants"
+    },
+    {
+      "from_file": "lib/api-client-react/src/custom-fetch.ts",
+      "from_func": "inferResponseType",
+      "to_file": "lib/api-client-react/src/custom-fetch.ts",
+      "to_func": "isJsonMediaType"
+    },
+    {
+      "from_file": "artifacts/sovereignty-demo/src/hooks/use-toast.ts",
+      "from_func": "useToast",
+      "to_file": "artifacts/sovereignty-demo/src/hooks/use-toast.ts",
+      "to_func": "dispatch"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/react-vite/files/src/components/ui/sidebar.tsx",
+      "from_func": "SidebarMenuButton",
+      "to_file": ".local/skills/artifacts/artifacts/react-vite/files/src/components/ui/sidebar.tsx",
+      "to_func": "useSidebar"
+    },
+    {
+      "from_file": "artifacts/mockup-sandbox/mockupPreviewPlugin.ts",
+      "from_func": "onFileAddedOrRemoved",
+      "to_file": "artifacts/mockup-sandbox/mockupPreviewPlugin.ts",
+      "to_func": "refresh"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/automation/files/src/triggers/slackTriggers.ts",
+      "from_func": "registerSlackTrigger",
+      "to_file": ".local/skills/artifacts/artifacts/automation/files/src/triggers/slackTriggers.ts",
+      "to_func": "sleep"
+    },
+    {
+      "from_file": "lib/api-client-react/src/custom-fetch.ts",
+      "from_func": "applyBaseUrl",
+      "to_file": "lib/api-client-react/src/custom-fetch.ts",
+      "to_func": "resolveUrl"
+    },
+    {
+      "from_file": "artifacts/mockup-sandbox/src/hooks/use-toast.ts",
+      "from_func": "reducer",
+      "to_file": "artifacts/mockup-sandbox/src/hooks/use-toast.ts",
+      "to_func": "addToRemoveQueue"
+    },
+    {
+      "from_file": ".local/skills/replit-auth/templates/mobile/auth.tsx",
+      "from_func": "AuthProvider",
+      "to_file": ".local/skills/replit-auth/templates/mobile/auth.tsx",
+      "to_func": "getClientId"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-react/src/audio/useVoiceStream.ts",
+      "from_func": "useVoiceStream",
+      "to_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-react/src/audio/useVoiceStream.ts",
+      "to_func": "readSseDataFromBlock"
+    },
+    {
+      "from_file": "artifacts/mockup-sandbox/src/hooks/use-toast.ts",
+      "from_func": "useToast",
+      "to_file": "artifacts/mockup-sandbox/src/hooks/use-toast.ts",
+      "to_func": "dispatch"
+    },
+    {
+      "from_file": "lib/api-client-react/src/custom-fetch.ts",
+      "from_func": "parseSuccessBody",
+      "to_file": "lib/api-client-react/src/custom-fetch.ts",
+      "to_func": "hasNoBody"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-react/src/audio/useVoiceStream.ts",
+      "from_func": "useVoiceStream",
+      "to_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-react/src/audio/useVoiceStream.ts",
+      "to_func": "handleVoiceStreamEvent"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/slides/files/scripts/validate-slides.ts",
+      "from_func": "main",
+      "to_file": ".local/skills/artifacts/artifacts/slides/files/scripts/validate-slides.ts",
+      "to_func": "formatIssuePath"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/react-vite/files/src/components/ui/badge.tsx",
+      "from_func": "Badge",
+      "to_file": ".local/skills/artifacts/artifacts/react-vite/files/src/components/ui/badge.tsx",
+      "to_func": "badgeVariants"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-openrouter/templates/lib/integrations/openrouter_ai_integrations/src/server/batch/utils.ts",
+      "from_func": "batchProcess",
+      "to_file": ".local/skills/ai-integrations-openrouter/templates/lib/integrations/openrouter_ai_integrations/src/server/batch/utils.ts",
+      "to_func": "isRateLimitError"
+    },
+    {
+      "from_file": ".local/skills/object-storage/templates/api-server/src/lib/objectStorage.ts",
+      "from_func": "ObjectStorageService.canAccessObjectEntity",
+      "to_file": ".local/skills/object-storage/templates/api-server/src/lib/objectAcl.ts",
+      "to_func": "canAccessObject"
+    },
+    {
+      "from_file": "artifacts/sovereignty-demo/src/components/ui/badge.tsx",
+      "from_func": "Badge",
+      "to_file": "artifacts/sovereignty-demo/src/components/ui/badge.tsx",
+      "to_func": "badgeVariants"
+    },
+    {
+      "from_file": ".local/skills/object-storage/templates/api-server/src/lib/objectStorage.ts",
+      "from_func": "ObjectStorageService.trySetObjectEntityAclPolicy",
+      "to_file": ".local/skills/object-storage/templates/api-server/src/lib/objectStorage.ts",
+      "to_func": "getObjectEntityFile"
+    },
+    {
+      "from_file": "artifacts/sovereignty-demo/src/hooks/use-toast.ts",
+      "from_func": "reducer",
+      "to_file": "artifacts/sovereignty-demo/src/hooks/use-toast.ts",
+      "to_func": "addToRemoveQueue"
+    },
+    {
+      "from_file": ".local/skills/object-storage/templates/api-server/src/lib/objectStorage.ts",
+      "from_func": "ObjectStorageService.getObjectEntityFile",
+      "to_file": ".local/skills/object-storage/templates/api-server/src/lib/objectStorage.ts",
+      "to_func": "parseObjectPath"
+    },
+    {
+      "from_file": "artifacts/sovereignty-demo/src/pages/deal-qualifier.tsx",
+      "from_func": "generateReport",
+      "to_file": "artifacts/sovereignty-demo/src/pages/deal-qualifier.tsx",
+      "to_func": "addProduct"
+    },
+    {
+      "from_file": "artifacts/mockup-sandbox/src/components/ui/sidebar.tsx",
+      "from_func": "SidebarMenuButton",
+      "to_file": "artifacts/mockup-sandbox/src/components/ui/sidebar.tsx",
+      "to_func": "sidebarMenuButtonVariants"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/src/hooks/use-toast.ts",
+      "from_func": "reducer",
+      "to_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/src/hooks/use-toast.ts",
+      "to_func": "addToRemoveQueue"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/slides/files/scripts/validate-slides.ts",
+      "from_func": "validateOrphanedSlideFiles",
+      "to_file": ".local/skills/artifacts/artifacts/slides/files/scripts/validate-slides.ts",
+      "to_func": "getSlideFilenames"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-anthropic/templates/lib/integrations/anthropic_ai_integrations/src/server/batch/utils.ts",
+      "from_func": "batchProcess",
+      "to_file": ".local/skills/ai-integrations-anthropic/templates/lib/integrations/anthropic_ai_integrations/src/server/batch/utils.ts",
+      "to_func": "limit"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-react/src/audio/useVoiceStream.ts",
+      "from_func": "useVoiceStream",
+      "to_file": ".local/skills/ai-integrations-openai/templates/lib/integrations/openai_ai_integrations/src/client/audio/useAudioPlayback.ts",
+      "to_func": "useAudioPlayback"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/react-vite/files/src/hooks/use-toast.ts",
+      "from_func": "toast",
+      "to_file": ".local/skills/artifacts/artifacts/react-vite/files/src/hooks/use-toast.ts",
+      "to_func": "genId"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/slides/files/scripts/validate-slides.ts",
+      "from_func": "main",
+      "to_file": ".local/skills/artifacts/artifacts/slides/files/scripts/validate-slides.ts",
+      "to_func": "validateOrphanedSlideFiles"
+    },
+    {
+      "from_file": "artifacts/sovereignty-demo/src/components/ui/sidebar.tsx",
+      "from_func": "SidebarMenuButton",
+      "to_file": "artifacts/sovereignty-demo/src/components/ui/sidebar.tsx",
+      "to_func": "useSidebar"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/slides/files/scripts/validate-slides.ts",
+      "from_func": "main",
+      "to_file": ".local/skills/artifacts/artifacts/slides/files/scripts/validate-slides.ts",
+      "to_func": "validateContiguousPositions"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-gemini/templates/lib/integrations/gemini_ai_integrations/src/server/batch/utils.ts",
+      "from_func": "batchProcessWithSSE",
+      "to_file": ".local/skills/ai-integrations-gemini/templates/lib/integrations/gemini_ai_integrations/src/server/batch/utils.ts",
+      "to_func": "isRateLimitError"
+    },
+    {
+      "from_file": "artifacts/mockup-sandbox/src/hooks/use-toast.ts",
+      "from_func": "toast",
+      "to_file": "artifacts/mockup-sandbox/src/hooks/use-toast.ts",
+      "to_func": "dismiss"
+    },
+    {
+      "from_file": "artifacts/mockup-sandbox/src/hooks/use-toast.ts",
+      "from_func": "toast",
+      "to_file": "artifacts/mockup-sandbox/src/hooks/use-toast.ts",
+      "to_func": "genId"
+    },
+    {
+      "from_file": ".local/skills/replit-auth/templates/api-server/src/lib/auth.ts",
+      "from_func": "clearSession",
+      "to_file": ".local/skills/replit-auth/templates/api-server/src/lib/auth.ts",
+      "to_func": "deleteSession"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/react-vite/files/src/hooks/use-toast.ts",
+      "from_func": "reducer",
+      "to_file": ".local/skills/artifacts/artifacts/react-vite/files/src/hooks/use-toast.ts",
+      "to_func": "addToRemoveQueue"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-react/src/audio/useVoiceStream.ts",
+      "from_func": "useVoiceStream",
+      "to_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-react/src/audio/useVoiceStream.ts",
+      "to_func": "createAbortError"
+    },
+    {
+      "from_file": "lib/api-client-react/src/custom-fetch.ts",
+      "from_func": "customFetch",
+      "to_file": "lib/api-client-react/src/custom-fetch.ts",
+      "to_func": "mergeHeaders"
+    },
+    {
+      "from_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/src/hooks/use-toast.ts",
+      "from_func": "dispatch",
+      "to_file": ".local/skills/artifacts/artifacts/mockup-sandbox/files/src/hooks/use-toast.ts",
+      "to_func": "reducer"
+    },
+    {
+      "from_file": ".local/skills/replit-auth/templates/mobile/auth.tsx",
+      "from_func": "AuthProvider",
+      "to_file": ".local/skills/replit-auth/templates/mobile/auth.tsx",
+      "to_func": "getApiBaseUrl"
+    },
+    {
+      "from_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-react/src/audio/useVoiceStream.ts",
+      "from_func": "onAbort",
+      "to_file": ".local/skills/ai-integrations-openai/templates/lib/integrations-openai-ai-react/src/audio/useVoiceStream.ts",
+      "to_func": "cleanup"
+    }
+  ],
+  "languages": [
+    "typescript"
+  ],
+  "timestamp": 1779420174.865416
+}

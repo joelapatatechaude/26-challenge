@@ -1,0 +1,26 @@
+System Generation Prompt: Initial prototype for Geo-Personalized AI Assistant for Digital Sovereignty Field Enablement
+
+Goal: Create a personalized, AI-powered sales enablement application to deliver and generate region-specific Digital Sovereignty content for Red Hat field teams, focusing on ease of navigation and automated customization.I. User Interface and Personalization
+Landing Page/Login Screen: The application's landing view must be an interactive, high-quality world map.
+Geo-Personalization on Login: Upon successful login, the application must automatically identify the user's territory/country based on their Red Hat profile data. The world map must then transition to focus (zoom in/highlight) on that specific region. 
+Personalized Home Page: The default home screen must be geo-localized, presenting content and tools specifically relevant to the user's focused territory or country.
+Geo-Local Content Feed: Integrate a section resembling a "geo-local news portal" or regulatory feed that automatically aggregates and displays the latest, most relevant regional news, legislative updates, and local compliance information related to digital sovereignty and the Red Hat platform.
+II. AI-Powered Content Generation (The AI Toolkit)
+
+The core functionality must be accessible via AI prompts, enabling field teams to generate or customize assets for specific sales scenarios.
+Presentation Automation:
+The user must be able to input a prompt (e.g., target customer, solution focus, region).
+The system must generate a complete, Red Hat-branded slide deck using custom HTML templates, automatically tailoring the content for the specified region and customer.
+Regional Asset Customization:
+The system should ingest existing global enablement assets (e.g., messaging guides, sales plays).
+Using AI, it must customize these existing assets by adapting global concepts to local legislation, regional concerns, and specific vocabulary/terminology.
+Draft Content Creation:
+Allow users to generate new draft content, including video outlines, training outlines, and draft text for field enablement materials.
+III. Governance and System Requirements
+Human Oversight Mandate: Implement a mandatory workflow where all AI-generated content is automatically flagged for review. The system must route this content to designated Subject Matter Experts (SMEs) for professional vetting and approval before it can be used in further enablement steps or published to the Sales Hub.
+Navigation and Structure: The application architecture and geo-local content presentation must adhere to the decision to incorporate a geo-specific structure, ensuring that the sales play and learner experience are easy to navigate and effectively address distinct regional requirements.1
+
+Stack:
+1.  RedHat Patternfly for UI.
+2. Use a sample presentation like this to show in the demo. /Users/varkrish/Projects/rh/ttla-storytelling/sovereignty-field-enablement.html
+3. 

@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap');
+
+:root {
+  --rh-red: #EE0000;
+  --rh-red-dark: #CC0000;
+  --rh-charcoal: #151515;
+  --rh-charcoal-mid: #242424;
+  --rh-charcoal-light: #3C3F42;
+  --rh-silver: #D2D2D2;
+  --rh-white: #FFFFFF;
+  --rh-blue: #0066CC;
+  --rh-green: #3E8635;
+  --rh-orange: #EC7A08;
+
+  --background: 0 0% 8.2%; /* #151515 */
+  --foreground: 0 0% 100%; /* #FFFFFF */
+  --card: 0 0% 14.1%; /* #242424 */
+  --card-foreground: 0 0% 100%;
+  --popover: 0 0% 14.1%;
+  --popover-foreground: 0 0% 100%;
+  --primary: 0 100% 46.7%; /* #EE0000 */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 0 0% 23.5%; /* #3C3F42 */
+  --secondary-foreground: 0 0% 100%;
+  --muted: 0 0% 23.5%;
+  --muted-foreground: 0 0% 82.4%; /* #D2D2D2 */
+  --accent: 0 100% 46.7%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 100% 46.7%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 0 0% 23.5%;
+  --input: 0 0% 23.5%;
+  --ring: 0 100% 46.7%;
+}
+
+.rh-font {
+  font-family: 'Red Hat Text', sans-serif;
+}
+
+body {
+  background-color: var(--rh-charcoal);
+  color: var(--rh-white);
+}
+
+.rh-sidebar-active {
+  border-left: 4px solid var(--rh-red);
+  background-color: var(--rh-charcoal-light);
+}
+
+.pulsing-dot {
+  animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.8);
+    box-shadow: 0 0 0 0 rgba(238, 0, 0, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 15px rgba(238, 0, 0, 0);
+  }
+  100% {
+    transform: scale(0.8);
+    box-shadow: 0 0 0 0 rgba(238, 0, 0, 0);
+  }
+}

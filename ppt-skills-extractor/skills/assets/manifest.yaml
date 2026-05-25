@@ -1,0 +1,4637 @@
+source_file: templates/Red Hat OpenShift _ Presentation template.pptx
+template_id: sales-enablement-2022
+summary:
+  logos: 10
+  icons: 37
+  photos: 18
+  backgrounds: 27
+  charts: 0
+assets:
+- asset_id: 65d070bac416
+  original_filename: image1.png
+  kind: icon
+  path: assets/icons/65d070bac416.png
+  dimensions: 321×321px
+  size_kb: 2
+  replaceable: false
+  hint: Icon used in layout — replace with appropriate icon from Red Hat icon library.
+  usages:
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=40.5%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=40.5%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=40.5%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=40.5%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=40.5%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=40.5%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=40.5%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=40.5%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=40.5%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=40.5%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=40.5%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=40.5%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=40.5%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=40.5%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=40.5%
+    size: w=2.3% h=4.1%
+- asset_id: e89b74f62c4d
+  original_filename: image10.png
+  kind: icon
+  path: assets/icons/e89b74f62c4d.png
+  dimensions: 321×321px
+  size_kb: 5
+  replaceable: false
+  hint: Icon used in layout — replace with appropriate icon from Red Hat icon library.
+  usages:
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=70.4% y=75.5%
+    size: w=1.9% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=70.4% y=75.5%
+    size: w=1.9% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=70.4% y=75.5%
+    size: w=1.9% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=70.4% y=75.5%
+    size: w=1.9% h=3.3%
+- asset_id: 2d6cf54fbf29
+  original_filename: image11.png
+  kind: icon
+  path: assets/icons/2d6cf54fbf29.png
+  dimensions: 321×321px
+  size_kb: 4
+  replaceable: false
+  hint: Icon used in layout — replace with appropriate icon from Red Hat icon library.
+  usages:
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=70.4% y=68.2%
+    size: w=1.9% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=70.4% y=68.2%
+    size: w=1.9% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=70.4% y=68.2%
+    size: w=1.9% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=70.4% y=68.1%
+    size: w=1.9% h=3.5%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=70.4% y=68.1%
+    size: w=1.9% h=3.5%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=70.4% y=68.2%
+    size: w=1.9% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=70.4% y=68.2%
+    size: w=1.9% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=70.4% y=68.1%
+    size: w=1.9% h=3.5%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=70.4% y=68.1%
+    size: w=1.9% h=3.5%
+- asset_id: 67f61634c11e
+  original_filename: image12.png
+  kind: icon
+  path: assets/icons/67f61634c11e.png
+  dimensions: 321×321px
+  size_kb: 2
+  replaceable: false
+  hint: Icon used in layout — replace with appropriate icon from Red Hat icon library.
+  usages:
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=46.4% y=75.5%
+    size: w=1.9% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=46.4% y=75.5%
+    size: w=1.9% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=46.4% y=75.5%
+    size: w=1.9% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=46.4% y=75.4%
+    size: w=1.9% h=3.5%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=46.4% y=75.4%
+    size: w=1.9% h=3.5%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=46.4% y=75.5%
+    size: w=1.9% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=46.4% y=75.5%
+    size: w=1.9% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=46.4% y=75.4%
+    size: w=1.9% h=3.5%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=46.4% y=75.4%
+    size: w=1.9% h=3.5%
+- asset_id: d7992cb636a3
+  original_filename: image128.png
+  kind: background
+  path: assets/backgrounds/d7992cb636a3.png
+  dimensions: 2500×1408px
+  size_kb: 16
+  replaceable: false
+  hint: Slide layout background — keep or replace with branded background.
+  usages:
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+- asset_id: 6bdcb7e2e1ce
+  original_filename: image130.png
+  kind: background
+  path: assets/backgrounds/6bdcb7e2e1ce.png
+  dimensions: 2048×1152px
+  size_kb: 125
+  replaceable: false
+  hint: Slide layout background — keep or replace with branded background.
+  usages:
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=73.4% y=2.8%
+    size: w=26.6% h=80.7%
+- asset_id: f6ac602e4089
+  original_filename: image131.png
+  kind: background
+  path: assets/backgrounds/f6ac602e4089.png
+  dimensions: 2048×1152px
+  size_kb: 122
+  replaceable: false
+  hint: Slide layout background — keep or replace with branded background.
+  usages:
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=68.5% y=2.8%
+    size: w=31.6% h=80.2%
+- asset_id: a636bae2e1e8
+  original_filename: image133.png
+  kind: background
+  path: assets/backgrounds/a636bae2e1e8.png
+  dimensions: 2048×1152px
+  size_kb: 556
+  replaceable: false
+  hint: Slide layout background — keep or replace with branded background.
+  usages:
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=67.0% y=9.1%
+    size: w=33.0% h=69.7%
+- asset_id: c16f8533781c
+  original_filename: image14.png
+  kind: icon
+  path: assets/icons/c16f8533781c.png
+  dimensions: 321×321px
+  size_kb: 2
+  replaceable: false
+  hint: Icon used in layout — replace with appropriate icon from Red Hat icon library.
+  usages:
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=46.4% y=68.2%
+    size: w=1.9% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=46.4% y=68.2%
+    size: w=1.9% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=46.4% y=68.2%
+    size: w=1.9% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=46.4% y=68.1%
+    size: w=1.9% h=3.5%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=46.4% y=68.1%
+    size: w=1.9% h=3.5%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=46.4% y=68.2%
+    size: w=1.9% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=46.4% y=68.1%
+    size: w=1.9% h=3.5%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=46.4% y=68.1%
+    size: w=1.9% h=3.5%
+- asset_id: 9caaf0a0544f
+  original_filename: image144.png
+  kind: background
+  path: assets/backgrounds/9caaf0a0544f.png
+  dimensions: 2048×1152px
+  size_kb: 543
+  replaceable: false
+  hint: Slide layout background — keep or replace with branded background.
+  usages:
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=66.1% y=10.5%
+    size: w=34.0% h=71.1%
+- asset_id: 54a68c46bd46
+  original_filename: image145.png
+  kind: background
+  path: assets/backgrounds/54a68c46bd46.png
+  dimensions: 1091×2048px
+  size_kb: 401
+  replaceable: false
+  hint: Slide layout background — keep or replace with branded background.
+  usages:
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=7.2% y=-0.1%
+    size: w=30.0% h=100.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=7.2% y=-0.1%
+    size: w=30.0% h=100.1%
+- asset_id: e9f27a659a75
+  original_filename: image148.png
+  kind: background
+  path: assets/backgrounds/e9f27a659a75.png
+  dimensions: 1091×2048px
+  size_kb: 2083
+  replaceable: false
+  hint: Slide layout background — keep or replace with branded background.
+  usages:
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=7.2% y=-0.1%
+    size: w=30.0% h=100.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=7.2% y=-0.1%
+    size: w=30.0% h=100.1%
+- asset_id: a671f15ab644
+  original_filename: image15.png
+  kind: logo
+  path: assets/logos/a671f15ab644.png
+  dimensions: 1335×498px
+  size_kb: 22
+  replaceable: false
+  hint: Brand logo — do not replace; use official Red Hat logo asset.
+  usages:
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=14.3% y=33.5%
+    size: w=71.4% h=47.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=14.3% y=33.5%
+    size: w=71.4% h=47.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=14.3% y=33.5%
+    size: w=71.4% h=47.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=14.3% y=33.5%
+    size: w=71.4% h=47.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=14.3% y=33.5%
+    size: w=71.4% h=47.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=14.3% y=33.5%
+    size: w=71.4% h=47.3%
+- asset_id: 92c7c74799b3
+  original_filename: image154.png
+  kind: logo
+  path: assets/logos/92c7c74799b3.png
+  dimensions: 2048×623px
+  size_kb: 108
+  replaceable: false
+  hint: Brand logo — do not replace; use official Red Hat logo asset.
+  usages:
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=27.4% y=37.8%
+    size: w=45.1% h=24.4%
+- asset_id: b64ebbd4284a
+  original_filename: image160.png
+  kind: icon
+  path: assets/icons/b64ebbd4284a.png
+  dimensions: 321×321px
+  size_kb: 5
+  replaceable: false
+  hint: Icon used in layout — replace with appropriate icon from Red Hat icon library.
+  usages:
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=70.4% y=75.5%
+    size: w=1.9% h=3.3%
+- asset_id: 831ee661cc72
+  original_filename: image163.png
+  kind: icon
+  path: assets/icons/831ee661cc72.png
+  dimensions: 321×321px
+  size_kb: 3
+  replaceable: false
+  hint: Icon used in layout — replace with appropriate icon from Red Hat icon library.
+  usages:
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=46.4% y=68.2%
+    size: w=1.9% h=3.3%
+- asset_id: 281f312b7004
+  original_filename: image165.png
+  kind: logo
+  path: assets/logos/281f312b7004.png
+  dimensions: 1335×498px
+  size_kb: 21
+  replaceable: false
+  hint: Brand logo — do not replace; use official Red Hat logo asset.
+  usages:
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=14.3% y=33.5%
+    size: w=71.4% h=47.3%
+- asset_id: 04478ab6e550
+  original_filename: image167.png
+  kind: background
+  path: assets/backgrounds/04478ab6e550.png
+  dimensions: 2048×1152px
+  size_kb: 1479
+  replaceable: false
+  hint: Slide layout background — keep or replace with branded background.
+  usages:
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=100.0% h=100.0%
+- asset_id: 43e038de6c7a
+  original_filename: image18.png
+  kind: icon
+  path: assets/icons/43e038de6c7a.png
+  dimensions: 360×360px
+  size_kb: 2
+  replaceable: false
+  hint: Icon used in layout — replace with appropriate icon from Red Hat icon library.
+  usages:
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=8.6% y=32.3%
+    size: w=4.5% h=8.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=38.0% y=32.3%
+    size: w=4.5% h=8.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=67.3% y=32.3%
+    size: w=4.5% h=8.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=10.1% y=29.8%
+    size: w=6.0% h=10.7%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=52.6% y=29.8%
+    size: w=6.0% h=10.7%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=28.0% y=18.9%
+    size: w=6.0% h=10.7%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=8.6% y=32.3%
+    size: w=4.5% h=8.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=38.0% y=32.3%
+    size: w=4.5% h=8.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=67.3% y=32.3%
+    size: w=4.5% h=8.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=10.1% y=29.8%
+    size: w=6.0% h=10.7%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=52.6% y=29.8%
+    size: w=6.0% h=10.7%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=28.0% y=18.9%
+    size: w=6.0% h=10.7%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=8.6% y=32.3%
+    size: w=4.5% h=8.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=38.0% y=32.3%
+    size: w=4.5% h=8.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=67.3% y=32.3%
+    size: w=4.5% h=8.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=10.1% y=29.8%
+    size: w=6.0% h=10.7%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=52.6% y=29.8%
+    size: w=6.0% h=10.7%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=28.0% y=18.9%
+    size: w=6.0% h=10.7%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=67.3% y=32.3%
+    size: w=4.5% h=8.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=38.0% y=32.3%
+    size: w=4.5% h=8.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=8.6% y=32.3%
+    size: w=4.5% h=8.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=52.6% y=29.8%
+    size: w=6.0% h=10.7%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=10.1% y=29.8%
+    size: w=6.0% h=10.7%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=28.0% y=18.9%
+    size: w=6.0% h=10.7%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=8.6% y=32.3%
+    size: w=4.5% h=8.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=38.0% y=32.3%
+    size: w=4.5% h=8.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=67.3% y=32.3%
+    size: w=4.5% h=8.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=10.1% y=29.8%
+    size: w=6.0% h=10.7%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=52.6% y=29.8%
+    size: w=6.0% h=10.7%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=28.0% y=18.9%
+    size: w=6.0% h=10.7%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=8.6% y=32.3%
+    size: w=4.5% h=8.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=38.0% y=32.3%
+    size: w=4.5% h=8.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=67.3% y=32.3%
+    size: w=4.5% h=8.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=10.1% y=29.8%
+    size: w=6.0% h=10.7%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=52.6% y=29.8%
+    size: w=6.0% h=10.7%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=28.0% y=18.9%
+    size: w=6.0% h=10.7%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=8.6% y=32.3%
+    size: w=4.5% h=8.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=38.0% y=32.3%
+    size: w=4.5% h=8.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=67.3% y=32.3%
+    size: w=4.5% h=8.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=10.1% y=29.8%
+    size: w=6.0% h=10.7%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=52.6% y=29.8%
+    size: w=6.0% h=10.7%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=28.0% y=18.9%
+    size: w=6.0% h=10.7%
+- asset_id: 1c49c2514448
+  original_filename: image198.png
+  kind: icon
+  path: assets/icons/1c49c2514448.png
+  dimensions: 360×361px
+  size_kb: 4
+  replaceable: true
+  hint: Replace with appropriate icon from Red Hat icon library.
+  usages:
+  - slide: 1
+    section: ''
+    source: slide
+    position: x=38.0% y=89.8%
+    size: w=2.7% h=8.2%
+  - slide: 2
+    section: Getting started
+    source: slide
+    position: x=75.0% y=1.7%
+    size: w=2.7% h=8.2%
+  - slide: 3
+    section: Getting started
+    source: slide
+    position: x=38.0% y=89.8%
+    size: w=2.7% h=8.2%
+  - slide: 4
+    section: Getting started
+    source: slide
+    position: x=1.0% y=89.8%
+    size: w=2.7% h=8.2%
+  - slide: 4
+    section: Getting started
+    source: slide
+    position: x=54.9% y=89.2%
+    size: w=2.7% h=8.2%
+  - slide: 4
+    section: Getting started
+    source: slide
+    position: x=60.6% y=2.3%
+    size: w=2.7% h=8.2%
+  - slide: 5
+    section: Color in presentations
+    source: slide
+    position: x=75.0% y=1.7%
+    size: w=2.7% h=8.2%
+  - slide: 6
+    section: Color in presentations
+    source: slide
+    position: x=75.0% y=1.7%
+    size: w=2.7% h=8.2%
+  - slide: 7
+    section: Color in presentations
+    source: slide
+    position: x=75.0% y=1.7%
+    size: w=2.7% h=8.2%
+  - slide: 8
+    section: Product logos & tech icon
+    source: slide
+    position: x=75.0% y=1.7%
+    size: w=2.7% h=8.2%
+  - slide: 9
+    section: Product logos & tech icon
+    source: slide
+    position: x=75.0% y=1.7%
+    size: w=2.7% h=8.2%
+  - slide: 10
+    section: Title and closing slides
+    source: slide
+    position: x=75.0% y=1.7%
+    size: w=2.7% h=8.2%
+  - slide: 22
+    section: Title and closing slides
+    source: slide
+    position: x=75.0% y=90.0%
+    size: w=2.7% h=8.2%
+  - slide: 23
+    section: Dividers
+    source: slide
+    position: x=75.0% y=1.7%
+    size: w=2.7% h=8.2%
+  - slide: 24
+    section: Dividers
+    source: slide
+    position: x=38.0% y=90.0%
+    size: w=2.7% h=8.2%
+  - slide: 31
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=75.0% y=1.7%
+    size: w=2.7% h=8.2%
+  - slide: 43
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=1.0% y=60.0%
+    size: w=2.7% h=8.2%
+  - slide: 44
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=26.3% y=51.8%
+    size: w=2.7% h=8.2%
+  - slide: 45
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=1.1% y=63.0%
+    size: w=2.7% h=8.2%
+  - slide: 46
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=32.3% y=90.3%
+    size: w=2.7% h=8.2%
+  - slide: 47
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=62.1% y=64.1%
+    size: w=2.7% h=8.2%
+  - slide: 48
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=8.2% y=71.6%
+    size: w=2.7% h=8.2%
+  - slide: 49
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=74.9% y=36.6%
+    size: w=2.7% h=8.2%
+  - slide: 50
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=38.0% y=89.6%
+    size: w=2.7% h=8.2%
+  - slide: 51
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=38.0% y=89.6%
+    size: w=2.7% h=8.2%
+  - slide: 52
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=38.0% y=89.6%
+    size: w=2.7% h=8.2%
+  - slide: 53
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=38.0% y=89.6%
+    size: w=2.7% h=8.2%
+  - slide: 54
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=38.0% y=89.6%
+    size: w=2.7% h=8.2%
+  - slide: 58
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=1.0% y=69.8%
+    size: w=2.7% h=8.2%
+  - slide: 61
+    section: Data, tables, and timelines
+    source: slide
+    position: x=75.0% y=1.7%
+    size: w=2.7% h=8.2%
+  - slide: 62
+    section: Data, tables, and timelines
+    source: slide
+    position: x=32.3% y=90.1%
+    size: w=2.7% h=8.2%
+  - slide: 62
+    section: Data, tables, and timelines
+    source: slide
+    position: x=32.3% y=89.4%
+    size: w=2.7% h=8.2%
+  - slide: 63
+    section: Data, tables, and timelines
+    source: slide
+    position: x=32.3% y=90.1%
+    size: w=2.7% h=8.2%
+  - slide: 66
+    section: Data, tables, and timelines
+    source: slide
+    position: x=37.3% y=90.1%
+    size: w=2.7% h=8.2%
+  - slide: 67
+    section: Data, tables, and timelines
+    source: slide
+    position: x=33.1% y=90.1%
+    size: w=2.7% h=8.2%
+  - slide: 68
+    section: Data, tables, and timelines
+    source: slide
+    position: x=33.0% y=90.1%
+    size: w=2.7% h=8.2%
+  - slide: 72
+    section: Data, tables, and timelines
+    source: slide
+    position: x=1.0% y=26.8%
+    size: w=2.7% h=8.2%
+  - slide: 73
+    section: Data, tables, and timelines
+    source: slide
+    position: x=1.0% y=43.9%
+    size: w=2.7% h=8.2%
+  - slide: 74
+    section: Title and closing slides
+    source: slide
+    position: x=75.0% y=1.7%
+    size: w=2.7% h=8.2%
+  - slide: 83
+    section: Dividers
+    source: slide
+    position: x=75.0% y=1.7%
+    size: w=2.7% h=8.2%
+  - slide: 84
+    section: Dividers
+    source: slide
+    position: x=38.0% y=90.0%
+    size: w=2.7% h=8.2%
+  - slide: 88
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=75.0% y=1.7%
+    size: w=2.7% h=8.2%
+  - slide: 97
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=1.0% y=60.0%
+    size: w=2.7% h=8.2%
+  - slide: 98
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=26.3% y=51.8%
+    size: w=2.7% h=8.2%
+  - slide: 99
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=1.1% y=62.9%
+    size: w=2.7% h=8.2%
+  - slide: 100
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=32.3% y=90.2%
+    size: w=2.7% h=8.2%
+  - slide: 101
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=8.2% y=71.6%
+    size: w=2.7% h=8.2%
+  - slide: 102
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=74.9% y=36.5%
+    size: w=2.7% h=8.2%
+  - slide: 103
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=38.0% y=89.7%
+    size: w=2.7% h=8.2%
+  - slide: 105
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=38.0% y=89.7%
+    size: w=2.7% h=8.2%
+  - slide: 106
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=38.0% y=89.7%
+    size: w=2.7% h=8.2%
+  - slide: 107
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=38.0% y=89.7%
+    size: w=2.7% h=8.2%
+  - slide: 111
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=1.1% y=69.8%
+    size: w=2.7% h=8.2%
+  - slide: 114
+    section: Data, tables, and timelines
+    source: slide
+    position: x=75.0% y=1.7%
+    size: w=2.7% h=8.2%
+  - slide: 115
+    section: Data, tables, and timelines
+    source: slide
+    position: x=32.3% y=90.4%
+    size: w=2.7% h=8.2%
+  - slide: 115
+    section: Data, tables, and timelines
+    source: slide
+    position: x=32.3% y=89.4%
+    size: w=2.7% h=8.2%
+  - slide: 116
+    section: Data, tables, and timelines
+    source: slide
+    position: x=32.3% y=90.4%
+    size: w=2.7% h=8.2%
+  - slide: 119
+    section: Data, tables, and timelines
+    source: slide
+    position: x=37.4% y=90.4%
+    size: w=2.7% h=8.2%
+  - slide: 120
+    section: Data, tables, and timelines
+    source: slide
+    position: x=33.2% y=90.4%
+    size: w=2.7% h=8.2%
+  - slide: 121
+    section: Data, tables, and timelines
+    source: slide
+    position: x=33.2% y=90.4%
+    size: w=2.7% h=8.2%
+  - slide: 125
+    section: Data, tables, and timelines
+    source: slide
+    position: x=1.2% y=27.4%
+    size: w=2.7% h=8.2%
+  - slide: 126
+    section: Data, tables, and timelines
+    source: slide
+    position: x=1.2% y=44.1%
+    size: w=2.7% h=8.2%
+- asset_id: 8d658f962676
+  original_filename: image2.png
+  kind: logo
+  path: assets/logos/8d658f962676.png
+  dimensions: 1226×290px
+  size_kb: 15
+  replaceable: false
+  hint: Brand logo — do not replace; use official Red Hat logo asset.
+  usages:
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=10.0% y=11.1%
+    size: w=17.6% h=7.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=10.0% y=11.1%
+    size: w=17.6% h=7.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=10.0% y=11.1%
+    size: w=17.6% h=7.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=10.0% y=11.1%
+    size: w=17.6% h=7.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=10.0% y=11.1%
+    size: w=17.6% h=7.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=10.0% y=11.1%
+    size: w=17.6% h=7.4%
+- asset_id: b823b73e0d6c
+  original_filename: image205.png
+  kind: photo
+  path: assets/photos/b823b73e0d6c.png
+  dimensions: 1433×487px
+  size_kb: 25
+  replaceable: true
+  hint: Landscape photo placeholder — replace with relevant imagery.
+  usages:
+  - slide: 9
+    section: Product logos & tech icon
+    source: slide
+    position: x=10.9% y=39.9%
+    size: w=11.4% h=6.9%
+  - slide: 11
+    section: Title and closing slides
+    source: slide
+    position: x=13.6% y=13.7%
+    size: w=12.2% h=7.4%
+  - slide: 13
+    section: Title and closing slides
+    source: slide
+    position: x=13.6% y=13.7%
+    size: w=12.2% h=7.4%
+  - slide: 14
+    section: Title and closing slides
+    source: slide
+    position: x=13.6% y=13.7%
+    size: w=12.2% h=7.4%
+  - slide: 75
+    section: Title and closing slides
+    source: slide
+    position: x=13.6% y=13.7%
+    size: w=12.2% h=7.4%
+- asset_id: 0a9ad7069217
+  original_filename: image206.png
+  kind: photo
+  path: assets/photos/0a9ad7069217.png
+  dimensions: 1434×487px
+  size_kb: 25
+  replaceable: true
+  hint: Landscape photo placeholder — replace with relevant imagery.
+  usages:
+  - slide: 9
+    section: Product logos & tech icon
+    source: slide
+    position: x=31.3% y=39.9%
+    size: w=11.4% h=6.9%
+- asset_id: 510c71ed5327
+  original_filename: image208.png
+  kind: icon
+  path: assets/icons/510c71ed5327.png
+  dimensions: 380×380px
+  size_kb: 11
+  replaceable: true
+  hint: Replace with appropriate icon from Red Hat icon library.
+  usages:
+  - slide: 9
+    section: Product logos & tech icon
+    source: slide
+    position: x=32.5% y=66.2%
+    size: w=9.2% h=16.3%
+- asset_id: 33ccce110ff1
+  original_filename: image209.png
+  kind: photo
+  path: assets/photos/33ccce110ff1.png
+  dimensions: 1434×487px
+  size_kb: 22
+  replaceable: true
+  hint: Landscape photo placeholder — replace with relevant imagery.
+  usages:
+  - slide: 9
+    section: Product logos & tech icon
+    source: slide
+    position: x=51.7% y=39.9%
+    size: w=11.4% h=6.9%
+- asset_id: ab1a74916cfc
+  original_filename: image213.png
+  kind: photo
+  path: assets/photos/ab1a74916cfc.png
+  dimensions: 1125×2048px
+  size_kb: 74
+  replaceable: true
+  hint: Portrait photo placeholder — replace with customer/speaker photo.
+  usages:
+  - slide: 18
+    section: Title and closing slides
+    source: slide
+    position: x=7.2% y=-0.1%
+    size: w=29.4% h=100.1%
+  - slide: 19
+    section: Title and closing slides
+    source: slide
+    position: x=7.2% y=-0.1%
+    size: w=29.4% h=100.1%
+  - slide: 79
+    section: Title and closing slides
+    source: slide
+    position: x=7.2% y=-0.1%
+    size: w=29.4% h=100.1%
+  - slide: 80
+    section: Title and closing slides
+    source: slide
+    position: x=7.2% y=-0.1%
+    size: w=29.4% h=100.1%
+- asset_id: 3773eca0f24b
+  original_filename: image215.png
+  kind: photo
+  path: assets/photos/3773eca0f24b.png
+  dimensions: 1433×487px
+  size_kb: 24
+  replaceable: true
+  hint: Landscape photo placeholder — replace with relevant imagery.
+  usages:
+  - slide: 1
+    section: ''
+    source: slide
+    position: x=21.0% y=17.4%
+    size: w=58.0% h=35.1%
+  - slide: 9
+    section: Product logos & tech icon
+    source: slide
+    position: x=14.9% y=23.0%
+    size: w=13.6% h=8.2%
+  - slide: 16
+    section: Title and closing slides
+    source: slide
+    position: x=42.5% y=20.9%
+    size: w=12.5% h=7.6%
+  - slide: 18
+    section: Title and closing slides
+    source: slide
+    position: x=42.5% y=20.9%
+    size: w=12.5% h=7.6%
+  - slide: 20
+    section: Title and closing slides
+    source: slide
+    position: x=42.5% y=20.9%
+    size: w=12.5% h=7.6%
+- asset_id: d96a966f50c6
+  original_filename: image223.png
+  kind: photo
+  path: assets/photos/d96a966f50c6.png
+  dimensions: 1694×1133px
+  size_kb: 2475
+  replaceable: true
+  hint: Landscape photo placeholder — replace with relevant imagery.
+  usages:
+  - slide: 43
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=0.0% y=-1.1%
+    size: w=100.0% h=86.3%
+  - slide: 44
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=0.0% y=33.4%
+    size: w=43.8% h=50.8%
+  - slide: 97
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=0.0% y=-1.1%
+    size: w=100.0% h=86.3%
+  - slide: 98
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=0.0% y=33.4%
+    size: w=43.8% h=50.8%
+- asset_id: a62a5b65e1c2
+  original_filename: image225.png
+  kind: unknown
+  path: assets/photos/a62a5b65e1c2.png
+  dimensions: 847×1240px
+  size_kb: 555
+  replaceable: true
+  hint: Replace with appropriate visual asset.
+  usages:
+  - slide: 45
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=0.0% y=24.1%
+    size: w=22.1% h=57.3%
+  - slide: 99
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=0.0% y=24.1%
+    size: w=22.1% h=57.3%
+- asset_id: c322f1a47fa7
+  original_filename: image227.png
+  kind: photo
+  path: assets/photos/c322f1a47fa7.png
+  dimensions: 1200×742px
+  size_kb: 25
+  replaceable: true
+  hint: Landscape photo placeholder — replace with relevant imagery.
+  usages:
+  - slide: 46
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=32.3% y=34.2%
+    size: w=25.0% h=27.5%
+  - slide: 46
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=60.3% y=34.2%
+    size: w=25.0% h=27.5%
+  - slide: 63
+    section: Data, tables, and timelines
+    source: slide
+    position: x=66.2% y=31.5%
+    size: w=25.0% h=27.5%
+  - slide: 63
+    section: Data, tables, and timelines
+    source: slide
+    position: x=37.1% y=32.2%
+    size: w=25.0% h=27.5%
+  - slide: 63
+    section: Data, tables, and timelines
+    source: slide
+    position: x=8.1% y=32.6%
+    size: w=25.0% h=27.5%
+  - slide: 100
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=32.3% y=34.2%
+    size: w=25.0% h=27.5%
+  - slide: 100
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=60.3% y=34.2%
+    size: w=25.0% h=27.5%
+  - slide: 116
+    section: Data, tables, and timelines
+    source: slide
+    position: x=66.2% y=31.5%
+    size: w=25.0% h=27.5%
+  - slide: 116
+    section: Data, tables, and timelines
+    source: slide
+    position: x=37.1% y=32.2%
+    size: w=25.0% h=27.5%
+  - slide: 116
+    section: Data, tables, and timelines
+    source: slide
+    position: x=8.1% y=32.6%
+    size: w=25.0% h=27.5%
+- asset_id: 2c12e507bd6c
+  original_filename: image228.png
+  kind: unknown
+  path: assets/photos/2c12e507bd6c.png
+  dimensions: 801×520px
+  size_kb: 346
+  replaceable: true
+  hint: Replace with appropriate visual asset.
+  usages:
+  - slide: 49
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=68.9% y=33.3%
+    size: w=20.9% h=24.1%
+  - slide: 102
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=68.9% y=33.3%
+    size: w=20.9% h=24.1%
+- asset_id: 8f0090c4e9e7
+  original_filename: image229.png
+  kind: unknown
+  path: assets/photos/8f0090c4e9e7.png
+  dimensions: 801×520px
+  size_kb: 281
+  replaceable: true
+  hint: Replace with appropriate visual asset.
+  usages:
+  - slide: 49
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=39.5% y=33.3%
+    size: w=20.9% h=24.1%
+  - slide: 102
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=39.5% y=33.3%
+    size: w=20.9% h=24.1%
+- asset_id: 52d85a837989
+  original_filename: image231.gif
+  kind: logo
+  path: assets/logos/52d85a837989.gif
+  dimensions: 820×308px
+  size_kb: 18301
+  replaceable: false
+  hint: Brand logo — do not replace; use official Red Hat logo asset.
+  usages:
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=-0.0%
+    size: w=100.0% h=100.0%
+- asset_id: 24faf4012ea0
+  original_filename: image232.png
+  kind: unknown
+  path: assets/photos/24faf4012ea0.png
+  dimensions: 801×520px
+  size_kb: 404
+  replaceable: true
+  hint: Replace with appropriate visual asset.
+  usages:
+  - slide: 49
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=10.2% y=33.3%
+    size: w=20.9% h=24.1%
+  - slide: 102
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=10.2% y=33.3%
+    size: w=20.9% h=24.1%
+- asset_id: 088233c43f21
+  original_filename: image233.png
+  kind: photo
+  path: assets/photos/088233c43f21.png
+  dimensions: 2048×2048px
+  size_kb: 228
+  replaceable: true
+  hint: Landscape photo placeholder — replace with relevant imagery.
+  usages:
+  - slide: 48
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=8.4% y=39.0%
+    size: w=23.8% h=42.2%
+- asset_id: 7c3cd813e932
+  original_filename: image234.png
+  kind: icon
+  path: assets/icons/7c3cd813e932.png
+  dimensions: 360×360px
+  size_kb: 8
+  replaceable: true
+  hint: Replace with appropriate icon from Red Hat icon library.
+  usages:
+  - slide: 50
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=16.6% y=39.0%
+    size: w=8.0% h=14.3%
+  - slide: 52
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=45.4% y=18.5%
+    size: w=7.7% h=13.7%
+  - slide: 53
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=13.4% y=39.3%
+    size: w=7.2% h=12.9%
+  - slide: 54
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=10.9% y=34.3%
+    size: w=5.2% h=9.2%
+- asset_id: 22cd58b19f6b
+  original_filename: image235.png
+  kind: icon
+  path: assets/icons/22cd58b19f6b.png
+  dimensions: 360×360px
+  size_kb: 6
+  replaceable: true
+  hint: Replace with appropriate icon from Red Hat icon library.
+  usages:
+  - slide: 51
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=76.2% y=26.7%
+    size: w=6.7% h=11.9%
+- asset_id: 4b06250022bf
+  original_filename: image236.png
+  kind: icon
+  path: assets/icons/4b06250022bf.png
+  dimensions: 360×360px
+  size_kb: 4
+  replaceable: true
+  hint: Replace with appropriate icon from Red Hat icon library.
+  usages:
+  - slide: 50
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=46.0% y=39.0%
+    size: w=8.0% h=14.3%
+  - slide: 52
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=45.4% y=41.0%
+    size: w=7.7% h=13.7%
+  - slide: 53
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=35.4% y=39.3%
+    size: w=7.2% h=12.9%
+  - slide: 54
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=10.9% y=58.3%
+    size: w=5.2% h=9.2%
+  - slide: 73
+    section: Data, tables, and timelines
+    source: slide
+    position: x=28.3% y=19.9%
+    size: w=4.2% h=7.4%
+  - slide: 73
+    section: Data, tables, and timelines
+    source: slide
+    position: x=28.3% y=68.1%
+    size: w=4.2% h=7.4%
+  - slide: 73
+    section: Data, tables, and timelines
+    source: slide
+    position: x=28.3% y=44.0%
+    size: w=4.2% h=7.4%
+  - slide: 126
+    section: Data, tables, and timelines
+    source: slide
+    position: x=28.3% y=19.9%
+    size: w=4.2% h=7.4%
+  - slide: 126
+    section: Data, tables, and timelines
+    source: slide
+    position: x=28.3% y=68.1%
+    size: w=4.2% h=7.4%
+- asset_id: 57878b4879ca
+  original_filename: image237.png
+  kind: icon
+  path: assets/icons/57878b4879ca.png
+  dimensions: 361×360px
+  size_kb: 5
+  replaceable: true
+  hint: Replace with appropriate icon from Red Hat icon library.
+  usages:
+  - slide: 51
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=46.1% y=58.2%
+    size: w=7.1% h=12.6%
+- asset_id: 9d8ec7d0705a
+  original_filename: image238.png
+  kind: icon
+  path: assets/icons/9d8ec7d0705a.png
+  dimensions: 360×360px
+  size_kb: 5
+  replaceable: true
+  hint: Replace with appropriate icon from Red Hat icon library.
+  usages:
+  - slide: 51
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=46.7% y=27.1%
+    size: w=6.7% h=11.9%
+- asset_id: 06b819086c31
+  original_filename: image239.png
+  kind: icon
+  path: assets/icons/06b819086c31.png
+  dimensions: 360×360px
+  size_kb: 5
+  replaceable: true
+  hint: Replace with appropriate icon from Red Hat icon library.
+  usages:
+  - slide: 51
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=17.1% y=26.6%
+    size: w=6.7% h=11.9%
+- asset_id: 847f9246e49a
+  original_filename: image24.png
+  kind: icon
+  path: assets/icons/847f9246e49a.png
+  dimensions: 321×321px
+  size_kb: 4
+  replaceable: false
+  hint: Icon used in layout — replace with appropriate icon from Red Hat icon library.
+  usages:
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=60.7%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=60.7%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=60.7%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=60.7%
+    size: w=2.3% h=4.1%
+- asset_id: f78f410c7f64
+  original_filename: image240.png
+  kind: icon
+  path: assets/icons/f78f410c7f64.png
+  dimensions: 360×360px
+  size_kb: 3
+  replaceable: true
+  hint: Replace with appropriate icon from Red Hat icon library.
+  usages:
+  - slide: 51
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=17.1% y=57.9%
+    size: w=7.1% h=12.6%
+- asset_id: ba0725494689
+  original_filename: image241.png
+  kind: icon
+  path: assets/icons/ba0725494689.png
+  dimensions: 360×360px
+  size_kb: 7
+  replaceable: true
+  hint: Replace with appropriate icon from Red Hat icon library.
+  usages:
+  - slide: 52
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=37.8% y=89.2%
+    size: w=3.0% h=9.2%
+  - slide: 53
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=37.8% y=89.2%
+    size: w=3.0% h=9.2%
+  - slide: 54
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=37.8% y=89.2%
+    size: w=3.0% h=9.2%
+- asset_id: 5013e8048510
+  original_filename: image243.png
+  kind: icon
+  path: assets/icons/5013e8048510.png
+  dimensions: 360×360px
+  size_kb: 5
+  replaceable: true
+  hint: Replace with appropriate icon from Red Hat icon library.
+  usages:
+  - slide: 51
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=75.6% y=57.9%
+    size: w=7.1% h=12.6%
+- asset_id: cbc95abff977
+  original_filename: image247.png
+  kind: icon
+  path: assets/icons/cbc95abff977.png
+  dimensions: 360×360px
+  size_kb: 3
+  replaceable: true
+  hint: Replace with appropriate icon from Red Hat icon library.
+  usages:
+  - slide: 50
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=75.4% y=39.0%
+    size: w=8.0% h=14.3%
+  - slide: 52
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=45.4% y=63.1%
+    size: w=7.7% h=13.7%
+  - slide: 53
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=57.4% y=39.3%
+    size: w=7.2% h=12.8%
+  - slide: 54
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=50.0% y=34.3%
+    size: w=5.2% h=9.2%
+- asset_id: f1277131cdc9
+  original_filename: image248.png
+  kind: background
+  path: assets/backgrounds/f1277131cdc9.png
+  dimensions: 2500×1407px
+  size_kb: 16
+  replaceable: false
+  hint: Slide layout background — keep or replace with branded background.
+  usages:
+  - slide: 85
+    section: Dividers
+    source: slide
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 93
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+- asset_id: c4a68a7beee8
+  original_filename: image253.png
+  kind: icon
+  path: assets/icons/c4a68a7beee8.png
+  dimensions: 360×360px
+  size_kb: 9
+  replaceable: true
+  hint: Replace with appropriate icon from Red Hat icon library.
+  usages:
+  - slide: 53
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=79.4% y=39.3%
+    size: w=7.2% h=12.9%
+  - slide: 54
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=50.0% y=58.3%
+    size: w=5.2% h=9.2%
+- asset_id: cb684994d9d2
+  original_filename: image255.png
+  kind: photo
+  path: assets/photos/cb684994d9d2.png
+  dimensions: 1810×742px
+  size_kb: 28
+  replaceable: true
+  hint: Landscape photo placeholder — replace with relevant imagery.
+  usages:
+  - slide: 66
+    section: Data, tables, and timelines
+    source: slide
+    position: x=10.7% y=27.9%
+    size: w=80.3% h=58.5%
+- asset_id: 6bcf671d3fce
+  original_filename: image260.png
+  kind: photo
+  path: assets/photos/6bcf671d3fce.png
+  dimensions: 1200×742px
+  size_kb: 30
+  replaceable: true
+  hint: Landscape photo placeholder — replace with relevant imagery.
+  usages:
+  - slide: 62
+    section: Data, tables, and timelines
+    source: slide
+    position: x=28.9% y=30.5%
+    size: w=50.2% h=55.2%
+- asset_id: 948ea2ac7458
+  original_filename: image263.png
+  kind: photo
+  path: assets/photos/948ea2ac7458.png
+  dimensions: 1305×1041px
+  size_kb: 1266
+  replaceable: true
+  hint: Landscape photo placeholder — replace with relevant imagery.
+  usages:
+  - slide: 58
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=0.0% y=31.4%
+    size: w=34.0% h=48.3%
+  - slide: 111
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=0.0% y=31.4%
+    size: w=34.0% h=48.3%
+- asset_id: 44449af81dbf
+  original_filename: image264.png
+  kind: unknown
+  path: assets/photos/44449af81dbf.png
+  dimensions: 648×648px
+  size_kb: 14
+  replaceable: true
+  hint: Replace with appropriate visual asset.
+  usages:
+  - slide: 72
+    section: Data, tables, and timelines
+    source: slide
+    position: x=25.6% y=18.4%
+    size: w=16.9% h=30.0%
+- asset_id: 0e08514178c4
+  original_filename: image268.png
+  kind: photo
+  path: assets/photos/0e08514178c4.png
+  dimensions: 907×600px
+  size_kb: 751
+  replaceable: true
+  hint: Landscape photo placeholder — replace with relevant imagery.
+  usages:
+  - slide: 72
+    section: Data, tables, and timelines
+    source: slide
+    position: x=26.2% y=19.5%
+    size: w=15.6% h=27.7%
+  - slide: 125
+    section: Data, tables, and timelines
+    source: slide
+    position: x=26.2% y=19.5%
+    size: w=15.6% h=27.7%
+- asset_id: db4dee057a9c
+  original_filename: image27.png
+  kind: background
+  path: assets/backgrounds/db4dee057a9c.png
+  dimensions: 2048×1152px
+  size_kb: 495
+  replaceable: false
+  hint: Slide layout background — keep or replace with branded background.
+  usages:
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=66.1% y=7.9%
+    size: w=34.0% h=69.7%
+- asset_id: c05bb7767903
+  original_filename: image274.png
+  kind: icon
+  path: assets/icons/c05bb7767903.png
+  dimensions: 360×361px
+  size_kb: 7
+  replaceable: true
+  hint: Replace with appropriate icon from Red Hat icon library.
+  usages:
+  - slide: 103
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=16.6% y=39.0%
+    size: w=8.0% h=14.3%
+  - slide: 105
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=45.4% y=18.5%
+    size: w=7.7% h=13.7%
+  - slide: 106
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=13.4% y=37.1%
+    size: w=7.2% h=12.9%
+  - slide: 107
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=10.9% y=34.3%
+    size: w=5.2% h=9.2%
+- asset_id: 56ca53c80312
+  original_filename: image275.png
+  kind: icon
+  path: assets/icons/56ca53c80312.png
+  dimensions: 360×361px
+  size_kb: 4
+  replaceable: true
+  hint: Replace with appropriate icon from Red Hat icon library.
+  usages:
+  - slide: 103
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=46.0% y=39.0%
+    size: w=8.0% h=14.3%
+  - slide: 105
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=45.4% y=41.0%
+    size: w=7.7% h=13.7%
+  - slide: 106
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=35.4% y=37.1%
+    size: w=7.2% h=12.9%
+  - slide: 107
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=10.9% y=58.3%
+    size: w=5.2% h=9.2%
+- asset_id: 0f9337d8ecb4
+  original_filename: image277.png
+  kind: icon
+  path: assets/icons/0f9337d8ecb4.png
+  dimensions: 360×361px
+  size_kb: 3
+  replaceable: true
+  hint: Replace with appropriate icon from Red Hat icon library.
+  usages:
+  - slide: 103
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=75.4% y=39.0%
+    size: w=8.0% h=14.3%
+  - slide: 105
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=45.4% y=63.1%
+    size: w=7.7% h=13.7%
+  - slide: 106
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=57.4% y=37.1%
+    size: w=7.2% h=12.8%
+  - slide: 107
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=50.0% y=34.3%
+    size: w=5.2% h=9.2%
+- asset_id: e0411ebc1950
+  original_filename: image278.png
+  kind: icon
+  path: assets/icons/e0411ebc1950.png
+  dimensions: 360×360px
+  size_kb: 5
+  replaceable: true
+  hint: Replace with appropriate icon from Red Hat icon library.
+  usages:
+  - slide: 104
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=17.1% y=26.6%
+    size: w=6.7% h=11.9%
+- asset_id: a50a865099a7
+  original_filename: image279.png
+  kind: icon
+  path: assets/icons/a50a865099a7.png
+  dimensions: 360×360px
+  size_kb: 4
+  replaceable: true
+  hint: Replace with appropriate icon from Red Hat icon library.
+  usages:
+  - slide: 104
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=46.7% y=27.1%
+    size: w=6.7% h=11.9%
+- asset_id: 00a06c2eb783
+  original_filename: image28.png
+  kind: background
+  path: assets/backgrounds/00a06c2eb783.png
+  dimensions: 2048×1152px
+  size_kb: 102
+  replaceable: false
+  hint: Slide layout background — keep or replace with branded background.
+  usages:
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=68.0% y=5.0%
+    size: w=32.0% h=79.1%
+- asset_id: 1393c2a3ecac
+  original_filename: image280.png
+  kind: photo
+  path: assets/photos/1393c2a3ecac.png
+  dimensions: 2048×2048px
+  size_kb: 201
+  replaceable: true
+  hint: Landscape photo placeholder — replace with relevant imagery.
+  usages:
+  - slide: 101
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=8.4% y=39.0%
+    size: w=23.8% h=42.2%
+- asset_id: a8cfeb3b9ac2
+  original_filename: image281.png
+  kind: icon
+  path: assets/icons/a8cfeb3b9ac2.png
+  dimensions: 360×360px
+  size_kb: 6
+  replaceable: true
+  hint: Replace with appropriate icon from Red Hat icon library.
+  usages:
+  - slide: 104
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=76.2% y=26.7%
+    size: w=6.7% h=11.9%
+- asset_id: b54e03d7bc3d
+  original_filename: image282.png
+  kind: photo
+  path: assets/photos/b54e03d7bc3d.png
+  dimensions: 1091×2048px
+  size_kb: 839
+  replaceable: true
+  hint: Portrait photo placeholder — replace with customer/speaker photo.
+  usages:
+  - slide: 81
+    section: Title and closing slides
+    source: slide
+    position: x=7.2% y=-0.1%
+    size: w=29.4% h=100.1%
+  - slide: 82
+    section: Title and closing slides
+    source: slide
+    position: x=7.2% y=-0.1%
+    size: w=29.4% h=100.1%
+- asset_id: 0c75199d3737
+  original_filename: image29.png
+  kind: background
+  path: assets/backgrounds/0c75199d3737.png
+  dimensions: 2048×1152px
+  size_kb: 106
+  replaceable: false
+  hint: Slide layout background — keep or replace with branded background.
+  usages:
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=68.9% y=9.3%
+    size: w=31.1% h=70.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=66.3% y=0.0%
+    size: w=33.7% h=85.2%
+- asset_id: 0e380638cd05
+  original_filename: image291.png
+  kind: icon
+  path: assets/icons/0e380638cd05.png
+  dimensions: 360×360px
+  size_kb: 2
+  replaceable: true
+  hint: Replace with appropriate icon from Red Hat icon library.
+  usages:
+  - slide: 104
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=17.1% y=57.9%
+    size: w=7.1% h=12.6%
+- asset_id: da85b99bdd47
+  original_filename: image293.png
+  kind: icon
+  path: assets/icons/da85b99bdd47.png
+  dimensions: 361×360px
+  size_kb: 4
+  replaceable: true
+  hint: Replace with appropriate icon from Red Hat icon library.
+  usages:
+  - slide: 104
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=75.6% y=57.9%
+    size: w=7.1% h=12.6%
+- asset_id: bef0bd67be6f
+  original_filename: image294.png
+  kind: photo
+  path: assets/photos/bef0bd67be6f.png
+  dimensions: 1091×2048px
+  size_kb: 596
+  replaceable: true
+  hint: Portrait photo placeholder — replace with customer/speaker photo.
+  usages:
+  - slide: 77
+    section: Title and closing slides
+    source: slide
+    position: x=7.3% y=0.0%
+    size: w=29.4% h=100.0%
+  - slide: 78
+    section: Title and closing slides
+    source: slide
+    position: x=7.3% y=0.0%
+    size: w=29.4% h=100.0%
+- asset_id: 4461edc955be
+  original_filename: image296.png
+  kind: icon
+  path: assets/icons/4461edc955be.png
+  dimensions: 360×361px
+  size_kb: 9
+  replaceable: true
+  hint: Replace with appropriate icon from Red Hat icon library.
+  usages:
+  - slide: 106
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=79.4% y=37.1%
+    size: w=7.2% h=12.9%
+  - slide: 107
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=50.0% y=58.3%
+    size: w=5.2% h=9.2%
+- asset_id: f3ec043eb316
+  original_filename: image3.png
+  kind: logo
+  path: assets/logos/f3ec043eb316.png
+  dimensions: 496×117px
+  size_kb: 6
+  replaceable: false
+  hint: Brand logo — do not replace; use official Red Hat logo asset.
+  usages:
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=90.5%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=90.5%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=90.5%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=90.5%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=90.5%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=90.5%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=90.5%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=89.9%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=89.9%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=89.9%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=89.9%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=89.9%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=89.9%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=89.9%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=90.5%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=90.5%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=90.5%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=90.5%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=90.5%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=90.5%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=90.5%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=90.5%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=90.5%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=90.5%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=90.5%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=90.5%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=90.5%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=90.5%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=89.9%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=89.9%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=89.9%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=89.9%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=89.9%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=89.9%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=90.5%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=90.5%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=90.5%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=90.5%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=90.5%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=90.5%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=90.5%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=90.5%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=90.5%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=90.5%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=90.5%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=90.5%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=90.5%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=90.5%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=90.5%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=90.5%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=90.5%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=90.5%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=90.5%
+    size: w=13.0% h=5.4%
+- asset_id: d258910a94a4
+  original_filename: image30.png
+  kind: background
+  path: assets/backgrounds/d258910a94a4.png
+  dimensions: 2500×1406px
+  size_kb: 16
+  replaceable: false
+  hint: Slide layout background — keep or replace with branded background.
+  usages:
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+- asset_id: 4641c5890b08
+  original_filename: image300.png
+  kind: icon
+  path: assets/icons/4641c5890b08.png
+  dimensions: 361×360px
+  size_kb: 4
+  replaceable: true
+  hint: Replace with appropriate icon from Red Hat icon library.
+  usages:
+  - slide: 104
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=46.1% y=58.2%
+    size: w=7.1% h=12.6%
+- asset_id: 930326104cfe
+  original_filename: image304.png
+  kind: photo
+  path: assets/photos/930326104cfe.png
+  dimensions: 1200×741px
+  size_kb: 46
+  replaceable: true
+  hint: Landscape photo placeholder — replace with relevant imagery.
+  usages:
+  - slide: 115
+    section: Data, tables, and timelines
+    source: slide
+    position: x=28.9% y=30.5%
+    size: w=50.3% h=55.2%
+- asset_id: 5554f22db50c
+  original_filename: image306.png
+  kind: photo
+  path: assets/photos/5554f22db50c.png
+  dimensions: 1810×742px
+  size_kb: 22
+  replaceable: true
+  hint: Landscape photo placeholder — replace with relevant imagery.
+  usages:
+  - slide: 119
+    section: Data, tables, and timelines
+    source: slide
+    position: x=10.7% y=27.9%
+    size: w=80.3% h=58.5%
+- asset_id: 8249499c53fa
+  original_filename: image31.png
+  kind: background
+  path: assets/backgrounds/8249499c53fa.png
+  dimensions: 2048×1152px
+  size_kb: 462
+  replaceable: false
+  hint: Slide layout background — keep or replace with branded background.
+  usages:
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=71.0% y=13.6%
+    size: w=29.0% h=56.9%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=65.7% y=9.7%
+    size: w=34.3% h=67.5%
+- asset_id: 0d02b5eb129b
+  original_filename: image312.png
+  kind: unknown
+  path: assets/photos/0d02b5eb129b.png
+  dimensions: 636×411px
+  size_kb: 458
+  replaceable: true
+  hint: Replace with appropriate visual asset.
+  usages:
+  - slide: 126
+    section: Data, tables, and timelines
+    source: slide
+    position: x=15.7% y=45.0%
+    size: w=16.6% h=12.8%
+- asset_id: '102753476576'
+  original_filename: image317.png
+  kind: photo
+  path: assets/photos/102753476576.png
+  dimensions: 2500×447px
+  size_kb: 1106
+  replaceable: true
+  hint: Landscape photo placeholder — replace with relevant imagery.
+  usages:
+  - slide: 47
+    section: Overview, agenda, content, and quotes
+    source: slide
+    position: x=17.1% y=58.2%
+    size: w=66.0% h=24.0%
+- asset_id: 7fb606354088
+  original_filename: image33.png
+  kind: background
+  path: assets/backgrounds/7fb606354088.png
+  dimensions: 1091×2048px
+  size_kb: 579
+  replaceable: false
+  hint: Slide layout background — keep or replace with branded background.
+  usages:
+  - slide: 16
+    section: Title and closing slides
+    source: slide
+    position: x=7.2% y=0.0%
+    size: w=29.4% h=100.0%
+  - slide: 17
+    section: Title and closing slides
+    source: slide
+    position: x=7.2% y=0.0%
+    size: w=29.4% h=100.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=7.2% y=-0.1%
+    size: w=30.0% h=100.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=7.2% y=-0.1%
+    size: w=30.0% h=100.1%
+- asset_id: 294b7489babc
+  original_filename: image34.png
+  kind: icon
+  path: assets/icons/294b7489babc.png
+  dimensions: 321×321px
+  size_kb: 4
+  replaceable: false
+  hint: Icon used in layout — replace with appropriate icon from Red Hat icon library.
+  usages:
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=70.4% y=75.4%
+    size: w=1.9% h=3.5%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=70.4% y=75.4%
+    size: w=1.9% h=3.5%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=70.4% y=75.4%
+    size: w=1.9% h=3.5%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=70.4% y=75.4%
+    size: w=1.9% h=3.5%
+- asset_id: 567f8e3b3b49
+  original_filename: image36.png
+  kind: background
+  path: assets/backgrounds/567f8e3b3b49.png
+  dimensions: 2500×1407px
+  size_kb: 16
+  replaceable: false
+  hint: Slide layout background — keep or replace with branded background.
+  usages:
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+- asset_id: e0dbc857617f
+  original_filename: image4.png
+  kind: icon
+  path: assets/icons/e0dbc857617f.png
+  dimensions: 321×321px
+  size_kb: 2
+  replaceable: false
+  hint: Icon used in layout — replace with appropriate icon from Red Hat icon library.
+  usages:
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=30.4%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=30.4%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=30.4%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=30.4%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=30.4%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=30.4%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=30.4%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=30.4%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=30.4%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=30.4%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=30.4%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=30.4%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=30.4%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=30.4%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=30.4%
+    size: w=2.3% h=4.1%
+- asset_id: c8333e988ba0
+  original_filename: image46.png
+  kind: background
+  path: assets/backgrounds/c8333e988ba0.png
+  dimensions: 2500×1407px
+  size_kb: 16
+  replaceable: false
+  hint: Slide layout background — keep or replace with branded background.
+  usages:
+  - slide: 28
+    section: Dividers
+    source: slide
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+- asset_id: ef5cc93eab26
+  original_filename: image47.png
+  kind: background
+  path: assets/backgrounds/ef5cc93eab26.png
+  dimensions: 2500×1406px
+  size_kb: 76
+  replaceable: false
+  hint: Slide layout background — keep or replace with branded background.
+  usages:
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+- asset_id: 9d157b957cdb
+  original_filename: image48.png
+  kind: background
+  path: assets/backgrounds/9d157b957cdb.png
+  dimensions: 1091×2048px
+  size_kb: 877
+  replaceable: false
+  hint: Slide layout background — keep or replace with branded background.
+  usages:
+  - slide: 20
+    section: Title and closing slides
+    source: slide
+    position: x=7.2% y=-0.1%
+    size: w=29.4% h=100.1%
+  - slide: 21
+    section: Title and closing slides
+    source: slide
+    position: x=7.2% y=-0.1%
+    size: w=29.4% h=100.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=7.2% y=-0.1%
+    size: w=30.0% h=100.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=7.2% y=-0.1%
+    size: w=30.0% h=100.1%
+- asset_id: bf9e0485b730
+  original_filename: image5.png
+  kind: icon
+  path: assets/icons/bf9e0485b730.png
+  dimensions: 321×321px
+  size_kb: 3
+  replaceable: false
+  hint: Icon used in layout — replace with appropriate icon from Red Hat icon library.
+  usages:
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=50.6%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=50.6%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=50.6%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=50.6%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=50.6%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=50.6%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=50.6%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=50.6%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=50.6%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=50.6%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=50.6%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=50.6%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=50.6%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=50.6%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=50.6%
+    size: w=2.3% h=4.1%
+- asset_id: dbb54276b441
+  original_filename: image50.png
+  kind: background
+  path: assets/backgrounds/dbb54276b441.png
+  dimensions: 2500×1406px
+  size_kb: 12
+  replaceable: false
+  hint: Slide layout background — keep or replace with branded background.
+  usages:
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+- asset_id: a1261b79d939
+  original_filename: image51.png
+  kind: background
+  path: assets/backgrounds/a1261b79d939.png
+  dimensions: 2500×1407px
+  size_kb: 16
+  replaceable: false
+  hint: Slide layout background — keep or replace with branded background.
+  usages:
+  - slide: 30
+    section: Dividers
+    source: slide
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+- asset_id: 0c83422f8f41
+  original_filename: image53.png
+  kind: background
+  path: assets/backgrounds/0c83422f8f41.png
+  dimensions: 2048×1152px
+  size_kb: 1033
+  replaceable: false
+  hint: Slide layout background — keep or replace with branded background.
+  usages:
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=100.0% h=100.0%
+- asset_id: 268574b17ae0
+  original_filename: image54.png
+  kind: logo
+  path: assets/logos/268574b17ae0.png
+  dimensions: 1434×487px
+  size_kb: 26
+  replaceable: false
+  hint: Brand logo — do not replace; use official Red Hat logo asset.
+  usages:
+  - slide: 9
+    section: Product logos & tech icon
+    source: slide
+    position: x=45.6% y=23.0%
+    size: w=13.6% h=8.2%
+  - slide: 77
+    section: Title and closing slides
+    source: slide
+    position: x=42.5% y=20.9%
+    size: w=12.5% h=7.6%
+  - slide: 79
+    section: Title and closing slides
+    source: slide
+    position: x=42.5% y=20.9%
+    size: w=12.5% h=7.6%
+  - slide: 81
+    section: Title and closing slides
+    source: slide
+    position: x=42.5% y=20.9%
+    size: w=12.5% h=7.6%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=36.0% y=41.6%
+    size: w=27.9% h=16.9%
+- asset_id: ffa5cbf97e7e
+  original_filename: image55.png
+  kind: background
+  path: assets/backgrounds/ffa5cbf97e7e.png
+  dimensions: 2048×1152px
+  size_kb: 127
+  replaceable: false
+  hint: Slide layout background — keep or replace with branded background.
+  usages:
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=107.7% y=7.6%
+    size: w=35.8% h=77.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=107.7% y=7.6%
+    size: w=35.8% h=77.1%
+- asset_id: 793003cf6c34
+  original_filename: image59.gif
+  kind: logo
+  path: assets/logos/793003cf6c34.gif
+  dimensions: 600×338px
+  size_kb: 4972
+  replaceable: false
+  hint: Brand asset from slide layout.
+  usages:
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=100.0% h=100.0%
+- asset_id: 94c7f68a64d2
+  original_filename: image6.png
+  kind: icon
+  path: assets/icons/94c7f68a64d2.png
+  dimensions: 321×321px
+  size_kb: 5
+  replaceable: false
+  hint: Icon used in layout — replace with appropriate icon from Red Hat icon library.
+  usages:
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=60.7%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=60.7%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=60.7%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=60.7%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=60.7%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=60.7%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=60.7%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=60.7%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=60.7%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=60.7%
+    size: w=2.3% h=4.1%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=61.9% y=60.7%
+    size: w=2.3% h=4.1%
+- asset_id: f2db310470a6
+  original_filename: image68.png
+  kind: background
+  path: assets/backgrounds/f2db310470a6.png
+  dimensions: 2500×1406px
+  size_kb: 12
+  replaceable: false
+  hint: Slide layout background — keep or replace with branded background.
+  usages:
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+- asset_id: 23a8d480d5c2
+  original_filename: image69.png
+  kind: background
+  path: assets/backgrounds/23a8d480d5c2.png
+  dimensions: 2500×1407px
+  size_kb: 16
+  replaceable: false
+  hint: Slide layout background — keep or replace with branded background.
+  usages:
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+- asset_id: 1f2e7cda399e
+  original_filename: image70.png
+  kind: background
+  path: assets/backgrounds/1f2e7cda399e.png
+  dimensions: 2500×1406px
+  size_kb: 12
+  replaceable: false
+  hint: Slide layout background — keep or replace with branded background.
+  usages:
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+- asset_id: a3d36787216d
+  original_filename: image77.png
+  kind: background
+  path: assets/backgrounds/a3d36787216d.png
+  dimensions: 2500×1406px
+  size_kb: 12
+  replaceable: false
+  hint: Slide layout background — keep or replace with branded background.
+  usages:
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=0.0% y=0.0%
+    size: w=0.0% h=0.0%
+- asset_id: 9270e11582dc
+  original_filename: image78.png
+  kind: icon
+  path: assets/icons/9270e11582dc.png
+  dimensions: 384×290px
+  size_kb: 7
+  replaceable: false
+  hint: Icon used in layout — replace with appropriate icon from Red Hat icon library.
+  usages:
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=94.0% y=91.0%
+    size: w=3.2% h=4.3%
+- asset_id: e0c3273e107d
+  original_filename: image8.png
+  kind: logo
+  path: assets/logos/e0c3273e107d.png
+  dimensions: 306×72px
+  size_kb: 3
+  replaceable: false
+  hint: Brand logo — do not replace; use official Red Hat logo asset.
+  usages:
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.1%
+    size: w=8.0% h=3.3%
+- asset_id: 47c91d6a9ffd
+  original_filename: image9.png
+  kind: logo
+  path: assets/logos/47c91d6a9ffd.png
+  dimensions: 306×72px
+  size_kb: 3
+  replaceable: false
+  hint: Brand logo — do not replace; use official Red Hat logo asset.
+  usages:
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.0%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.0%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.0%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=89.7%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=89.7%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.0%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=89.7%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.0%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=82.9% y=89.7%
+    size: w=13.0% h=5.4%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.0%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.0%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.0%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.0%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.0%
+    size: w=8.0% h=3.3%
+  - slide: 0
+    section: ''
+    source: layout
+    position: x=87.9% y=92.0%
+    size: w=8.0% h=3.3%
+charts: []

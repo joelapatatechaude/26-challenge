@@ -1,0 +1,89 @@
+# ONLYOFFICE Document Server + file bridge for ppt-skills-extractor
+#
+# Usage (from project root):
+#   podman compose -f compose.onlyoffice.yml up -d
+#
+# Then open: http://localhost:3000
+# The editor loads any .pptx from ./decks/ and allows full in-browser editing.
+# Edited files are saved back to ./decks/ via the file-bridge service.
+#
+# Stop:
+#   podman compose -f compose.onlyoffice.yml down
+#
+# Stop + wipe volumes:
+#   podman compose -f compose.onlyoffice.yml down -v
+
+services:
+
+  # ─── ONLYOFFICE Document Server ─────────────────────────────────────────────
+  # Full Office Open XML editor in the browser (AGPL-3.0).
+  # PPTX round-trip fidelity ~95% — preserves Red Hat template layouts and fonts.
+  # v9.4+ removes the 20-connection limit and RabbitMQ dependency.
+  onlyoffice:
+    image: onlyoffice/documentserver:latest
+    container_name: ppt-onlyoffice
+    restart: unless-stopped
+    environment:
+      # Allow the file-bridge origin to call the Document Server API
+      - ALLOW_PRIVATE_IP_ADDRESS=true
+      # JWT secret shared with the file-bridge (change before production use)
+      - JWT_SECRET=${ONLYOFFICE_JWT_SECRET:-ppt-skills-dev-secret}
+      - JWT_ENABLED=true
+      - JWT_HEADER=Authorization
+      - JWT_IN_BODY=true
+    ports:
+      - "8080:80"
+    volumes:
+      - onlyoffice_data:/var/www/onlyoffice/Data
+      - onlyoffice_logs:/var/log/onlyoffice
+      - onlyoffice_cache:/var/lib/onlyoffice
+      - onlyoffice_db:/var/lib/postgresql
+    networks:
+      - ppt_net
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/healthcheck"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+
+  # ─── File Bridge (FastAPI) ───────────────────────────────────────────────────
+  # Lightweight service that:
+  #   GET  /                       → deck picker UI
+  #   GET  /decks/{filename}       → serves .pptx to ONLYOFFICE (download URL)
+  #   POST /decks/{filename}       → receives edited .pptx back from ONLYOFFICE (callback URL)
+  #   GET  /editor/{filename}      → renders ONLYOFFICE editor iframe for a deck
+  # Mount ./decks so generated files are immediately available without rebuild.
+  file-bridge:
+    build:
+      context: .
+      dockerfile: Dockerfile.bridge
+    container_name: ppt-file-bridge
+    restart: unless-stopped
+    environment:
+      - ONLYOFFICE_URL=http://onlyoffice:80
+      - ONLYOFFICE_JWT_SECRET=${ONLYOFFICE_JWT_SECRET:-ppt-skills-dev-secret}
+      # Externally reachable address of the file-bridge — ONLYOFFICE calls back here
+      - BRIDGE_PUBLIC_URL=${BRIDGE_PUBLIC_URL:-http://localhost:3000}
+    ports:
+      - "3000:3000"
+    volumes:
+      # Live-mount the decks directory — no rebuild needed for new .pptx files
+      - ./decks:/app/decks
+    depends_on:
+      onlyoffice:
+        condition: service_healthy
+    networks:
+      - ppt_net
+
+# ─── Volumes ──────────────────────────────────────────────────────────────────
+volumes:
+  onlyoffice_data:
+  onlyoffice_logs:
+  onlyoffice_cache:
+  onlyoffice_db:
+
+# ─── Network ──────────────────────────────────────────────────────────────────
+networks:
+  ppt_net:
+    driver: bridge
