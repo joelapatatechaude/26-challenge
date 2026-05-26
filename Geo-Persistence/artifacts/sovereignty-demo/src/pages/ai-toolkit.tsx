@@ -1,13 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import { AppLayout } from "@/components/AppLayout";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { Input } from "@/components/ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Label } from "@/components/ui/label";
-import { Sparkles, Loader2, CheckCircle2, FileText, Edit3, Mail, BookOpen, Share2, Download, Languages } from "lucide-react";
+import { Sparkles, Loader2, CheckCircle2, FileText, Download, Languages, Paperclip, LayoutGrid, X, ChevronDown, ChevronUp } from "lucide-react";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 /* ─── Output Language catalogue ─── */
 export type OutputLang = "en" | "de" | "fr" | "es" | "it" | "nl" | "ja" | "pt-br";
@@ -23,68 +20,81 @@ export const OUTPUT_LANGS: { value: OutputLang; label: string; flag: string; reg
   { value: "pt-br", label: "Português",  flag: "🇧🇷", regulatory: "LGPD" },
 ];
 
+/* ─── Deck type catalogue ─── */
+export const DECK_TYPES = [
+  {
+    id: "competitive",
+    label: "15-min Competitive Edge",
+    icon: "⚔️",
+    description: "Position Red Hat against a specific competitor",
+    templatePrompt: "Create a 15-minute competitive edge presentation targeting [customer] comparing Red Hat OpenShift vs [competitor]. Focus on key differentiators and customer value.",
+    deckType: "competitive",
+    slideCount: 10,
+  },
+  {
+    id: "power_hour",
+    label: "Power Hour",
+    icon: "⚡",
+    description: "Deep-dive technical session for architects",
+    templatePrompt: "Build a Power Hour deep-dive session on [topic] for [customer]'s technical architects. Cover architecture, implementation patterns, and hands-on scenarios.",
+    deckType: "power_hour",
+    slideCount: 20,
+  },
+  {
+    id: "elevator",
+    label: "Elevator Pitch",
+    icon: "🚀",
+    description: "5-minute exec-level value story",
+    templatePrompt: "Create a 5-minute elevator pitch for [customer]'s executive leadership on Red Hat [product/solution]. Lead with business value and ROI.",
+    deckType: "elevator",
+    slideCount: 5,
+  },
+  {
+    id: "sales_enablement",
+    label: "Sales Enablement",
+    icon: "📊",
+    description: "Full sales enablement deck with discovery questions",
+    templatePrompt: "Build a sales enablement presentation for [customer] covering Red Hat's portfolio, discovery questions, objection handling, and next steps.",
+    deckType: "competitive",
+    slideCount: 15,
+  },
+  {
+    id: "rh_standard",
+    label: "Red Hat Standard",
+    icon: "🎯",
+    description: "Standard Red Hat branded presentation",
+    templatePrompt: "Create a standard Red Hat presentation on [topic] for [customer]. Follow Red Hat messaging guidelines with clear structure and call to action.",
+    deckType: "competitive",
+    slideCount: 10,
+  },
+  {
+    id: "assessment",
+    label: "Assessment / Questionnaire",
+    icon: "📋",
+    description: "Discovery questionnaire and maturity assessment",
+    templatePrompt: "Build a [customer] maturity assessment and discovery questionnaire covering infrastructure, cloud readiness, and automation capabilities.",
+    deckType: "assessment",
+    slideCount: 10,
+  },
+] as const;
+
+export type DeckTypeId = typeof DECK_TYPES[number]["id"];
+export type DeckTypeEntry = typeof DECK_TYPES[number];
+
 export default function AIToolkit() {
-  const [outputLang, setOutputLang] = useState<OutputLang>("en");
-  const lang = OUTPUT_LANGS.find(l => l.value === outputLang)!;
+  const [outputLang] = useState<OutputLang>("en");
 
   return (
     <AppLayout activePath="/ai-toolkit">
-      <div className="p-6 h-full flex flex-col max-w-7xl mx-auto">
-
-        <div className="flex items-center justify-between mb-6">
-          <div>
-            <h1 className="text-2xl font-bold">AI Content Toolkit</h1>
-            <p className="text-sm text-[var(--rh-silver)]">Generate highly-contextualized assets tailored for your region.</p>
-          </div>
-          <div className="flex items-center gap-3">
-            {/* Output Language picker */}
-            <div className="flex items-center gap-2 bg-[var(--rh-charcoal-mid)] border border-[var(--rh-charcoal-light)] rounded-lg px-3 py-1.5">
-              <Languages className="w-3.5 h-3.5 text-[var(--rh-silver)]" />
-              <span className="text-xs text-[var(--rh-silver)] font-medium">Output:</span>
-              <Select value={outputLang} onValueChange={v => setOutputLang(v as OutputLang)}>
-                <SelectTrigger className="h-6 border-0 bg-transparent p-0 text-xs font-bold text-white w-28 focus:ring-0">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent className="bg-[var(--rh-charcoal-mid)] border-[var(--rh-charcoal-light)] text-white">
-                  {OUTPUT_LANGS.map(l => (
-                    <SelectItem key={l.value} value={l.value} className="text-xs">
-                      <span className="mr-1.5">{l.flag}</span>{l.label}
-                      <span className="ml-2 text-[var(--rh-silver)] text-[10px]">({l.regulatory})</span>
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-            {outputLang !== "en" && (
-              <Badge className="bg-[var(--rh-blue)]/20 text-[var(--rh-blue)] border border-[var(--rh-blue)]/30 px-2 py-1 text-[10px]">
-                {lang.flag} Localized: {lang.regulatory}
-              </Badge>
-            )}
-            <Badge className="bg-[var(--rh-charcoal-mid)] text-white border-[var(--rh-charcoal-light)] px-3 py-1 text-xs">
-              Context: <span className="text-[var(--rh-blue)] ml-1 font-bold">EMEA Territory</span>
-            </Badge>
-          </div>
+      <div className="h-full flex flex-col w-full overflow-hidden">
+        <div className="flex items-center gap-3 px-4 py-2 border-b border-[var(--rh-charcoal-light)] shrink-0">
+          <h1 className="text-base font-bold">AI Content Toolkit</h1>
+          <span className="text-xs text-[var(--rh-silver)]">Generate highly-contextualized assets tailored for your region.</span>
         </div>
 
-        <Tabs defaultValue="presentation" className="flex-1 flex flex-col min-h-0">
-          <TabsList className="bg-[var(--rh-charcoal-mid)] border-b border-[var(--rh-charcoal-light)] p-0 h-auto justify-start w-full rounded-none">
-            <TabsTrigger value="presentation" className="data-[state=active]:bg-transparent data-[state=active]:border-b-2 data-[state=active]:border-[var(--rh-red)] data-[state=active]:text-white rounded-none px-6 py-3 text-[var(--rh-silver)]">Presentation Generator</TabsTrigger>
-            <TabsTrigger value="asset" className="data-[state=active]:bg-transparent data-[state=active]:border-b-2 data-[state=active]:border-[var(--rh-red)] data-[state=active]:text-white rounded-none px-6 py-3 text-[var(--rh-silver)]">Asset Customizer</TabsTrigger>
-            <TabsTrigger value="draft" className="data-[state=active]:bg-transparent data-[state=active]:border-b-2 data-[state=active]:border-[var(--rh-red)] data-[state=active]:text-white rounded-none px-6 py-3 text-[var(--rh-silver)]">Draft Creator</TabsTrigger>
-          </TabsList>
-
-          <TabsContent value="presentation" className="flex-1 min-h-0 mt-6 outline-none">
-            <PresentationTab outputLang={outputLang} />
-          </TabsContent>
-
-          <TabsContent value="asset" className="flex-1 min-h-0 mt-6 outline-none">
-            <AssetCustomizerTab outputLang={outputLang} />
-          </TabsContent>
-
-          <TabsContent value="draft" className="flex-1 min-h-0 mt-6 outline-none">
-            <DraftCreatorTab outputLang={outputLang} />
-          </TabsContent>
-        </Tabs>
+        <div className="flex-1 min-h-0 overflow-hidden">
+          <PresentationChat outputLang={outputLang} />
+        </div>
       </div>
     </AppLayout>
   );
@@ -357,12 +367,21 @@ async function consumeGenerateStream(
 }
 
 type OutlineSlide = {
-  slide_index: number;
+  order?: number;
+  slide_index?: number;
   element: string;
-  purpose: string;
+  title?: string;
+  purpose?: string;
+  summary?: string;
+  key_points?: string[];
+  speaker_notes?: string;
   section_marker?: string;
   source_hint?: string;
 };
+
+function outlineSlideOrder(slide: OutlineSlide, index: number): number {
+  return slide.order ?? slide.slide_index ?? index + 1;
+}
 
 type PlanningContext = {
   deck_type?: string;
@@ -389,763 +408,763 @@ function formatOutlineForChat(outline: OutlineSlide[], ctx?: PlanningContext | n
     : "";
   const header = `Here's my plan for your ${outline.length}-slide ${deckLabel}${geoLabel}${docNote}:\n`;
   const slides = outline.map((s, i) => {
-    const num = String(i + 1).padStart(2, "0");
-    const type = s.element.replace(/-/g, " ").toUpperCase();
-    const purpose = s.purpose || "(no description)";
+    const num = String(outlineSlideOrder(s, i)).padStart(2, "0");
+    const title = s.title || s.element.replace(/-/g, " ").toUpperCase();
+    const body = s.summary || s.purpose || "(no description)";
+    const bullets = (s.key_points?.length ?? 0) > 0
+      ? `\n   ${s.key_points!.map(p => `• ${p}`).join("\n   ")}`
+      : "";
     const hint = s.source_hint ? `\n   📎 ${s.source_hint.slice(0, 90)}` : "";
-    return `  ${num} · ${type}\n   ${purpose}${hint}`;
+    return `  ${num} · ${title}\n   ${body}${bullets}${hint}`;
   }).join("\n\n");
   return `${header}\n${slides}\n\n💬 What would you like to change? Or click **Approve & Build** to generate the PPTX.`;
 }
 
-/* ─── PRESENTATION TAB ─── */
-function PresentationTab({ outputLang }: { outputLang: OutputLang }) {
-  const [topic, setTopic] = useState(
-    "Deutsche Telekom | OpenShift on sovereign cloud | Data residency compliance focus. Emphasize multi-cloud flexibility and local German support.",
-  );
-  const [region, setRegion] = useState("de");
-  const [slideCount, setSlideCount] = useState("10");
-  const [phase, setPhase] = useState<"input" | "planning" | "review" | "building" | "done">("input");
-  const [outline, setOutline] = useState<OutlineSlide[]>([]);
-  const [jobId, setJobId] = useState<string | null>(null);
-  const [uploadedFiles, setUploadedFiles] = useState<Array<{ name: string; path: string }>>([]);
-  const [activityLog, setActivityLog] = useState<ActivityEntry[]>([]);
-  const [currentStep, setCurrentStep] = useState<string | null>(null);
-  const [slideProgress, setSlideProgress] = useState<string | null>(null);
-  const [deckPath, setDeckPath] = useState<string | null>(null);
-  const [deckDownloadUrl, setDeckDownloadUrl] = useState<string | null>(null);
-  const [deckPreviewUrl, setDeckPreviewUrl] = useState<string | null>(null);
-  const [deckFilename, setDeckFilename] = useState<string | null>(null);
-  const [error, setError] = useState<string | null>(null);
-  const [extractionStatus, setExtractionStatus] = useState<"none" | "running" | "done" | "failed">("none");
-  const [uploadId, setUploadId] = useState<string | null>(null);
-  const [planningContext, setPlanningContext] = useState<PlanningContext | null>(null);
-  const [agentBuild, setAgentBuild] = useState<string | null>(null);
-  const [chatMsgs, setChatMsgs] = useState<ChatMsg[]>([]);
-  const [refineInput, setRefineInput] = useState("");
-  const [isRefining, setIsRefining] = useState(false);
-  const chatEndRef = useRef<HTMLDivElement>(null);
+/* ─── PRESENTATION CHAT ─── */
+type GenerationState = "idle" | "clarifying" | "planning" | "reviewing" | "building" | "done";
 
-  const slide = SLIDE_CONTENT[outputLang] ?? SLIDE_CONTENT["en"];
-  const langMeta = OUTPUT_LANGS.find(l => l.value === outputLang)!;
-  const expectedSlides = outline.length > 0 ? outline.length : Number(slideCount) || 10;
-  const isBusy = phase === "planning" || phase === "building";
+type FileRole = "theme" | "reference";
 
-  useEffect(() => {
-    fetch("/health")
-      .then(r => r.ok ? r.json() : null)
-      .then((h: { agent_build?: string } | null) => {
-        if (h?.agent_build) setAgentBuild(h.agent_build);
-      })
-      .catch(() => undefined);
-  }, []);
+type FileChip = {
+  id: string;
+  file: File;
+  name: string;
+  uploadId?: string;
+  paths?: string[];
+  role: FileRole;
+  uploadState: "uploading" | "done" | "error";
+};
 
-  // Poll extraction status during review phase
-  useEffect(() => {
-    if (phase !== "review" || extractionStatus !== "running" || !uploadId) return;
+type ChatMsgType =
+  | "user"
+  | "ai-text"
+  | "ai-thinking"
+  | "ai-clarification"
+  | "ai-comprehension"
+  | "ai-outline"
+  | "ai-error"
+  | "ai-done";
 
-    const interval = setInterval(async () => {
-      try {
-        const response = await fetch(`/api/v1/jobs/${uploadId}/status`);
-        if (response.ok) {
-          const data = await response.json();
-          const status = data.extraction_status;
-          if (status === "done" || status === "failed") {
-            setExtractionStatus(status);
-            setActivityLog(prev => [
-              ...prev,
-              {
-                id: `ext-${status}-${Date.now()}`,
-                message: status === "done"
-                  ? "✅ Template styles extracted"
-                  : "⚠️ Template analysis failed — using default template",
-                at: formatLogTime(),
-                level: status === "done" ? "info" : "warn",
-              },
-            ]);
-            clearInterval(interval);
-          }
-        }
-      } catch {
-        // ignore polling errors
-      }
-    }, 3000);
+type ComprehensionData = {
+  deck_mode: "baseline" | "localise" | "fresh";
+  summary: string;
+  geo_context: string;
+  document_ref: string;
+  audience: string;
+  gaps: string[];
+  template_filename?: string;
+};
 
-    return () => clearInterval(interval);
-  }, [phase, extractionStatus, uploadId]);
+type PresentationChatMsg = {
+  id: string;
+  type: ChatMsgType;
+  text?: string;
+  comprehension?: ComprehensionData;
+  outline?: OutlineSlide[];
+  attachments?: { name: string; role: FileRole }[];
+  at: string;
+};
 
-  useEffect(() => {
-    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [chatMsgs]);
-
-  const [uploading, setUploading] = useState(false);
-
-  const ingestStreamEvent = (event: string, data: Record<string, unknown>) => {
-    if (event === "progress" || event === "heartbeat") {
-      setActivityLog(prev => pushActivity(prev, data, event));
-      if (event === "progress") {
-        const status = String(data.status ?? "");
-        if (status) setCurrentStep(status);
-      }
-      return;
-    }
-    if (event === "slide_spec") {
-      const idx = typeof data.slide_index === "number" ? data.slide_index : null;
-      if (idx !== null) {
-        setSlideProgress(`Slide ${idx}/${expectedSlides} generated`);
-        setActivityLog(prev => [
-          ...prev.filter(e => !e.isHeartbeat),
-          {
-            id: `slide-${idx}-${Date.now()}`,
-            message: `✅ Slide ${idx}/${expectedSlides} content ready`,
-            at: formatLogTime(),
-          },
-        ]);
-      }
-      return;
-    }
-    if (event === "deck_ready") {
-      const path = String(data.path ?? "");
-      const downloadUrl = String(
-        data.download_url ?? (path ? `/api/v1/download?path=${encodeURIComponent(path)}` : ""),
-      );
-      const filename = String(data.filename ?? path.split("/").pop() ?? "deck.pptx");
-      const previewUrl = String(data.preview_url ?? (filename ? `/office/preview/${encodeURIComponent(filename)}?embed=1` : ""));
-      if (path) setDeckPath(path);
-      if (downloadUrl) setDeckDownloadUrl(downloadUrl);
-      if (previewUrl) setDeckPreviewUrl(previewUrl);
-      setDeckFilename(filename);
-      setPhase("done");
-      setCurrentStep("Your deck is ready");
-      setActivityLog(prev => [
-        ...prev,
-        {
-          id: `deck-${Date.now()}`,
-          message: `🎉 PPTX ready (${data.size_kb ?? "?"} KB) — use Download below`,
-          detail: filename,
-          at: formatLogTime(),
-        },
-      ]);
-      return;
-    }
-    if (event === "completed") {
-      if (data.status === "failed" || data.error) {
-        setError(String(data.error ?? "Generation failed"));
-        setPhase("review");
-      } else if (data.status === "outline_ready") {
-        // Planning-only completion; review transition handled in handleGenerate
-        return;
-      }
-      // Build stream end: deck_ready normally sets phase=done first
-      const msg = String(data.message ?? "");
-      if (msg) setCurrentStep(msg);
-    }
+function createWelcomeChatMsg(): PresentationChatMsg {
+  return {
+    id: "welcome",
+    type: "ai-text",
+    text: "Hi! Describe the presentation you need and I'll plan it for you. You can attach a PPTX template or reference document using the paperclip below.",
+    at: formatLogTime(),
   };
+}
 
-  const handleFileUpload = async (files: File[]) => {
-    if (files.length === 0) return;
-    setUploading(true);
-    setError(null);
-    const names = files.map(f => f.name).join(", ");
-    setActivityLog(prev => [
-      ...prev,
-      { id: `up-${Date.now()}`, message: `📤 Uploading ${files.length} file(s)…`, at: formatLogTime() },
-    ]);
-    const formData = new FormData();
-    files.forEach(f => formData.append("files", f));
+type SlideCard = {
+  index: number;
+  title: string;
+};
 
-    try {
-      const response = await fetch("/api/v1/upload", {
-        method: "POST",
-        body: formData,
-      });
-      if (!response.ok) throw new Error(`Upload failed (${response.status})`);
-      const result = await response.json();
-      const paths: string[] = result.paths || [];
-      setUploadedFiles(prev => [...prev, ...paths.map((p: string) => ({ name: p.split("/").pop() || p, path: p }))]);
+function slideIndexFromEvent(data: Record<string, unknown>, prevLength: number): number {
+  const raw = data.slide_index;
+  if (typeof raw === "number" && !Number.isNaN(raw)) return raw;
+  if (typeof raw === "string" && raw.trim() !== "") {
+    const parsed = Number(raw);
+    if (!Number.isNaN(parsed)) return parsed;
+  }
+  return prevLength + 1;
+}
 
-      if (result.upload_id) setUploadId(result.upload_id);
-      if (result.extraction_status === "running") {
-        setExtractionStatus("running");
-      }
-      setActivityLog(prev => [
-        ...prev,
-        {
-          id: `up-ok-${Date.now()}`,
-          message: `✅ Uploaded: ${names}`,
-          detail: result.extraction_status === "running"
-            ? "Template analysis started in background"
-            : undefined,
-          at: formatLogTime(),
-        },
-      ]);
-    } catch (err) {
-      console.error("Upload failed:", err);
-      const msg = err instanceof Error ? err.message : "Upload failed — is the API server running?";
-      setError(msg);
-      setActivityLog(prev => [
-        ...prev,
-        { id: `up-err-${Date.now()}`, message: `❌ ${msg}`, level: "error", at: formatLogTime() },
-      ]);
-    } finally {
-      setUploading(false);
+type PendingContext = {
+  geo: string;
+  language: string;
+  topic: string;
+};
+
+const REGION_CHIPS: { code: string; label: string; flag: string; language: string }[] = [
+  { code: "de", label: "Germany", flag: "🇩🇪", language: "de" },
+  { code: "fr", label: "France", flag: "🇫🇷", language: "fr" },
+  { code: "uk", label: "UK", flag: "🇬🇧", language: "en" },
+  { code: "es", label: "Spain", flag: "🇪🇸", language: "es" },
+  { code: "apac", label: "APAC", flag: "🌏", language: "en" },
+];
+
+const LANG_CHIPS: { code: string; label: string; flag: string }[] = [
+  { code: "en", label: "EN", flag: "🇺🇸" },
+  { code: "de", label: "DE", flag: "🇩🇪" },
+  { code: "fr", label: "FR", flag: "🇫🇷" },
+  { code: "es", label: "ES", flag: "🇪🇸" },
+  { code: "ja", label: "JA", flag: "🇯🇵" },
+];
+
+const GEO_KEYWORDS: Array<{ pattern: RegExp; geo: string; language: string }> = [
+  { pattern: /\bgermany\b|\bgerman\b|\bdeutschland\b/i, geo: "de", language: "de" },
+  { pattern: /\bfrance\b|\bfrench\b|\bfrançais\b/i, geo: "fr", language: "fr" },
+  { pattern: /\buk\b|\bunited kingdom\b|\bbritain\b/i, geo: "uk", language: "en" },
+  { pattern: /\bspain\b|\bspanish\b|\bespaña\b/i, geo: "es", language: "es" },
+  { pattern: /\bitaly\b|\bitalian\b/i, geo: "it", language: "it" },
+  { pattern: /\bnetherlands\b|\bdutch\b/i, geo: "nl", language: "nl" },
+  { pattern: /\bjapan\b|\bjapanese\b/i, geo: "jp", language: "ja" },
+  { pattern: /\bbrazil\b|\bportuguese\b/i, geo: "br", language: "pt-br" },
+  { pattern: /\bapac\b|\basia\b/i, geo: "apac", language: "en" },
+];
+
+const GENERATE_INTENT_PATTERNS = [
+  /^generate$/i,
+  /^build it$/i,
+  /^build slides$/i,
+  /^go ahead$/i,
+  /^looks good$/i,
+  /^approve$/i,
+];
+
+export function inferGeoFromText(text: string): { geo: string; language: string } | null {
+  for (const entry of GEO_KEYWORDS) {
+    if (entry.pattern.test(text)) {
+      return { geo: entry.geo, language: entry.language };
     }
-  };
+  }
+  return null;
+}
 
-  const handleGenerate = async () => {
-    setPhase("planning");
-    setActivityLog([
-      { id: "start", message: "🚀 Connecting to presentation agent…", at: formatLogTime(), step: "start" },
-    ]);
-    setCurrentStep("Starting planning…");
-    setSlideProgress(null);
-    setDeckPath(null);
-    setDeckDownloadUrl(null);
-    setDeckPreviewUrl(null);
-    setDeckFilename(null);
-    setError(null);
-    setOutline([]);
-    setJobId(null);
-    setPlanningContext(null);
-    setChatMsgs([]);
-    setRefineInput("");
-    if (!uploadId) setExtractionStatus("none");
+export function isGenerateIntent(text: string): boolean {
+  const trimmed = text.trim();
+  return GENERATE_INTENT_PATTERNS.some(p => p.test(trimmed));
+}
 
-    let outlineReceived = false;
+export function isPresentationRequest(text: string): boolean {
+  const lower = text.toLowerCase().trim();
+  // Too short to be a real request
+  if (lower.split(/\s+/).length < 4) return false;
+  // Greetings / filler
+  const greetings = ["hi", "hello", "hey", "howdy", "yo", "sup", "test", "testing"];
+  if (greetings.includes(lower)) return false;
+  // Must contain at least one presentation-related keyword
+  const keywords = [
+    "presentation", "deck", "slide", "ppt", "pptx", "pitch",
+    "create", "build", "generate", "make", "want", "need",
+    "customer", "client", "topic", "about", "for", "show",
+  ];
+  return keywords.some(k => lower.includes(k));
+}
 
-    const applyOutlineReady = (data: Record<string, unknown>, ctx?: PlanningContext | null) => {
-      const outlineData = Array.isArray(data.outline) ? data.outline as OutlineSlide[] : [];
-      if (outlineData.length > 0) outlineReceived = true;
-      setOutline(outlineData);
-      const id = data.job_id ?? data.jobId;
-      if (id) setJobId(String(id));
-      if (data.extraction_status) {
-        setExtractionStatus(String(data.extraction_status) as "running" | "done" | "failed");
-      }
-      if (data.upload_id) setUploadId(String(data.upload_id));
-      const resolvedCtx = ctx ?? (
-        data.planning_context && typeof data.planning_context === "object"
-          ? data.planning_context as PlanningContext
-          : null
-      );
-      if (resolvedCtx) setPlanningContext(resolvedCtx);
-      const chatText = formatOutlineForChat(outlineData, resolvedCtx);
-      setChatMsgs([{
-        id: `plan-${Date.now()}`,
-        role: "agent",
-        text: chatText,
-        outline: outlineData,
-        at: formatLogTime(),
-      }]);
-      setCurrentStep("Outline ready — refine or approve to build");
-      setActivityLog(prev => [
-        ...prev,
-        {
-          id: `outline-${Date.now()}`,
-          message: `✅ Outline ready (${outlineData.length} slides)`,
-          detail: "Review in the chat, refine if needed, then Approve & Build",
-          at: formatLogTime(),
-        },
-      ]);
-      setPhase("review");
-    };
+function defaultRoleForFile(name: string): FileRole {
+  return name.toLowerCase().endsWith(".pptx") ? "theme" : "reference";
+}
 
-    const payload = {
-      topic: topic.trim(),
-      deck_type: DECK_TYPE_MAP[slideCount] ?? "competitive",
-      geo: GEO_MAP[region] ?? region,
-      customer: extractCustomer(topic),
-      language: outputLang,
-      template_id: "sales-enablement-2022",
-      source_documents: uploadedFiles.map(f => f.path),
-    };
+function isPptx(name: string): boolean {
+  return name.toLowerCase().endsWith(".pptx");
+}
 
-    try {
-      let capturedCtx: PlanningContext | null = null;
-      const { lastJobId } = await consumeGenerateStream(payload, (event, data) => {
-        if (event === "progress" || event === "heartbeat") {
-          ingestStreamEvent(event, data);
-        } else if (event === "outline_ready") {
-          if (data.planning_context && typeof data.planning_context === "object") {
-            capturedCtx = data.planning_context as PlanningContext;
-          }
-          applyOutlineReady(data, capturedCtx);
-        } else if (event === "completed") {
-          if (data.status === "failed" || data.error) {
-            setError(String(data.error ?? "Planning failed"));
-            setPhase("input");
-          } else if (data.status === "outline_ready") {
-            applyOutlineReady(data, capturedCtx);
-          }
-        }
-      });
-
-      if (!outlineReceived) {
-        const recoverId = lastJobId;
-        if (recoverId) {
-          const job = await fetchJobOutline(recoverId);
-          if (job && Array.isArray(job.outline) && (job.outline as unknown[]).length > 0) {
-            applyOutlineReady({ ...job, job_id: recoverId });
-          } else {
-            setError("Planning finished but no outline was returned. Hard-refresh the page and retry.");
-            setPhase("input");
-          }
-        } else {
-          setError("Planning stream ended without a job id. Is the API running on port 8200?");
-          setPhase("input");
-        }
-      }
-    } catch (err) {
-      const msg = err instanceof Error ? err.message : "Generation failed";
-      setError(msg);
-      setActivityLog(prev => [
-        ...prev,
-        { id: `err-${Date.now()}`, message: `❌ ${msg}`, level: "error", at: formatLogTime() },
-      ]);
-      setPhase("input");
-    }
-  };
-
-  const handleRefine = async () => {
-    const instruction = refineInput.trim();
-    if (!instruction || !jobId || isRefining) return;
-    setIsRefining(true);
-    setRefineInput("");
-    setChatMsgs(prev => [
-      ...prev,
-      { id: `user-${Date.now()}`, role: "user", text: instruction, at: formatLogTime() },
-    ]);
-    try {
-      const resp = await fetch(`/api/v1/generate/${jobId}/refine`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ instruction, outline }),
-      });
-      if (!resp.ok) {
-        const err = await resp.text();
-        throw new Error(err || `Refine failed (${resp.status})`);
-      }
-      const result = await resp.json() as { outline: OutlineSlide[]; message: string };
-      setOutline(result.outline);
-      const chatText = formatOutlineForChat(result.outline, planningContext);
-      setChatMsgs(prev => [
-        ...prev,
-        {
-          id: `agent-${Date.now()}`,
-          role: "agent",
-          text: `${result.message}\n\n${chatText}`,
-          outline: result.outline,
-          at: formatLogTime(),
-        },
-      ]);
-    } catch (err) {
-      const msg = err instanceof Error ? err.message : "Refinement failed";
-      setChatMsgs(prev => [
-        ...prev,
-        { id: `err-${Date.now()}`, role: "agent", text: `⚠️ ${msg}`, at: formatLogTime() },
-      ]);
-    } finally {
-      setIsRefining(false);
-    }
-  };
-
-  const handleApprove = async () => {
-    if (!jobId) return;
-
-    setPhase("building");
-    setActivityLog(prev => [
-      ...prev,
-      { id: `approve-${Date.now()}`, message: "✅ Outline approved — building slides…", at: formatLogTime() },
-    ]);
-    setCurrentStep("Building presentation…");
-    setSlideProgress(null);
-    setError(null);
-
-    const payload = { outline };
-
-    try {
-      await consumeGenerateStream(
-        payload,
-        (event, data) => {
-          if (event === "completed" && (data.status === "failed" || data.error)) {
-            const raw = String(data.error ?? "Build failed");
-            const friendly = raw.includes("401") || raw.includes("API key") || raw.includes("LLM")
-              ? "LLM API key is invalid or expired — ask your admin for a new key and restart the server."
-              : raw;
-            setError(friendly);
-            setActivityLog(prev => [
-              ...prev,
-              { id: `build-err-${Date.now()}`, message: `❌ ${friendly}`, level: "error", at: formatLogTime() },
-            ]);
-            setPhase("review");
-            return;
-          }
-          ingestStreamEvent(event, data);
-        },
-        `/api/v1/generate/${jobId}/approve`,
-      );
-    } catch (err) {
-      const raw = err instanceof Error ? err.message : "Build failed";
-      const friendly = raw.includes("401") || raw.includes("API key") || raw.includes("LLM")
-        ? "LLM API key is invalid or expired — ask your admin for a new key and restart the server."
-        : raw;
-      setError(friendly);
-      setActivityLog(prev => [
-        ...prev,
-        { id: `build-err-${Date.now()}`, message: `❌ ${friendly}`, level: "error", at: formatLogTime() },
-      ]);
-      setPhase("review");
-    }
-  };
-
-  const phaseSteps = [
-    { key: "input", label: "1. Configure" },
-    { key: "planning", label: "2. Planning" },
-    { key: "review", label: "3. Review outline" },
-    { key: "building", label: "4. Building" },
-    { key: "done", label: "5. Done" },
-  ] as const;
+function FileRoleChip({
+  chip,
+  onRemove,
+  onRoleChange,
+}: {
+  chip: FileChip;
+  onRemove: (id: string) => void;
+  onRoleChange: (id: string, role: FileRole) => void;
+}) {
+  const pptx = isPptx(chip.name);
 
   return (
-    <div className="flex gap-6 h-full min-h-[28rem]">
-      <div className="w-1/2 flex flex-col gap-6 bg-[var(--rh-charcoal-mid)] rounded-lg border border-[var(--rh-charcoal-light)] p-6 overflow-y-auto">
-        <div className="space-y-2">
-          <Label className="text-xs uppercase text-[var(--rh-silver)] tracking-wider">Prompt Context</Label>
-          <Textarea
-            className="min-h-[120px] bg-[var(--rh-charcoal)] border-[var(--rh-charcoal-light)] focus-visible:ring-[var(--rh-red)] resize-none"
-            value={topic}
-            onChange={e => setTopic(e.target.value)}
-          />
-        </div>
+    <div
+      data-testid={`file-chip-${chip.name}`}
+      className="flex items-center gap-2 text-xs bg-[var(--rh-charcoal)] border border-[var(--rh-charcoal-light)] rounded px-3 py-1.5"
+    >
+      <FileText className="w-3 h-3 text-[var(--rh-blue)] shrink-0" />
+      <span className="truncate text-[var(--rh-silver)] max-w-[140px]">{chip.name}</span>
+      {chip.uploadState === "uploading" && <Loader2 className="w-3 h-3 animate-spin text-[var(--rh-blue)]" />}
+      {chip.uploadState === "done" && <CheckCircle2 className="w-3 h-3 text-[var(--rh-green)]" />}
+      {chip.uploadState === "error" && <span className="text-[var(--rh-red)]">!</span>}
+      {pptx ? (
+        <button
+          type="button"
+          data-testid={`file-role-toggle-${chip.name}`}
+          onClick={() => onRoleChange(chip.id, chip.role === "theme" ? "reference" : "theme")}
+          className="text-[10px] px-2 py-0.5 rounded bg-[var(--rh-charcoal-mid)] border border-[var(--rh-charcoal-light)] text-[var(--rh-blue)] hover:border-[var(--rh-blue)]/40"
+        >
+          {chip.role === "theme" ? "Theme template ▾" : "Reference doc"}
+        </button>
+      ) : (
+        <span className="text-[10px] text-[var(--rh-silver)]">Reference</span>
+      )}
+      <button
+        type="button"
+        onClick={() => onRemove(chip.id)}
+        className="text-[var(--rh-silver)] hover:text-[var(--rh-red)] ml-auto"
+        aria-label={`Remove ${chip.name}`}
+      >
+        ✕
+      </button>
+    </div>
+  );
+}
 
-        <div className="space-y-2">
-          <Label className="text-xs uppercase text-[var(--rh-silver)] tracking-wider">Source Documents (optional)</Label>
-          <div
-            className="border-2 border-dashed border-[var(--rh-charcoal-light)] rounded-lg p-6 text-center hover:border-[var(--rh-silver)] transition-colors cursor-pointer relative"
-            role="button"
-            tabIndex={0}
-            onClick={() => document.getElementById("file-upload")?.click()}
-            onDragEnter={e => { e.preventDefault(); e.stopPropagation(); }}
-            onDragOver={e => { e.preventDefault(); e.stopPropagation(); }}
-            onDragLeave={e => { e.preventDefault(); e.stopPropagation(); }}
-            onDrop={async e => {
-              e.preventDefault();
-              e.stopPropagation();
-              const files = Array.from(e.dataTransfer.files);
-              if (files.length > 0) await handleFileUpload(files);
-            }}
+function ClarificationCard({
+  selectedLang,
+  onRegionSelect,
+  onLanguageSelect,
+}: {
+  selectedLang?: string;
+  onRegionSelect: (geo: string, language: string) => void;
+  onLanguageSelect: (language: string) => void;
+}) {
+  return (
+    <div
+      data-testid="clarification-card"
+      className="bg-[var(--rh-charcoal-mid)] border border-[var(--rh-charcoal-light)] rounded-2xl rounded-tl-sm px-4 py-3 text-sm text-[var(--rh-silver)] max-w-[90%]"
+    >
+      <p className="mb-3">Before I start planning, which region is this presentation for?</p>
+      <div className="flex flex-wrap gap-2 mb-3">
+        {REGION_CHIPS.map(r => (
+          <button
+            key={r.code}
+            type="button"
+            data-testid={`region-chip-${r.code}`}
+            onClick={() => onRegionSelect(r.code, selectedLang ?? r.language)}
+            className="text-xs px-3 py-1.5 rounded-full border border-[var(--rh-charcoal-light)] bg-[var(--rh-charcoal)] hover:border-[var(--rh-blue)]/50 text-white"
           >
-            <input
-              id="file-upload"
-              type="file"
-              multiple
-              accept=".pdf,.docx,.pptx"
-              className="hidden"
-              onChange={async e => {
-                const files = Array.from(e.target.files || []);
-                if (files.length > 0) await handleFileUpload(files);
-                e.target.value = "";
-              }}
-            />
-            <div className="pointer-events-none flex flex-col items-center gap-1">
-              {uploading
-                ? <Loader2 className="w-6 h-6 text-[var(--rh-blue)] animate-spin" />
-                : <FileText className="w-6 h-6 text-[var(--rh-silver)] opacity-50" />}
-              <p className="text-xs text-[var(--rh-silver)]">
-                {uploading ? "Uploading..." : "Drop PDF, DOCX, or PPTX files here or click to browse"}
+            {r.flag} {r.label}
+          </button>
+        ))}
+      </div>
+      <p className="text-[10px] uppercase tracking-wider text-[var(--rh-silver)] mb-2">Language override (optional)</p>
+      <div className="flex flex-wrap gap-2">
+        {LANG_CHIPS.map(l => (
+          <button
+            key={l.code}
+            type="button"
+            data-testid={`lang-chip-${l.code}`}
+            onClick={() => onLanguageSelect(l.code)}
+            className={`text-xs px-2.5 py-1 rounded-full border ${
+              selectedLang === l.code
+                ? "border-[var(--rh-blue)] bg-[var(--rh-blue)]/15 text-white"
+                : "border-[var(--rh-charcoal-light)] bg-[var(--rh-charcoal)] text-[var(--rh-silver)]"
+            }`}
+          >
+            {l.flag} {l.label}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function ComprehensionCard({
+  comprehension,
+  gapsDismissed,
+  onDismissGaps,
+}: {
+  comprehension: ComprehensionData;
+  gapsDismissed: boolean;
+  onDismissGaps: () => void;
+}) {
+  const modeStyles = {
+    baseline: { icon: "🎨", accent: "var(--rh-blue)" },
+    localise: { icon: "🌍", accent: "var(--rh-indigo, #6366f1)" },
+    fresh: { icon: "✨", accent: "var(--rh-red)" },
+  }[comprehension.deck_mode];
+
+  return (
+    <div
+      data-testid="comprehension-card"
+      className="bg-[var(--rh-charcoal-mid)] border border-[var(--rh-charcoal-light)] rounded-2xl rounded-tl-sm px-4 py-3 text-sm max-w-[90%]"
+      style={{ borderLeftColor: modeStyles.accent, borderLeftWidth: 3 }}
+    >
+      <p className="font-medium text-white mb-2">
+        <span className="mr-2">{modeStyles.icon}</span>
+        Understanding your request
+      </p>
+      <p className="text-[var(--rh-silver)] whitespace-pre-wrap">{comprehension.summary}</p>
+      {comprehension.deck_mode === "baseline" && comprehension.template_filename && (
+        <span
+          data-testid="template-locked-pill"
+          className="inline-flex mt-3 text-[10px] px-2 py-1 rounded-full bg-[var(--rh-blue)]/10 text-[var(--rh-blue)] border border-[var(--rh-blue)]/20"
+        >
+          🔒 Template locked: {comprehension.template_filename}
+        </span>
+      )}
+      {!gapsDismissed && comprehension.gaps.length > 0 && (
+        <div
+          data-testid="gaps-nudge"
+          className="mt-3 flex items-start gap-2 text-xs text-[var(--rh-silver)] bg-[var(--rh-charcoal)]/80 rounded-lg px-3 py-2"
+        >
+          <span className="flex-1">
+            💡 You could also tell me: {comprehension.gaps.join(", ")}
+          </span>
+          <button type="button" onClick={onDismissGaps} className="text-[var(--rh-silver)] hover:text-white shrink-0">
+            ✕
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function DeckTypeMenu({ onSelect }: { onSelect: (entry: DeckTypeEntry) => void }) {
+  const [open, setOpen] = useState(false);
+
+  const handleSelect = (entry: DeckTypeEntry) => {
+    setOpen(false);
+    onSelect(entry);
+  };
+
+  return (
+    <Popover open={open} onOpenChange={setOpen}>
+      <PopoverTrigger asChild>
+        <button
+          type="button"
+          data-testid="deck-type-menu-btn"
+          className="shrink-0 p-2 rounded-lg border border-[var(--rh-charcoal-light)] text-[var(--rh-silver)] hover:border-[var(--rh-blue)]/40 hover:text-[var(--rh-blue)]"
+          aria-label="Choose presentation type"
+        >
+          <LayoutGrid className="w-4 h-4" />
+        </button>
+      </PopoverTrigger>
+      <PopoverContent
+        side="top"
+        align="start"
+        sideOffset={8}
+        className="w-[420px] p-0 bg-[var(--rh-charcoal-mid)] border-[var(--rh-charcoal-light)] text-white"
+      >
+        <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--rh-charcoal-light)]">
+          <p className="text-sm font-medium">Choose a presentation type</p>
+          <button
+            type="button"
+            onClick={() => setOpen(false)}
+            className="text-[var(--rh-silver)] hover:text-white"
+            aria-label="Close menu"
+          >
+            <X className="w-4 h-4" />
+          </button>
+        </div>
+        <div className="grid grid-cols-2 gap-2 p-3">
+          {DECK_TYPES.map(entry => (
+            <button
+              key={entry.id}
+              type="button"
+              data-testid={`deck-type-card-${entry.id}`}
+              onClick={() => handleSelect(entry)}
+              className="text-left rounded-lg border border-[var(--rh-charcoal-light)] bg-[var(--rh-charcoal)] px-3 py-2.5 hover:border-[var(--rh-blue)]/50 hover:bg-[var(--rh-charcoal-mid)] transition-colors"
+            >
+              <p className="text-sm font-medium text-white">
+                {entry.icon} {entry.label}
               </p>
-            </div>
-          </div>
-          {uploadedFiles.length > 0 && (
-            <div className="space-y-1.5">
-              {uploadedFiles.map((f, i) => (
-                <div key={i} className="flex items-center gap-2 text-xs bg-[var(--rh-charcoal)] border border-[var(--rh-charcoal-light)] rounded px-3 py-1.5">
-                  <FileText className="w-3 h-3 text-[var(--rh-blue)]" />
-                  <span className="flex-1 truncate text-[var(--rh-silver)]">{f.name}</span>
-                  <button
-                    onClick={() => setUploadedFiles(prev => prev.filter((_, j) => j !== i))}
-                    className="text-[var(--rh-silver)] hover:text-[var(--rh-red)]"
-                  >✕</button>
-                </div>
-              ))}
-            </div>
-          )}
-          {phase === "input" && activityLog.length > 0 && (
-            <ActivityLogPanel
-              entries={activityLog}
-              currentStep={uploading ? "Uploading…" : currentStep}
-              className="mt-2"
-            />
-          )}
+              <p className="text-[11px] text-[var(--rh-silver)] mt-1 line-clamp-2">{entry.description}</p>
+            </button>
+          ))}
         </div>
+      </PopoverContent>
+    </Popover>
+  );
+}
 
-        <div className="grid grid-cols-2 gap-4">
-          <div className="space-y-2">
-            <Label className="text-xs uppercase text-[var(--rh-silver)] tracking-wider">Region Target</Label>
-            <Select value={region} onValueChange={setRegion}>
-              <SelectTrigger className="bg-[var(--rh-charcoal)] border-[var(--rh-charcoal-light)]">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent className="bg-[var(--rh-charcoal-mid)] border-[var(--rh-charcoal-light)] text-white">
-                <SelectItem value="de">Germany (EMEA)</SelectItem>
-                <SelectItem value="fr">France (EMEA)</SelectItem>
-                <SelectItem value="uk">UK (EMEA)</SelectItem>
-                <SelectItem value="es">Spain (EMEA)</SelectItem>
-                <SelectItem value="apac">APAC</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-          <div className="space-y-2">
-            <Label className="text-xs uppercase text-[var(--rh-silver)] tracking-wider">Industry</Label>
-            <Select defaultValue="telco">
-              <SelectTrigger className="bg-[var(--rh-charcoal)] border-[var(--rh-charcoal-light)]">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent className="bg-[var(--rh-charcoal-mid)] border-[var(--rh-charcoal-light)] text-white">
-                <SelectItem value="telco">Telecommunications</SelectItem>
-                <SelectItem value="pubsec">Public Sector</SelectItem>
-                <SelectItem value="fsi">Financial Services</SelectItem>
-                <SelectItem value="energy">Energy & Utilities</SelectItem>
-                <SelectItem value="healthcare">Healthcare</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-          <div className="space-y-2">
-            <Label className="text-xs uppercase text-[var(--rh-silver)] tracking-wider">Slide Count</Label>
-            <Select value={slideCount} onValueChange={setSlideCount}>
-              <SelectTrigger className="bg-[var(--rh-charcoal)] border-[var(--rh-charcoal-light)]">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent className="bg-[var(--rh-charcoal-mid)] border-[var(--rh-charcoal-light)] text-white">
-                <SelectItem value="5">5 slides (exec)</SelectItem>
-                <SelectItem value="10">10 slides (standard)</SelectItem>
-                <SelectItem value="20">20 slides (deep-dive)</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-          <div className="space-y-2">
-            <Label className="text-xs uppercase text-[var(--rh-silver)] tracking-wider">Audience</Label>
-            <Select defaultValue="cto">
-              <SelectTrigger className="bg-[var(--rh-charcoal)] border-[var(--rh-charcoal-light)]">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent className="bg-[var(--rh-charcoal-mid)] border-[var(--rh-charcoal-light)] text-white">
-                <SelectItem value="cto">CTO / CIO</SelectItem>
-                <SelectItem value="arch">Technical Architect</SelectItem>
-                <SelectItem value="ciso">CISO / Compliance</SelectItem>
-                <SelectItem value="biz">Business Decision Maker</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-        </div>
-
-        <div className="mt-auto pt-6 border-t border-[var(--rh-charcoal-light)]">
-          <Button
-            onClick={handleGenerate}
-            disabled={isBusy}
-            className="w-full bg-[var(--rh-red)] hover:bg-[var(--rh-red-dark)] h-12 text-sm font-bold tracking-wide"
+function DeckTypeQuickStartChips({ onSelect }: { onSelect: (entry: DeckTypeEntry) => void }) {
+  return (
+    <div className="flex justify-start max-w-[90%]">
+      <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-thin">
+        {DECK_TYPES.map(entry => (
+          <button
+            key={entry.id}
+            type="button"
+            data-testid={`deck-type-chip-${entry.id}`}
+            onClick={() => onSelect(entry)}
+            className="shrink-0 text-xs px-3 py-1.5 rounded-full border border-[var(--rh-charcoal-light)] bg-[var(--rh-charcoal)] text-white hover:border-[var(--rh-blue)]/50 whitespace-nowrap"
           >
-            {isBusy
-              ? <span className="flex items-center gap-2"><Loader2 className="w-4 h-4 animate-spin" /> Generating...</span>
-              : <span className="flex items-center gap-2"><Sparkles className="w-4 h-4" /> {uploadedFiles.length > 0 ? "Generate from Documents" : "Generate Presentation"}</span>}
-          </Button>
+            {entry.icon} {entry.label}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function OutlineSlideItem({ slide, index }: { slide: OutlineSlide; index: number }) {
+  const order = outlineSlideOrder(slide, index);
+  const [expanded, setExpanded] = useState(index < 2);
+  const hasKeyPoints = (slide.key_points?.length ?? 0) > 0;
+  const displayTitle = slide.title || slide.element.replace(/-/g, " ");
+
+  return (
+    <li
+      data-testid={`outline-slide-${index}`}
+      className="rounded-lg border border-[var(--rh-charcoal-light)] bg-[var(--rh-charcoal)]/50 p-3"
+    >
+      <div className="flex items-start justify-between gap-2 mb-1.5">
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="text-[10px] px-2 py-0.5 rounded-full bg-[var(--rh-charcoal-mid)] text-[var(--rh-silver)]">
+            Slide {order}
+          </span>
+          <span className="text-[10px] px-2 py-0.5 rounded-full border border-[var(--rh-charcoal-light)] text-[var(--rh-silver)]">
+            {slide.element.replace(/-/g, " ")}
+          </span>
         </div>
+        {hasKeyPoints && (
+          <button
+            type="button"
+            onClick={() => setExpanded(v => !v)}
+            className="shrink-0 p-1 text-[var(--rh-silver)] hover:text-white"
+            aria-label={expanded ? "Collapse slide details" : "Expand slide details"}
+          >
+            {expanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+          </button>
+        )}
+      </div>
+      <p className="font-semibold text-white text-base leading-snug">{displayTitle}</p>
+      {slide.summary && (
+        <p className="text-xs text-[var(--rh-silver)] mt-1 leading-relaxed">{slide.summary}</p>
+      )}
+      {!slide.summary && slide.purpose && (
+        <p className="text-xs text-[var(--rh-silver)] mt-1 opacity-80 leading-relaxed">{slide.purpose}</p>
+      )}
+      {hasKeyPoints && expanded && (
+        <ul className="mt-2 space-y-1 text-xs text-[var(--rh-silver)]">
+          {slide.key_points!.map((point, j) => (
+            <li key={j} className="flex gap-2">
+              <span className="shrink-0">•</span>
+              <span>{point}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+      {expanded && slide.speaker_notes && (
+        <p className="mt-2 text-xs italic text-[var(--rh-silver)]/75 border-t border-[var(--rh-charcoal-light)] pt-2">
+          🎤 {slide.speaker_notes}
+        </p>
+      )}
+    </li>
+  );
+}
+
+function OutlineCard({
+  outline,
+  onApprove,
+  onFewer,
+  onAddSection,
+}: {
+  outline: OutlineSlide[];
+  onApprove: () => void;
+  onFewer: () => void;
+  onAddSection: () => void;
+}) {
+  const [expanded, setExpanded] = useState(false);
+  const visible = expanded ? outline : outline.slice(0, 5);
+  const hasMore = outline.length > 5;
+
+  return (
+    <div
+      data-testid="outline-card"
+      className="bg-[var(--rh-charcoal-mid)] border border-[var(--rh-charcoal-light)] rounded-2xl rounded-tl-sm px-4 py-3 text-sm max-w-[90%]"
+    >
+      <p className="font-medium text-white mb-3">Proposed outline ({outline.length} slides)</p>
+      <ol className="space-y-2 mb-3">
+        {visible.map((slide, i) => (
+          <OutlineSlideItem key={outlineSlideOrder(slide, i)} slide={slide} index={i} />
+        ))}
+      </ol>
+      {hasMore && !expanded && (
+        <button
+          type="button"
+          onClick={() => setExpanded(true)}
+          className="text-xs text-[var(--rh-blue)] mb-3 hover:underline"
+        >
+          Show all {outline.length} slides
+        </button>
+      )}
+      <div className="flex flex-wrap gap-2 pt-2 border-t border-[var(--rh-charcoal-light)]">
+        <button
+          type="button"
+          data-testid="chip-generate"
+          onClick={onApprove}
+          className="text-xs px-3 py-1.5 rounded-full bg-[var(--rh-red)]/20 text-[var(--rh-red)] border border-[var(--rh-red)]/30 hover:bg-[var(--rh-red)]/30"
+        >
+          Generate slides ✓
+        </button>
+        <button
+          type="button"
+          data-testid="chip-fewer"
+          onClick={onFewer}
+          className="text-xs px-3 py-1.5 rounded-full border border-[var(--rh-charcoal-light)] text-[var(--rh-silver)] hover:border-[var(--rh-silver)]"
+        >
+          Fewer slides
+        </button>
+        <button
+          type="button"
+          data-testid="chip-add-section"
+          onClick={onAddSection}
+          className="text-xs px-3 py-1.5 rounded-full border border-[var(--rh-charcoal-light)] text-[var(--rh-silver)] hover:border-[var(--rh-silver)]"
+        >
+          Add a section
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function ChatComposer({
+  generationState,
+  value,
+  onChange,
+  onSend,
+  fileInputRef,
+  onAttachClick,
+  onFilesSelected,
+  fileChips,
+  onRemoveChip,
+  onRoleChange,
+  composerRef,
+  onDeckTypeSelect,
+}: {
+  generationState: GenerationState;
+  value: string;
+  onChange: (v: string) => void;
+  onSend: () => void;
+  fileInputRef: React.RefObject<HTMLInputElement | null>;
+  onAttachClick: () => void;
+  onFilesSelected: (files: File[]) => void;
+  fileChips: FileChip[];
+  onRemoveChip: (id: string) => void;
+  onRoleChange: (id: string, role: FileRole) => void;
+  composerRef: React.RefObject<HTMLTextAreaElement | null>;
+  onDeckTypeSelect: (entry: DeckTypeEntry) => void;
+}) {
+  const disabled = generationState === "planning" || generationState === "building";
+
+  const sendLabel =
+    generationState === "idle"
+      ? "Plan my presentation"
+      : generationState === "reviewing"
+        ? "Refine"
+        : "Send";
+
+  useEffect(() => {
+    const el = composerRef.current;
+    if (!el) return;
+    el.style.height = "auto";
+    const lineHeight = 24;
+    const maxRows = 5;
+    const rows = Math.min(maxRows, Math.max(1, Math.ceil(el.scrollHeight / lineHeight)));
+    el.style.height = `${rows * lineHeight}px`;
+  }, [value, composerRef]);
+
+  return (
+    <div className={`shrink-0 space-y-2 ${disabled ? "pointer-events-none opacity-50" : ""}`}>
+      {fileChips.length > 0 && (
+        <div className="flex flex-wrap gap-2">
+          {fileChips.map(chip => (
+            <FileRoleChip key={chip.id} chip={chip} onRemove={onRemoveChip} onRoleChange={onRoleChange} />
+          ))}
+        </div>
+      )}
+      <div className="flex gap-2 items-end">
+        <button
+          type="button"
+          data-testid="composer-attach"
+          onClick={onAttachClick}
+          className="shrink-0 p-2 rounded-lg border border-[var(--rh-charcoal-light)] text-[var(--rh-silver)] hover:border-[var(--rh-blue)]/40 hover:text-[var(--rh-blue)]"
+          aria-label="Attach files"
+        >
+          <Paperclip className="w-4 h-4" />
+        </button>
+        <input
+          ref={fileInputRef}
+          type="file"
+          multiple
+          accept=".pdf,.docx,.pptx"
+          className="hidden"
+          onChange={e => {
+            const files = Array.from(e.target.files || []);
+            if (files.length > 0) onFilesSelected(files);
+            e.target.value = "";
+          }}
+        />
+        <DeckTypeMenu onSelect={onDeckTypeSelect} />
+        <Textarea
+          ref={composerRef}
+          data-testid="composer-input"
+          value={value}
+          onChange={e => onChange(e.target.value)}
+          onKeyDown={e => {
+            if (e.key === "Enter" && !e.shiftKey) {
+              e.preventDefault();
+              onSend();
+            }
+          }}
+          placeholder="Describe your presentation…"
+          rows={1}
+          className={`flex-1 min-h-[24px] max-h-[120px] resize-none bg-[var(--rh-charcoal)] border-[var(--rh-charcoal-light)] focus-visible:ring-[var(--rh-red)] ${
+            disabled ? "pointer-events-none" : ""
+          }`}
+        />
+        <Button
+          type="button"
+          data-testid="composer-send"
+          onClick={onSend}
+          disabled={disabled || !value.trim()}
+          className="shrink-0 bg-[var(--rh-red)] hover:bg-[var(--rh-red-dark)] h-10 px-4 text-xs font-bold"
+        >
+          {sendLabel}
+        </Button>
+      </div>
+    </div>
+  );
+}
+
+function SlideProgressPanel({
+  generationState,
+  outline,
+  slideCards,
+  comprehension,
+  deckPreviewUrl,
+  deckDownloadUrl,
+  deckPath,
+  deckFilename,
+  fallbackTitle,
+  fallbackSubtitle,
+  outputLang,
+}: {
+  generationState: GenerationState;
+  outline: OutlineSlide[];
+  slideCards: SlideCard[];
+  comprehension: ComprehensionData | null;
+  deckPreviewUrl: string | null;
+  deckDownloadUrl: string | null;
+  deckPath: string | null;
+  deckFilename: string | null;
+  fallbackTitle: string;
+  fallbackSubtitle: string;
+  outputLang: OutputLang;
+}) {
+  const langMeta = OUTPUT_LANGS.find(l => l.value === outputLang)!;
+  const previewState = generationState === "clarifying" ? "clarifying" : generationState;
+  const templateLocked =
+    comprehension?.deck_mode === "baseline" && comprehension.template_filename;
+
+  return (
+    <div
+      data-testid="preview-panel"
+      className="flex-1 h-full overflow-hidden bg-[var(--rh-charcoal)] p-4 flex flex-col relative"
+    >
+      <div className="w-full mb-4 shrink-0 flex flex-wrap items-center gap-2">
+        {generationState === "reviewing" && (
+          <Badge className="bg-[var(--rh-blue)]/20 text-[var(--rh-blue)] border-0 text-[10px]">
+            Reviewing outline
+          </Badge>
+        )}
+        {generationState === "building" && (
+          <Badge className="bg-[var(--rh-red)]/20 text-[var(--rh-red)] border-0 text-[10px]">
+            Building — {slideCards.length}/{outline.length || slideCards.length || "?"} slides
+          </Badge>
+        )}
+        {templateLocked && (
+          <span
+            data-testid="template-locked-pill"
+            className="text-[10px] px-2 py-1 rounded-full bg-[var(--rh-blue)]/10 text-[var(--rh-blue)] border border-[var(--rh-blue)]/20"
+          >
+            🔒 Template locked: {comprehension!.template_filename}
+          </span>
+        )}
       </div>
 
-      <div
-        className={`w-1/2 bg-[var(--rh-charcoal)] rounded-lg border border-dashed border-[var(--rh-charcoal-light)] p-6 flex flex-col min-h-[28rem] relative overflow-hidden ${
-          phase === "review" || phase === "done"
-            ? "items-stretch justify-start"
-            : "items-center justify-center"
-        }`}
-      >
-        <div className="w-full mb-4 shrink-0 flex flex-wrap items-center gap-2">
-          {phaseSteps.map((step, i) => (
-            <span
-              key={step.key}
-              className={`text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded ${
-                phase === step.key
-                  ? "bg-[var(--rh-red)]/20 text-[var(--rh-red)] border border-[var(--rh-red)]/40"
-                  : "text-[var(--rh-silver)] opacity-60"
-              }`}
-            >
-              {step.label}
-            </span>
-          ))}
-          {agentBuild && (
-            <span className="text-[10px] text-[var(--rh-blue)] ml-auto font-mono">
-              API {agentBuild}
-            </span>
-          )}
-        </div>
-        {phase === "input" && (
-          <div className="text-center text-[var(--rh-silver)] flex flex-col items-center gap-4">
+      <div className="flex-1 flex flex-col min-h-0" data-testid={`preview-state-${previewState}`}>
+        {(generationState === "idle" || previewState === "idle") && generationState === "idle" && (
+          <div className="flex-1 flex flex-col items-center justify-center text-center text-[var(--rh-silver)] gap-4">
             <div className="w-16 h-16 rounded-full bg-[var(--rh-charcoal-mid)] flex items-center justify-center">
               <Sparkles className="w-8 h-8 opacity-50" />
             </div>
-            <p>Configure options and click Generate</p>
+            <p>Your preview will appear here</p>
           </div>
         )}
-        {phase === "planning" && (
-          <div className="flex flex-col items-center gap-4 w-full max-w-lg px-2">
-            <Loader2 className="w-12 h-12 text-[var(--rh-red)] animate-spin shrink-0" />
-            <p className="font-bold text-lg">Planning your deck</p>
-            <ActivityLogPanel entries={activityLog} currentStep={currentStep} className="mt-2" />
-            {error && (
-              <p className="text-xs text-[var(--rh-red)] text-center">{error}</p>
-            )}
+
+        {(generationState === "planning" || generationState === "clarifying") && (
+          <div className="flex-1 flex flex-col justify-center gap-3 px-4 max-w-md mx-auto w-full">
+            {[0, 1, 2, 3].map(i => (
+              <div
+                key={i}
+                className="h-4 rounded bg-[var(--rh-charcoal-mid)] animate-pulse"
+                style={{ width: `${85 - i * 12}%` }}
+              />
+            ))}
           </div>
         )}
-        {phase === "review" && (
-          <div className="flex flex-col flex-1 min-h-0 w-full">
-            {/* Header row */}
-            <div className="flex items-center justify-between mb-2 shrink-0">
-              <h3 className="font-bold text-[var(--rh-red)] text-sm">Review Plan</h3>
-              <div className="flex items-center gap-2">
-                {extractionStatus !== "none" && (
-                  <span className={`flex items-center gap-1 text-[10px] px-2 py-0.5 rounded ${
-                    extractionStatus === "running" ? "bg-[var(--rh-blue)]/10 text-[var(--rh-blue)]"
-                    : extractionStatus === "done" ? "bg-emerald-500/10 text-emerald-400"
-                    : "bg-[var(--rh-red)]/10 text-[var(--rh-red)]"
-                  }`}>
-                    {extractionStatus === "running" && <Loader2 className="w-3 h-3 animate-spin" />}
-                    {extractionStatus === "done" && <CheckCircle2 className="w-3 h-3" />}
-                    {extractionStatus === "running" ? "Reading template…"
-                      : extractionStatus === "done" ? "Template ready"
-                      : "Template failed"}
-                  </span>
-                )}
-                <Badge className="bg-[var(--rh-blue)]/20 text-[var(--rh-blue)]">
-                  {outline.length} slides
-                </Badge>
+
+        {generationState === "reviewing" && (
+          <div className="flex-1 overflow-y-auto">
+            <ol className="space-y-2 text-sm">
+              {outline.map((slide, i) => {
+                const order = outlineSlideOrder(slide, i);
+                const title = slide.title || slide.element.replace(/-/g, " ");
+                const firstPoint = slide.key_points?.[0];
+                return (
+                  <li
+                    key={slide.slide_index ?? slide.order ?? i}
+                    className="rounded-lg border border-[var(--rh-charcoal-light)] bg-[var(--rh-charcoal-mid)] p-3"
+                  >
+                    <div className="flex gap-2">
+                      <span className="text-white font-bold w-6 shrink-0">{order}.</span>
+                      <div className="min-w-0">
+                        <p className="text-white font-medium truncate">{title}</p>
+                        {firstPoint && (
+                          <p className="text-xs text-[var(--rh-silver)] mt-0.5 line-clamp-2">• {firstPoint}</p>
+                        )}
+                        {!firstPoint && slide.summary && (
+                          <p className="text-xs text-[var(--rh-silver)] mt-0.5 line-clamp-2">{slide.summary}</p>
+                        )}
+                        {!firstPoint && !slide.summary && slide.purpose && (
+                          <p className="text-xs text-[var(--rh-silver)] mt-0.5 opacity-70 line-clamp-2">{slide.purpose}</p>
+                        )}
+                      </div>
+                    </div>
+                  </li>
+                );
+              })}
+            </ol>
+          </div>
+        )}
+
+        {(generationState === "building" || generationState === "done") && slideCards.length > 0 && (
+          <div
+            className={
+              generationState === "building"
+                ? "flex-1 overflow-y-auto grid grid-cols-2 gap-3 content-start"
+                : "grid grid-cols-3 gap-2 mb-4 shrink-0"
+            }
+          >
+            {slideCards.map((card, i) => (
+              <div
+                key={card.index}
+                data-testid={`slide-card-${i}`}
+                className="rounded-lg border border-[var(--rh-charcoal-light)] bg-[var(--rh-charcoal-mid)] p-4 min-h-[100px]"
+              >
+                <span className="text-[10px] text-[var(--rh-silver)]">Slide {card.index}</span>
+                <p className="text-sm font-medium text-white mt-1 truncate">{card.title}</p>
               </div>
-            </div>
-
-            {/* Chat messages */}
-            <div className="flex-1 min-h-0 overflow-y-auto space-y-3 mb-3 pr-1">
-              {chatMsgs.map(msg => (
-                <div
-                  key={msg.id}
-                  className={`flex gap-2 ${msg.role === "user" ? "flex-row-reverse" : "flex-row"}`}
-                >
-                  {/* Avatar */}
-                  <div className={`shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-bold ${
-                    msg.role === "agent"
-                      ? "bg-[var(--rh-red)]/20 text-[var(--rh-red)] border border-[var(--rh-red)]/30"
-                      : "bg-[var(--rh-blue)]/20 text-[var(--rh-blue)] border border-[var(--rh-blue)]/30"
-                  }`}>
-                    {msg.role === "agent" ? "AI" : "You"}
-                  </div>
-                  {/* Bubble */}
-                  <div className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm whitespace-pre-wrap leading-relaxed ${
-                    msg.role === "agent"
-                      ? "bg-[var(--rh-charcoal-mid)] border border-[var(--rh-charcoal-light)] text-[var(--rh-silver)] rounded-tl-sm"
-                      : "bg-[var(--rh-blue)]/15 border border-[var(--rh-blue)]/25 text-white rounded-tr-sm"
-                  }`}>
-                    {msg.text}
-                    <div className="text-[10px] text-[var(--rh-silver)]/50 mt-1.5 text-right">{msg.at}</div>
-                  </div>
-                </div>
-              ))}
-
-              {/* Typing indicator */}
-              {isRefining && (
-                <div className="flex gap-2 flex-row">
-                  <div className="shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-bold bg-[var(--rh-red)]/20 text-[var(--rh-red)] border border-[var(--rh-red)]/30">
-                    AI
-                  </div>
-                  <div className="bg-[var(--rh-charcoal-mid)] border border-[var(--rh-charcoal-light)] rounded-2xl rounded-tl-sm px-4 py-3 flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--rh-silver)]/60 animate-bounce [animation-delay:0ms]" />
-                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--rh-silver)]/60 animate-bounce [animation-delay:150ms]" />
-                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--rh-silver)]/60 animate-bounce [animation-delay:300ms]" />
-                  </div>
-                </div>
-              )}
-              <div ref={chatEndRef} />
-            </div>
-
-            {/* Refinement input */}
-            <div className="shrink-0 space-y-2">
-              <div className="flex gap-2">
-                <input
-                  className="flex-1 bg-[var(--rh-charcoal-mid)] border border-[var(--rh-charcoal-light)] rounded-lg px-3 py-2 text-sm text-white placeholder-[var(--rh-silver)]/50 outline-none focus:border-[var(--rh-blue)] transition-colors"
-                  placeholder='e.g. "Make slide 3 focus on DSGVO compliance" or "Add a ROI slide after slide 5"'
-                  value={refineInput}
-                  onChange={e => setRefineInput(e.target.value)}
-                  onKeyDown={e => {
-                    if (e.key === "Enter" && !e.shiftKey) {
-                      e.preventDefault();
-                      void handleRefine();
-                    }
-                  }}
-                  disabled={isRefining}
-                />
-                <Button
-                  onClick={() => void handleRefine()}
-                  disabled={isRefining || !refineInput.trim()}
-                  variant="outline"
-                  className="border-[var(--rh-blue)]/40 text-[var(--rh-blue)] hover:bg-[var(--rh-blue)]/10 shrink-0 px-4"
-                >
-                  {isRefining ? <Loader2 className="w-4 h-4 animate-spin" /> : "Refine"}
-                </Button>
-              </div>
-
-              {/* Action row */}
-              <div className="flex gap-2">
-                <Button
-                  onClick={() => {
-                    setPhase("input");
-                    setOutline([]);
-                    setJobId(null);
-                    setPlanningContext(null);
-                    setExtractionStatus("none");
-                    setChatMsgs([]);
-                  }}
-                  variant="outline"
-                  className="border-[var(--rh-charcoal-light)] text-[var(--rh-silver)] px-3"
-                >
-                  ← Back
-                </Button>
-                <Button
-                  onClick={handleApprove}
-                  disabled={isRefining}
-                  className="flex-1 bg-[var(--rh-red)] hover:bg-[var(--rh-red-dark)] font-bold"
-                >
-                  <CheckCircle2 className="w-4 h-4 mr-2" />
-                  {extractionStatus === "running"
-                    ? "Approve & Build (reading template…)"
-                    : `Approve & Build (${outline.length} slides)`}
-                </Button>
-              </div>
-            </div>
+            ))}
           </div>
         )}
-        {phase === "building" && (
-          <div className="flex flex-col items-center gap-4 w-full max-w-lg px-2">
-            <Loader2 className="w-12 h-12 text-[var(--rh-red)] animate-spin shrink-0" />
-            <p className="font-bold text-lg">Building presentation</p>
-            {slideProgress && (
-              <p className="text-sm text-[var(--rh-blue)] font-medium">{slideProgress}</p>
-            )}
-            <ActivityLogPanel entries={activityLog} currentStep={currentStep} className="mt-2" />
-            {error && (
-              <p className="text-xs text-[var(--rh-red)] text-center">{error}</p>
-            )}
-          </div>
-        )}
-        {error && phase !== "planning" && phase !== "building" && (
-          <div className="text-center text-[var(--rh-red)] flex flex-col items-center gap-2">
-            <p className="font-bold">Generation Error</p>
-            <p className="text-sm text-[var(--rh-silver)] max-w-sm">{error}</p>
-          </div>
-        )}
-        {phase === "done" && (
-          <div className="w-full h-full flex flex-col animate-in fade-in duration-500">
+
+        {generationState === "done" && (
+          <div className="flex-1 flex flex-col min-h-0 animate-in fade-in duration-500">
             <div className="flex items-center justify-between mb-4 shrink-0">
               <h3 className="font-bold">Preview</h3>
               <div className="flex items-center gap-2">
                 <Badge className="bg-[var(--rh-green)]/20 text-[var(--rh-green)] border-0 flex items-center gap-1">
-                  <CheckCircle2 className="w-3 h-3" /> Sent to SME Review
+                  <CheckCircle2 className="w-3 h-3" /> Ready
                 </Badge>
                 {(deckDownloadUrl || deckPath) && (
                   <Button
@@ -1163,30 +1182,20 @@ function PresentationTab({ outputLang }: { outputLang: OutputLang }) {
                     </a>
                   </Button>
                 )}
-                <Button size="sm" variant="outline" className="border-[var(--rh-charcoal-light)] text-[var(--rh-silver)] h-7">
-                  <Download className="w-3 h-3 mr-1" /> Export
-                </Button>
               </div>
             </div>
             {outputLang !== "en" && (
               <div className="flex items-center gap-1.5 mb-3 px-1 text-xs text-[var(--rh-blue)] shrink-0">
                 <Languages className="w-3.5 h-3.5" />
-                Output localized in {langMeta.flag} {langMeta.label} · Regulatory context: {langMeta.regulatory}
+                Output localized in {langMeta.flag} {langMeta.label}
               </div>
-            )}
-            {activityLog.length > 0 && (
-              <ActivityLogPanel
-                entries={activityLog}
-                currentStep={currentStep}
-                className="mb-3 shrink-0 max-h-32"
-              />
             )}
             <DeckPreviewPanel
               previewUrl={deckPreviewUrl}
               downloadUrl={deckDownloadUrl ?? (deckPath ? `/api/v1/download?path=${encodeURIComponent(deckPath)}` : null)}
               filename={deckFilename}
-              fallbackTitle={slide.title}
-              fallbackSubtitle={slide.subtitle}
+              fallbackTitle={fallbackTitle}
+              fallbackSubtitle={fallbackSubtitle}
             />
           </div>
         )}
@@ -1195,526 +1204,528 @@ function PresentationTab({ outputLang }: { outputLang: OutputLang }) {
   );
 }
 
-/* ─── ASSET CUSTOMIZER TAB ─── */
-const ASSETS = [
-  { id: "a1", name: "Red Hat Digital Sovereignty — Solution Brief", type: "PDF", region: "Global" },
-  { id: "a2", name: "OpenShift Platform Plus — Data Sheet", type: "PDF", region: "Global" },
-  { id: "a3", name: "EMEA Sovereign Cloud — Competitive Brief", type: "PDF", region: "EMEA" },
-  { id: "a4", name: "NIS2 Compliance with Red Hat — White Paper", type: "DOC", region: "EMEA" },
-  { id: "a5", name: "Ansible Automation for Regulated Environments", type: "Slide", region: "Global" },
-  { id: "a6", name: "RHEL 10 — What's New for Public Sector", type: "PDF", region: "Global" },
-];
+function PresentationChat({ outputLang }: { outputLang: OutputLang }) {
+  const [generationState, setGenerationState] = useState<GenerationState>("idle");
+  const [composerText, setComposerText] = useState("");
+  const [fileChips, setFileChips] = useState<FileChip[]>([]);
+  const [chatMsgs, setChatMsgs] = useState<PresentationChatMsg[]>(() => [createWelcomeChatMsg()]);
+  const [pendingContext, setPendingContext] = useState<PendingContext | null>(null);
+  const [clarifyLang, setClarifyLang] = useState<string | undefined>();
+  const [jobId, setJobId] = useState<string | null>(null);
+  const [outline, setOutline] = useState<OutlineSlide[]>([]);
+  const [comprehension, setComprehension] = useState<ComprehensionData | null>(null);
+  const [gapsDismissed, setGapsDismissed] = useState(false);
+  const [slideCards, setSlideCards] = useState<SlideCard[]>([]);
+  const [isThinking, setIsThinking] = useState(false);
+  const [deckPath, setDeckPath] = useState<string | null>(null);
+  const [deckDownloadUrl, setDeckDownloadUrl] = useState<string | null>(null);
+  const [deckPreviewUrl, setDeckPreviewUrl] = useState<string | null>(null);
+  const [deckFilename, setDeckFilename] = useState<string | null>(null);
+  const [selectedDeckType, setSelectedDeckType] = useState<string | null>(null);
 
-function AssetCustomizerTab({ outputLang }: { outputLang: OutputLang }) {
-  const [selectedAsset, setSelectedAsset] = useState(ASSETS[0].id);
-  const [isCustomizing, setIsCustomizing] = useState(false);
-  const [isDone, setIsDone] = useState(false);
-  const [logoUrl, setLogoUrl] = useState("");
+  const chatEndRef = useRef<HTMLDivElement>(null);
+  const composerRef = useRef<HTMLTextAreaElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const asset = ASSETS.find(a => a.id === selectedAsset)!;
+  const slide = SLIDE_CONTENT[outputLang] ?? SLIDE_CONTENT["en"];
 
-  const handleCustomize = () => {
-    setIsCustomizing(true);
-    setIsDone(false);
-    setTimeout(() => { setIsCustomizing(false); setIsDone(true); }, 2200);
+  useEffect(() => {
+    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [chatMsgs, isThinking]);
+
+  const resetAll = () => {
+    setGenerationState("idle");
+    setComposerText("");
+    setFileChips([]);
+    setChatMsgs([createWelcomeChatMsg()]);
+    setPendingContext(null);
+    setClarifyLang(undefined);
+    setJobId(null);
+    setOutline([]);
+    setComprehension(null);
+    setGapsDismissed(false);
+    setSlideCards([]);
+    setIsThinking(false);
+    setDeckPath(null);
+    setDeckDownloadUrl(null);
+    setDeckPreviewUrl(null);
+    setDeckFilename(null);
+    setSelectedDeckType(null);
+  };
+
+  const handleDeckTypeSelect = (entry: DeckTypeEntry) => {
+    setComposerText(entry.templatePrompt);
+    setSelectedDeckType(entry.deckType);
+    requestAnimationFrame(() => composerRef.current?.focus());
+  };
+
+  const addUserMessage = (text: string, attachments?: { name: string; role: FileRole }[]) => {
+    setChatMsgs(prev => [
+      ...prev,
+      {
+        id: `user-${Date.now()}`,
+        type: "user",
+        text,
+        attachments,
+        at: formatLogTime(),
+      },
+    ]);
+  };
+
+  const uploadFiles = async (files: File[]) => {
+    for (const file of files) {
+      const id = `chip-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
+      const role = defaultRoleForFile(file.name);
+      setFileChips(prev => {
+        let next = [...prev, { id, file, name: file.name, role, uploadState: "uploading" as const }];
+        if (role === "theme") {
+          next = next.map(c =>
+            c.id !== id && c.role === "theme" && isPptx(c.name) ? { ...c, role: "reference" as const } : c,
+          );
+        }
+        return next;
+      });
+
+      const formData = new FormData();
+      formData.append("files", file);
+      try {
+        const response = await fetch("/api/v1/upload", { method: "POST", body: formData });
+        if (!response.ok) throw new Error("Upload failed");
+        const result = await response.json() as { upload_id?: string; paths?: string[] };
+        setFileChips(prev =>
+          prev.map(c =>
+            c.id === id
+              ? {
+                  ...c,
+                  uploadState: "done",
+                  uploadId: result.upload_id,
+                  paths: result.paths,
+                }
+              : c,
+          ),
+        );
+      } catch {
+        setFileChips(prev => prev.map(c => (c.id === id ? { ...c, uploadState: "error" } : c)));
+      }
+    }
+  };
+
+  const handleRoleChange = (id: string, role: FileRole) => {
+    setFileChips(prev => {
+      let next = prev.map(c => (c.id === id ? { ...c, role } : c));
+      if (role === "theme") {
+        next = next.map(c =>
+          c.id !== id && c.role === "theme" && isPptx(c.name) ? { ...c, role: "reference" } : c,
+        );
+      }
+      return next;
+    });
+  };
+
+  const buildGeneratePayload = (ctx: PendingContext) => {
+    const themeChip = fileChips.find(c => c.role === "theme" && c.uploadState === "done");
+    const referencePaths = fileChips
+      .filter(c => c.role === "reference" && c.paths?.length)
+      .flatMap(c => c.paths!);
+
+    return {
+      topic: ctx.topic,
+      geo: ctx.geo ?? "",
+      language: ctx.language ?? "",
+      source_documents: referencePaths,
+      template_id: themeChip?.uploadId ?? "default",
+      deck_type: selectedDeckType ?? "competitive",
+    };
+  };
+
+  const runGenerate = async (ctx: PendingContext) => {
+    setGenerationState("planning");
+    setIsThinking(true);
+    setOutline([]);
+    setJobId(null);
+    setSlideCards([]);
+    setDeckPath(null);
+    setDeckDownloadUrl(null);
+    setDeckPreviewUrl(null);
+    setDeckFilename(null);
+    setGapsDismissed(false);
+
+    const payload = buildGeneratePayload(ctx);
+
+    try {
+      let outlineReceived = false;
+      const { lastJobId } = await consumeGenerateStream(payload, (event, data) => {
+        if (event === "progress" || event === "heartbeat") {
+          return;
+        }
+        if (event === "comprehension") {
+          const comp = data as unknown as ComprehensionData;
+          if (data.deck_mode) {
+            setComprehension(comp);
+            setChatMsgs(prev => [
+              ...prev.filter(m => m.type !== "ai-thinking"),
+              {
+                id: `comp-${Date.now()}`,
+                type: "ai-comprehension",
+                comprehension: comp,
+                at: formatLogTime(),
+              },
+            ]);
+          }
+          return;
+        }
+        if (event === "outline_ready") {
+          outlineReceived = true;
+          const outlineData = Array.isArray(data.outline) ? (data.outline as OutlineSlide[]) : [];
+          const id = data.job_id ?? data.jobId;
+          if (id) setJobId(String(id));
+          setOutline(outlineData);
+          setGenerationState("reviewing");
+          setIsThinking(false);
+          setChatMsgs(prev => [
+            ...prev.filter(m => m.type !== "ai-thinking"),
+            {
+              id: `outline-${Date.now()}`,
+              type: "ai-outline",
+              outline: outlineData,
+              at: formatLogTime(),
+            },
+          ]);
+          return;
+        }
+        if (event === "completed") {
+          if (data.status === "failed" || data.error) {
+            setIsThinking(false);
+            setGenerationState("idle");
+            setChatMsgs(prev => [
+              ...prev.filter(m => m.type !== "ai-thinking"),
+              {
+                id: `err-${Date.now()}`,
+                type: "ai-error",
+                text: String(data.error ?? "Generation failed"),
+                at: formatLogTime(),
+              },
+            ]);
+          }
+        }
+      });
+
+      if (!outlineReceived && lastJobId) {
+        const job = await fetchJobOutline(lastJobId);
+        if (job && Array.isArray(job.outline) && (job.outline as unknown[]).length > 0) {
+          setJobId(lastJobId);
+          setOutline(job.outline as OutlineSlide[]);
+          setGenerationState("reviewing");
+          setIsThinking(false);
+        }
+      }
+    } catch (err) {
+      setIsThinking(false);
+      setGenerationState("idle");
+      const msg = err instanceof Error ? err.message : "Generation failed";
+      setChatMsgs(prev => [
+        ...prev.filter(m => m.type !== "ai-thinking"),
+        { id: `err-${Date.now()}`, type: "ai-error", text: msg, at: formatLogTime() },
+      ]);
+    }
+  };
+
+  const runApprove = async () => {
+    if (!jobId) return;
+    setGenerationState("building");
+    setSlideCards([]);
+    setIsThinking(true);
+
+    try {
+      await consumeGenerateStream(
+        {},
+        (event, data) => {
+          if (event === "slide_spec") {
+            setSlideCards(prev => {
+              const idx = slideIndexFromEvent(data, prev.length);
+              const title = String(data.title ?? data.element ?? `Slide ${idx}`);
+              if (prev.some(s => s.index === idx)) return prev;
+              return [...prev, { index: idx, title }];
+            });
+            return;
+          }
+          if (event === "deck_ready") {
+            const path = String(data.path ?? "");
+            const downloadUrl = String(
+              data.download_url ?? (path ? `/api/v1/download?path=${encodeURIComponent(path)}` : ""),
+            );
+            const filename = String(data.filename ?? path.split("/").pop() ?? "deck.pptx");
+            const previewUrl = String(
+              data.preview_url ?? (filename ? `/office/preview/${encodeURIComponent(filename)}?embed=1` : ""),
+            );
+            if (path) setDeckPath(path);
+            if (downloadUrl) setDeckDownloadUrl(downloadUrl);
+            if (previewUrl) setDeckPreviewUrl(previewUrl);
+            setDeckFilename(filename);
+            setGenerationState("done");
+            setIsThinking(false);
+            setChatMsgs(prev => [
+              ...prev,
+              {
+                id: `done-${Date.now()}`,
+                type: "ai-done",
+                text: "Your presentation is ready!",
+                at: formatLogTime(),
+              },
+            ]);
+            return;
+          }
+          if (event === "completed" && (data.status === "failed" || data.error)) {
+            setIsThinking(false);
+            setGenerationState("reviewing");
+            setChatMsgs(prev => [
+              ...prev,
+              {
+                id: `err-${Date.now()}`,
+                type: "ai-error",
+                text: String(data.error ?? "Build failed"),
+                at: formatLogTime(),
+              },
+            ]);
+          }
+        },
+        `/api/v1/generate/${jobId}/approve`,
+      );
+    } catch (err) {
+      setIsThinking(false);
+      setGenerationState("reviewing");
+      const msg = err instanceof Error ? err.message : "Build failed";
+      setChatMsgs(prev => [
+        ...prev,
+        { id: `err-${Date.now()}`, type: "ai-error", text: msg, at: formatLogTime() },
+      ]);
+    }
+  };
+
+  const runRefine = async (instruction: string) => {
+    if (!jobId) return;
+    setIsThinking(true);
+    try {
+      const resp = await fetch(`/api/v1/generate/${jobId}/refine`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ instruction }),
+      });
+      if (!resp.ok) throw new Error(await resp.text());
+      const result = await resp.json() as { outline: OutlineSlide[] };
+      setOutline(result.outline);
+      setChatMsgs(prev => [
+        ...prev.filter(m => m.type !== "ai-thinking"),
+        {
+          id: `outline-${Date.now()}`,
+          type: "ai-outline",
+          outline: result.outline,
+          at: formatLogTime(),
+        },
+      ]);
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : "Refinement failed";
+      setChatMsgs(prev => [
+        ...prev.filter(m => m.type !== "ai-thinking"),
+        { id: `err-${Date.now()}`, type: "ai-error", text: msg, at: formatLogTime() },
+      ]);
+    } finally {
+      setIsThinking(false);
+    }
+  };
+
+  const handleSend = () => {
+    const text = composerText.trim();
+    if (!text) return;
+
+    if (generationState === "reviewing" && isGenerateIntent(text)) {
+      addUserMessage(text);
+      setComposerText("");
+      void runApprove();
+      return;
+    }
+
+    if (generationState === "reviewing" && jobId) {
+      addUserMessage(text);
+      setComposerText("");
+      void runRefine(text);
+      return;
+    }
+
+    const attachments = fileChips
+      .filter(c => c.uploadState === "done")
+      .map(c => ({ name: c.name, role: c.role }));
+    addUserMessage(text, attachments.length ? attachments : undefined);
+    setComposerText("");
+    setSelectedDeckType(null);
+
+    if (!isPresentationRequest(text)) {
+      setChatMsgs(prev => [
+        ...prev,
+        {
+          id: `ai-greeting-${Date.now()}`,
+          type: "ai-text",
+          text: "Hi! I'm here to help you build presentations. Tell me what you need — describe the topic, customer, or goal and I'll take it from there. You can also attach a PPTX template or reference document.",
+          at: formatLogTime(),
+        },
+      ]);
+      return;
+    }
+
+    const inferred = inferGeoFromText(text);
+    if (!inferred) {
+      setPendingContext({ geo: "", language: "", topic: text });
+      setGenerationState("clarifying");
+      setChatMsgs(prev => [
+        ...prev,
+        { id: `clarify-${Date.now()}`, type: "ai-clarification", at: formatLogTime() },
+      ]);
+      return;
+    }
+
+    const ctx: PendingContext = { geo: inferred.geo, language: inferred.language, topic: text };
+    setPendingContext(ctx);
+    void runGenerate(ctx);
+  };
+
+  const handleRegionSelect = (geo: string, language: string) => {
+    if (!pendingContext?.topic) return;
+    const ctx: PendingContext = {
+      geo,
+      language: clarifyLang ?? language,
+      topic: pendingContext.topic,
+    };
+    setPendingContext(ctx);
+    setChatMsgs(prev => prev.filter(m => m.type !== "ai-clarification"));
+    void runGenerate(ctx);
   };
 
   return (
-    <div className="flex gap-6 h-full">
-      {/* Config Panel */}
-      <div className="w-1/2 flex flex-col gap-5 bg-[var(--rh-charcoal-mid)] rounded-lg border border-[var(--rh-charcoal-light)] p-6 overflow-y-auto">
-        <div className="space-y-2">
-          <Label className="text-xs uppercase text-[var(--rh-silver)] tracking-wider">Base Asset</Label>
-          <Select value={selectedAsset} onValueChange={v => { setSelectedAsset(v); setIsDone(false); }}>
-            <SelectTrigger className="bg-[var(--rh-charcoal)] border-[var(--rh-charcoal-light)]">
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent className="bg-[var(--rh-charcoal-mid)] border-[var(--rh-charcoal-light)] text-white">
-              {ASSETS.map(a => (
-                <SelectItem key={a.id} value={a.id}>
-                  <span className="flex items-center gap-2">
-                    <span className="text-[10px] bg-[var(--rh-charcoal-light)] px-1.5 py-0.5 rounded font-mono">{a.type}</span>
-                    {a.name}
-                  </span>
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
-
-        <div className="grid grid-cols-2 gap-4">
-          <div className="space-y-2">
-            <Label className="text-xs uppercase text-[var(--rh-silver)] tracking-wider">Target Account</Label>
-            <Input defaultValue="Deutsche Telekom" className="bg-[var(--rh-charcoal)] border-[var(--rh-charcoal-light)]" />
-          </div>
-          <div className="space-y-2">
-            <Label className="text-xs uppercase text-[var(--rh-silver)] tracking-wider">Territory</Label>
-            <Select defaultValue="de">
-              <SelectTrigger className="bg-[var(--rh-charcoal)] border-[var(--rh-charcoal-light)]">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent className="bg-[var(--rh-charcoal-mid)] border-[var(--rh-charcoal-light)] text-white">
-                <SelectItem value="de">Germany (EMEA)</SelectItem>
-                <SelectItem value="fr">France (EMEA)</SelectItem>
-                <SelectItem value="uk">UK (EMEA)</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-        </div>
-
-        <div className="space-y-3">
-          <Label className="text-xs uppercase text-[var(--rh-silver)] tracking-wider">Customization Options</Label>
-          <div className="space-y-2">
-            {[
-              "Inject account-specific regulatory context (DSGVO, NIS2)",
-              "Replace generic stats with territory pipeline data",
-              "Add partner ecosystem references (T-Systems OTC, Ionos)",
-              "Localize language and compliance terminology",
-              "Include account logo on cover page",
-            ].map((opt, i) => (
-              <label key={i} className="flex items-center gap-3 p-3 rounded-md bg-[var(--rh-charcoal)] border border-[var(--rh-charcoal-light)] cursor-pointer hover:border-[var(--rh-silver)] transition-colors">
-                <input type="checkbox" defaultChecked={i < 4} className="accent-[var(--rh-red)] w-4 h-4" />
-                <span className="text-sm text-[var(--rh-silver)]">{opt}</span>
-              </label>
-            ))}
-          </div>
-        </div>
-
-        <div className="space-y-2">
-          <Label className="text-xs uppercase text-[var(--rh-silver)] tracking-wider">Account Logo URL (optional)</Label>
-          <Input
-            value={logoUrl}
-            onChange={e => setLogoUrl(e.target.value)}
-            placeholder="https://example.com/logo.png"
-            className="bg-[var(--rh-charcoal)] border-[var(--rh-charcoal-light)] font-mono text-sm"
-          />
-        </div>
-
-        <div className="mt-auto pt-6 border-t border-[var(--rh-charcoal-light)]">
+    <div className="flex gap-0 h-full w-full">
+      <div className="w-[42%] flex flex-col border-r border-[var(--rh-charcoal-light)] h-full overflow-hidden bg-[var(--rh-charcoal-mid)]">
+        <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--rh-charcoal-light)] shrink-0">
+          <h2 className="text-sm font-bold text-white">Presentation chat</h2>
           <Button
-            onClick={handleCustomize}
-            disabled={isCustomizing}
-            className="w-full bg-[var(--rh-red)] hover:bg-[var(--rh-red-dark)] h-12 text-sm font-bold tracking-wide"
+            type="button"
+            variant="outline"
+            size="sm"
+            data-testid="new-presentation-btn"
+            onClick={resetAll}
+            className="border-[var(--rh-charcoal-light)] text-[var(--rh-silver)] h-7 text-xs"
           >
-            {isCustomizing
-              ? <span className="flex items-center gap-2"><Loader2 className="w-4 h-4 animate-spin" /> Customizing Asset...</span>
-              : <span className="flex items-center gap-2"><Edit3 className="w-4 h-4" /> Customize for Account</span>}
+            New presentation
           </Button>
         </div>
-      </div>
 
-      {/* Preview Panel */}
-      <div className="w-1/2 bg-[var(--rh-charcoal)] rounded-lg border border-dashed border-[var(--rh-charcoal-light)] p-6 flex flex-col">
-        {!isCustomizing && !isDone && (
-          <div className="flex-1 flex flex-col items-center justify-center text-center text-[var(--rh-silver)] gap-4">
-            <div className="w-16 h-16 rounded-full bg-[var(--rh-charcoal-mid)] flex items-center justify-center">
-              <Edit3 className="w-8 h-8 opacity-50" />
-            </div>
-            <p>Select an asset and configure options</p>
-            <p className="text-xs">Customized version will preview here</p>
-          </div>
-        )}
-        {isCustomizing && (
-          <div className="flex-1 flex flex-col items-center justify-center gap-4">
-            <Loader2 className="w-12 h-12 text-[var(--rh-red)] animate-spin" />
-            <p className="font-bold text-lg animate-pulse">Customizing Asset...</p>
-            <div className="space-y-1.5 text-xs text-[var(--rh-silver)] text-center">
-              {outputLang === "de" ? (
-                <><p>DSGVO-Kontext wird eingefügt…</p><p>Für den deutschen Markt lokalisieren…</p><p>T-Systems OTC-Referenzen hinzufügen…</p></>
-              ) : outputLang === "fr" ? (
-                <><p>Injection du contexte RGPD…</p><p>Localisation pour le marché français…</p><p>Ajout des références OVHcloud SecNumCloud…</p></>
-              ) : outputLang === "es" ? (
-                <><p>Inyectando contexto LOPDGDD…</p><p>Localizando para el mercado español…</p><p>Añadiendo referencias de Telefónica Tech…</p></>
-              ) : (
-                <><p>Injecting DSGVO regulatory context…</p><p>Localizing for German market…</p><p>Adding T-Systems OTC references…</p></>
+        <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3 min-h-0">
+          {chatMsgs.map(msg => (
+            <div
+              key={msg.id}
+              className={`flex ${msg.type === "user" ? "justify-end" : "justify-start"}`}
+            >
+              {msg.type === "user" && (
+                <div className="max-w-[85%] rounded-2xl rounded-tr-sm px-4 py-3 text-sm bg-[var(--rh-blue)]/15 border border-[var(--rh-blue)]/25 text-white">
+                  <p>{msg.text}</p>
+                  {msg.attachments && msg.attachments.length > 0 && (
+                    <div className="mt-2 flex flex-wrap gap-1">
+                      {msg.attachments.map(a => (
+                        <span key={a.name} className="text-[10px] px-2 py-0.5 rounded bg-[var(--rh-charcoal)]/60">
+                          {a.name}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                  <div className="text-[10px] text-[var(--rh-silver)]/50 mt-1.5 text-right">{msg.at}</div>
+                </div>
+              )}
+              {msg.type === "ai-text" && msg.text && (
+                <div className="flex flex-col gap-2 max-w-[90%]">
+                  <div className="rounded-2xl rounded-tl-sm px-4 py-3 text-sm bg-[var(--rh-charcoal-mid)] border border-[var(--rh-charcoal-light)] text-[var(--rh-silver)]">
+                    <p>{msg.text}</p>
+                    <div className="text-[10px] text-[var(--rh-silver)]/50 mt-1.5">{msg.at}</div>
+                  </div>
+                  {msg.id === "welcome" && generationState === "idle" && (
+                    <DeckTypeQuickStartChips onSelect={handleDeckTypeSelect} />
+                  )}
+                </div>
+              )}
+              {msg.type === "ai-clarification" && (
+                <ClarificationCard
+                  selectedLang={clarifyLang}
+                  onRegionSelect={handleRegionSelect}
+                  onLanguageSelect={setClarifyLang}
+                />
+              )}
+              {msg.type === "ai-comprehension" && msg.comprehension && (
+                <ComprehensionCard
+                  comprehension={msg.comprehension}
+                  gapsDismissed={gapsDismissed}
+                  onDismissGaps={() => setGapsDismissed(true)}
+                />
+              )}
+              {msg.type === "ai-outline" && msg.outline && (
+                <OutlineCard
+                  outline={msg.outline}
+                  onApprove={() => void runApprove()}
+                  onFewer={() => void runRefine("Make the deck shorter")}
+                  onAddSection={() => composerRef.current?.focus()}
+                />
+              )}
+              {msg.type === "ai-error" && (
+                <div className="max-w-[85%] rounded-2xl rounded-tl-sm px-4 py-3 text-sm bg-[var(--rh-red)]/10 border border-[var(--rh-red)]/30 text-[var(--rh-red)]">
+                  {msg.text}
+                </div>
+              )}
+              {msg.type === "ai-done" && (
+                <div className="max-w-[85%] rounded-2xl rounded-tl-sm px-4 py-3 text-sm bg-[var(--rh-green)]/10 border border-[var(--rh-green)]/30 text-[var(--rh-green)]">
+                  {msg.text}
+                </div>
               )}
             </div>
-          </div>
-        )}
-        {isDone && (
-          <div className="flex flex-col h-full animate-in fade-in duration-500">
-            <div className="flex items-center justify-between mb-4 shrink-0">
-              <h3 className="font-bold">Customized: {asset.name}</h3>
-              <div className="flex gap-2">
-                <Badge className="bg-[var(--rh-green)]/20 text-[var(--rh-green)] border-0 flex items-center gap-1">
-                  <CheckCircle2 className="w-3 h-3" /> Ready for Review
-                </Badge>
-                <Button size="sm" variant="outline" className="border-[var(--rh-charcoal-light)] text-[var(--rh-silver)] h-7">
-                  <Download className="w-3 h-3 mr-1" /> Export
-                </Button>
+          ))}
+          {isThinking && (
+            <div className="flex justify-start">
+              <div className="bg-[var(--rh-charcoal-mid)] border border-[var(--rh-charcoal-light)] rounded-2xl rounded-tl-sm px-4 py-3 flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-[var(--rh-silver)]/60 animate-bounce [animation-delay:0ms]" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[var(--rh-silver)]/60 animate-bounce [animation-delay:150ms]" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[var(--rh-silver)]/60 animate-bounce [animation-delay:300ms]" />
               </div>
             </div>
-            <div className="flex-1 bg-[var(--rh-charcoal-mid)] rounded-lg border border-[var(--rh-charcoal-light)] p-5 overflow-y-auto space-y-4">
-              <div className="flex items-center gap-3 p-3 rounded bg-[var(--rh-charcoal)] border border-[var(--rh-charcoal-light)]">
-                <div className="w-8 h-8 bg-[var(--rh-red)] flex items-center justify-center rounded font-black text-xs shrink-0">RH</div>
-                <div>
-                  <p className="font-bold text-sm">Deutsche Telekom Edition</p>
-                  <p className="text-xs text-[var(--rh-silver)]">{asset.name}</p>
-                </div>
-              </div>
-              <ChangesApplied outputLang={outputLang} />
-            </div>
-          </div>
-        )}
-      </div>
-    </div>
-  );
-}
-
-function ChangesApplied({ outputLang }: { outputLang: OutputLang }) {
-  const langMeta = OUTPUT_LANGS.find(l => l.value === outputLang)!;
-  const changes = outputLang === "de" ? [
-    { label: "Regulatorischer Kontext", detail: "DSGVO §46, NIS2-Anforderungen für wesentliche Einrichtungen auf Seiten 2, 5, 8 eingefügt" },
-    { label: "Partnerreferenzen", detail: "T-Systems OTC, Ionos Sovereign Cloud zur Lösungsarchitektur hinzugefügt" },
-    { label: "Gebietsspezifische Statistiken", detail: "EMEA-Pipeline-Daten und deutsche Marktgröße im öffentlichen Sektor aktualisiert" },
-    { label: "Sprachlokalisierung", detail: "Compliance-Terminologie an deutsches Regulierungsvokabular angepasst" },
-  ] : outputLang === "fr" ? [
-    { label: "Contexte réglementaire", detail: "RGPD art. 46, exigences NIS2 pour entités essentielles ajoutées pages 2, 5, 8" },
-    { label: "Références partenaires", detail: "OVHcloud SecNumCloud L3+, Outscale ajoutés à l'architecture de solution" },
-    { label: "Statistiques territoriales", detail: "Données pipeline EMEA et taille du marché secteur public français mises à jour" },
-    { label: "Localisation linguistique", detail: "Terminologie de conformité alignée au vocabulaire réglementaire français" },
-  ] : [
-    { label: "Regulatory context", detail: `${langMeta.regulatory} requirements injected into pages 2, 5, 8` },
-    { label: "Partner references", detail: "Regional sovereign cloud partner references added to solution architecture" },
-    { label: "Territory statistics", detail: "EMEA pipeline data and regional public sector market size updated" },
-    { label: "Language localization", detail: `Compliance terminology aligned to ${langMeta.label} regulatory vocabulary` },
-  ];
-  return (
-    <div className="space-y-3">
-      <p className="text-xs text-[var(--rh-silver)] uppercase tracking-wider font-semibold">Changes Applied</p>
-      {changes.map((c, i) => (
-        <div key={i} className="flex items-start gap-2">
-          <CheckCircle2 className="w-4 h-4 text-[var(--rh-green)] mt-0.5 shrink-0" />
-          <div>
-            <p className="text-sm font-medium">{c.label}</p>
-            <p className="text-xs text-[var(--rh-silver)]">{c.detail}</p>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-/* ─── DRAFT CREATOR TAB ─── */
-const DRAFT_TYPES = [
-  { id: "email", label: "Outreach Email", icon: Mail, desc: "Personalized prospecting or follow-up email" },
-  { id: "exec-summary", label: "Executive Summary", icon: BookOpen, desc: "One-pager for C-suite decision makers" },
-  { id: "blog", label: "Thought Leadership", icon: FileText, desc: "Blog post or LinkedIn article" },
-  { id: "social", label: "Social Post", icon: Share2, desc: "LinkedIn or Twitter content snippet" },
-];
-
-const DRAFT_OUTPUTS: Record<string, string> = {
-  email: `Subject: Ensuring Deutsche Telekom's Data Sovereignty with Red Hat OpenShift
-
-Hi [Name],
-
-Following the EU Data Act entering force last week, I wanted to share how Red Hat is helping EMEA telcos like Deutsche Telekom navigate the new data portability and sovereignty mandates.
-
-**The challenge:** Hyperscaler sovereign zones provide contractual guarantees — but your data still flows through their infrastructure. That's a compliance gap for NIS2-regulated entities.
-
-**The Red Hat difference:** OpenShift Platform Plus deploys on T-Systems OTC's BSI C5-certified infrastructure. Your workloads stay in German data centres, operated by a German legal entity, with full open-source auditability.
-
-Three things I'd love to discuss:
-1. How OpenShift's air-gapped install mode meets your most restrictive data isolation requirements
-2. Our joint reference architecture with T-Systems OTC for 5G core sovereign cloud
-3. A path from your existing VMware estate to sovereign-ready containers
-
-Would a 30-minute call this week work? I can bring our EMEA sovereign cloud architect.
-
-Best regards,
-Sarah K.
-Red Hat EMEA — Field Sales`,
-
-  "exec-summary": `**Red Hat Digital Sovereignty: Executive Summary**
-
-**The Regulatory Imperative**
-EU Data Act, NIS2, and DSGVO create overlapping obligations for critical infrastructure operators. Non-compliance carries fines up to €10M or 2% of global turnover.
-
-**The Red Hat Solution**
-Red Hat's sovereign cloud portfolio enables organisations to meet these obligations without sacrificing cloud agility:
-
-• **OpenShift Platform Plus** — runs fully air-gapped; zero hyperscaler dependency
-• **RHEL 10 with FIPS 140-3** — the certified OS foundation for regulated workloads  
-• **Ansible Automation Platform** — automated NIS2 compliance evidence collection
-• **Advanced Cluster Management** — policy-as-code enforcement across jurisdictions
-
-**Certified Partner Ecosystem**
-T-Systems OTC (BSI C5), OVHcloud (SecNumCloud), Ionos, Outscale — all validated to run Red Hat workloads within legal sovereignty guarantees.
-
-**Recommended Next Steps**
-1. Sovereign infrastructure assessment (4 weeks)
-2. Pilot: sovereign dev/test cluster on T-Systems OTC
-3. Production migration with compliance automation`,
-
-  blog: `**Why "Sovereign Zones" Aren't Enough: The Case for True Digital Sovereignty**
-
-The EU Data Act is here. NIS2 is in force. And every hyperscaler now has a "sovereign cloud" offering. So why are EMEA CISOs still losing sleep over data sovereignty?
-
-Because contractual sovereignty and technical sovereignty are not the same thing.
-
-When a hyperscaler operates a "sovereign zone" in Germany, they can promise that your data stays in Frankfurt. What they can't promise is that their US-based engineers won't access it for operational purposes — or that a US court order won't compel disclosure.
-
-**True sovereignty requires technical isolation, not just legal promises.**
-
-This means:
-- Your container platform runs on infrastructure operated by an EU legal entity
-- Your images, keys, and metadata never leave your jurisdiction
-- Your platform team can operate fully air-gapped if required
-
-Red Hat OpenShift, deployed on T-Systems OTC or OVHcloud SecNumCloud, provides exactly this. Open-source means every line of code is auditable. Disconnected install means no call-home to non-EU infrastructure.
-
-For EMEA's critical infrastructure operators, this isn't a nice-to-have — it's a board-level mandate.`,
-
-  social: `🔒 The EU Data Act is in force. NIS2 deadlines are here.
-
-"Sovereign cloud" from hyperscalers = contractual promises.
-Red Hat OpenShift on certified EU infrastructure = technical isolation.
-
-There's a difference.
-
-✅ Air-gapped deployments
-✅ BSI C5 / SecNumCloud certified partners  
-✅ Full open-source auditability
-✅ Zero US hyperscaler dependency
-
-Talking to EMEA enterprise and public sector teams this week. Happy to share our sovereign cloud reference architecture.
-
-#DigitalSovereignty #OpenShift #NIS2 #GDPR #RedHat`,
-};
-
-/* ─── Localized email drafts ─── */
-const DRAFT_OUTPUTS_LOCALIZED: Partial<Record<OutputLang, Partial<Record<string, string>>>> = {
-  de: {
-    email: `Betreff: Digitale Datensouveränität bei Deutsche Telekom mit Red Hat OpenShift
-
-Sehr geehrte/r [Name],
-
-seit dem Inkrafttreten des EU-Datengesetzes wollte ich Ihnen aufzeigen, wie Red Hat EMEA-Telekommunikationsunternehmen wie Deutsche Telekom bei der Umsetzung der neuen Datenportabilitäts- und Souveränitätsanforderungen unterstützt.
-
-**Die Herausforderung:** Souveräne Zonen von Hyperscalern bieten vertragliche Garantien – Ihre Daten fließen jedoch weiterhin durch deren Infrastruktur. Das stellt eine Compliance-Lücke für NIS2-regulierte Einrichtungen dar.
-
-**Der Red-Hat-Unterschied:** OpenShift Platform Plus wird auf der BSI C5-zertifizierten Infrastruktur von T-Systems OTC betrieben. Ihre Workloads verbleiben in deutschen Rechenzentren, werden von einer deutschen juristischen Person betrieben und sind dank Open Source vollständig prüfbar.
-
-Drei Themen, über die ich gerne sprechen würde:
-1. Wie der Air-Gapped-Installationsmodus von OpenShift Ihre strengsten Datenisolierungsanforderungen erfüllt
-2. Unsere gemeinsame Referenzarchitektur mit T-Systems OTC für souveräne 5G-Core-Cloud
-3. Ein Migrationsweg von Ihrer bestehenden VMware-Umgebung zu souveränen Containern
-
-Hätten Sie diese Woche Zeit für einen 30-minütigen Austausch? Ich kann unseren EMEA-Architekten für souveräne Cloud-Infrastruktur hinzuziehen.
-
-Mit freundlichen Grüßen,
-Sarah K.
-Red Hat EMEA — Field Sales`,
-  },
-  fr: {
-    email: `Objet: Garantir la souveraineté numérique de Deutsche Telekom avec Red Hat OpenShift
-
-Madame, Monsieur [Nom],
-
-Suite à l'entrée en vigueur du Règlement européen sur les données, je souhaitais vous présenter comment Red Hat aide les opérateurs télécoms EMEA tels que Deutsche Telekom à naviguer dans les nouveaux mandats de portabilité des données et de souveraineté numérique.
-
-**Le défi :** Les zones souveraines des hyperscalers offrent des garanties contractuelles — mais vos données transitent toujours par leur infrastructure. C'est une lacune de conformité pour les entités essentielles réglementées par NIS2.
-
-**La différence Red Hat :** OpenShift Platform Plus se déploie sur l'infrastructure certifiée SecNumCloud L3+ d'OVHcloud. Vos charges de travail restent dans des centres de données français, exploités par une entité juridique française, avec une auditabilité complète en open source.
-
-Trois points que j'aimerais aborder :
-1. Comment le mode d'installation air-gapped d'OpenShift répond à vos exigences d'isolation des données les plus strictes
-2. Notre architecture de référence conjointe avec OVHcloud pour le cloud souverain
-3. Un chemin de migration depuis votre environnement VMware vers des conteneurs souverains
-
-Seriez-vous disponible pour un échange de 30 minutes cette semaine ? Je peux faire participer notre architecte cloud souverain EMEA.
-
-Cordialement,
-Sarah K.
-Red Hat EMEA — Ventes terrain`,
-  },
-  es: {
-    email: `Asunto: Garantizando la soberanía digital de Deutsche Telekom con Red Hat OpenShift
-
-Estimado/a [Nombre],
-
-Tras la entrada en vigor de la Ley de Datos de la UE, quería compartirle cómo Red Hat está ayudando a operadoras de telecomunicaciones EMEA como Deutsche Telekom a navegar los nuevos mandatos de portabilidad y soberanía de datos.
-
-**El reto:** Las zonas soberanas de los hiperescaladores ofrecen garantías contractuales, pero sus datos siguen fluyendo a través de su infraestructura. Eso es una brecha de cumplimiento para entidades esenciales reguladas por NIS2.
-
-**La diferencia de Red Hat:** OpenShift Platform Plus se despliega en infraestructura certificada ENS de Telefónica Tech. Sus cargas de trabajo permanecen en centros de datos españoles, operados por una entidad jurídica española, con total auditabilidad de código abierto.
-
-Tres temas que me gustaría tratar:
-1. Cómo el modo de instalación air-gapped de OpenShift cumple con sus requisitos de aislamiento de datos más estrictos
-2. Nuestra arquitectura de referencia conjunta con Telefónica Tech para cloud soberano
-3. Un camino de migración desde su entorno VMware existente hacia contenedores soberanos
-
-¿Tendría disponibilidad para una llamada de 30 minutos esta semana?
-
-Atentamente,
-Sarah K.
-Red Hat EMEA — Ventas`,
-  },
-};
-
-function DraftCreatorTab({ outputLang }: { outputLang: OutputLang }) {
-  const [draftType, setDraftType] = useState("email");
-  const [isGenerating, setIsGenerating] = useState(false);
-  const [isDone, setIsDone] = useState(false);
-
-  const langMeta = OUTPUT_LANGS.find(l => l.value === outputLang)!;
-
-  const handleGenerate = () => {
-    setIsGenerating(true);
-    setIsDone(false);
-    setTimeout(() => { setIsGenerating(false); setIsDone(true); }, 1800);
-  };
-
-  const localizedOutputs = DRAFT_OUTPUTS_LOCALIZED[outputLang];
-  const output = (localizedOutputs?.[draftType]) ?? DRAFT_OUTPUTS[draftType] ?? "";
-
-  return (
-    <div className="flex gap-6 h-full">
-      {/* Config Panel */}
-      <div className="w-1/2 flex flex-col gap-5 bg-[var(--rh-charcoal-mid)] rounded-lg border border-[var(--rh-charcoal-light)] p-6 overflow-y-auto">
-        <div className="space-y-2">
-          <Label className="text-xs uppercase text-[var(--rh-silver)] tracking-wider">Draft Type</Label>
-          <div className="grid grid-cols-2 gap-2">
-            {DRAFT_TYPES.map(t => (
-              <button
-                key={t.id}
-                onClick={() => { setDraftType(t.id); setIsDone(false); }}
-                className={`flex items-start gap-2.5 p-3 rounded-md border text-left transition-all ${
-                  draftType === t.id
-                    ? "bg-[var(--rh-charcoal-light)] border-[var(--rh-red)] text-white"
-                    : "bg-[var(--rh-charcoal)] border-[var(--rh-charcoal-light)] text-[var(--rh-silver)] hover:border-[var(--rh-silver)]"
-                }`}
-              >
-                <t.icon className={`w-4 h-4 mt-0.5 shrink-0 ${draftType === t.id ? "text-[var(--rh-red)]" : ""}`} />
-                <div>
-                  <p className="text-xs font-semibold">{t.label}</p>
-                  <p className="text-[10px] mt-0.5 opacity-70">{t.desc}</p>
-                </div>
-              </button>
-            ))}
-          </div>
+          )}
+          <div ref={chatEndRef} />
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
-          <div className="space-y-2">
-            <Label className="text-xs uppercase text-[var(--rh-silver)] tracking-wider">Prospect / Account</Label>
-            <Input defaultValue="Deutsche Telekom" className="bg-[var(--rh-charcoal)] border-[var(--rh-charcoal-light)]" />
-          </div>
-          <div className="space-y-2">
-            <Label className="text-xs uppercase text-[var(--rh-silver)] tracking-wider">Territory</Label>
-            <Select defaultValue="de">
-              <SelectTrigger className="bg-[var(--rh-charcoal)] border-[var(--rh-charcoal-light)]">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent className="bg-[var(--rh-charcoal-mid)] border-[var(--rh-charcoal-light)] text-white">
-                <SelectItem value="de">Germany (EMEA)</SelectItem>
-                <SelectItem value="fr">France (EMEA)</SelectItem>
-                <SelectItem value="uk">UK (EMEA)</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-          <div className="space-y-2">
-            <Label className="text-xs uppercase text-[var(--rh-silver)] tracking-wider">Tone</Label>
-            <Select defaultValue="professional">
-              <SelectTrigger className="bg-[var(--rh-charcoal)] border-[var(--rh-charcoal-light)]">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent className="bg-[var(--rh-charcoal-mid)] border-[var(--rh-charcoal-light)] text-white">
-                <SelectItem value="professional">Professional</SelectItem>
-                <SelectItem value="technical">Technical</SelectItem>
-                <SelectItem value="executive">Executive-level</SelectItem>
-                <SelectItem value="conversational">Conversational</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-          <div className="space-y-2">
-            <Label className="text-xs uppercase text-[var(--rh-silver)] tracking-wider">Focus Topic</Label>
-            <Select defaultValue="sovereignty">
-              <SelectTrigger className="bg-[var(--rh-charcoal)] border-[var(--rh-charcoal-light)]">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent className="bg-[var(--rh-charcoal-mid)] border-[var(--rh-charcoal-light)] text-white">
-                <SelectItem value="sovereignty">Digital Sovereignty</SelectItem>
-                <SelectItem value="nis2">NIS2 Compliance</SelectItem>
-                <SelectItem value="vmware">VMware Displacement</SelectItem>
-                <SelectItem value="ai">Sovereign AI / MLOps</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-        </div>
-
-        <div className="space-y-2">
-          <Label className="text-xs uppercase text-[var(--rh-silver)] tracking-wider">Additional Context</Label>
-          <Textarea
-            placeholder="e.g. Met at KubeCon, interested in air-gapped deployments for their 5G core…"
-            className="min-h-[80px] bg-[var(--rh-charcoal)] border-[var(--rh-charcoal-light)] resize-none text-sm"
+        <div className="px-4 py-3 border-t border-[var(--rh-charcoal-light)] shrink-0">
+          <ChatComposer
+            generationState={generationState}
+            value={composerText}
+            onChange={setComposerText}
+            onSend={handleSend}
+            fileInputRef={fileInputRef}
+            onAttachClick={() => fileInputRef.current?.click()}
+            onFilesSelected={files => void uploadFiles(files)}
+            fileChips={fileChips}
+            onRemoveChip={id => setFileChips(prev => prev.filter(c => c.id !== id))}
+            onRoleChange={handleRoleChange}
+            composerRef={composerRef}
+            onDeckTypeSelect={handleDeckTypeSelect}
           />
         </div>
-
-        <div className="mt-auto pt-6 border-t border-[var(--rh-charcoal-light)]">
-          <Button
-            onClick={handleGenerate}
-            disabled={isGenerating}
-            className="w-full bg-[var(--rh-red)] hover:bg-[var(--rh-red-dark)] h-12 text-sm font-bold tracking-wide"
-          >
-            {isGenerating
-              ? <span className="flex items-center gap-2"><Loader2 className="w-4 h-4 animate-spin" /> Drafting...</span>
-              : <span className="flex items-center gap-2"><Sparkles className="w-4 h-4" /> Generate Draft</span>}
-          </Button>
-        </div>
       </div>
 
-      {/* Output Panel */}
-      <div className="w-1/2 bg-[var(--rh-charcoal)] rounded-lg border border-dashed border-[var(--rh-charcoal-light)] p-6 flex flex-col">
-        {!isGenerating && !isDone && (
-          <div className="flex-1 flex flex-col items-center justify-center text-center text-[var(--rh-silver)] gap-4">
-            <div className="w-16 h-16 rounded-full bg-[var(--rh-charcoal-mid)] flex items-center justify-center">
-              <FileText className="w-8 h-8 opacity-50" />
-            </div>
-            <p>Select type, configure, and generate your draft</p>
-          </div>
-        )}
-        {isGenerating && (
-          <div className="flex-1 flex flex-col items-center justify-center gap-4">
-            <Loader2 className="w-12 h-12 text-[var(--rh-red)] animate-spin" />
-            <p className="font-bold text-lg animate-pulse">Writing Draft...</p>
-          </div>
-        )}
-        {isDone && (
-          <div className="flex flex-col h-full animate-in fade-in duration-500">
-            <div className="flex items-center justify-between mb-4 shrink-0">
-              <div className="flex items-center gap-2">
-                <h3 className="font-bold">Draft Ready</h3>
-                {outputLang !== "en" && (
-                  <Badge className="bg-[var(--rh-blue)]/20 text-[var(--rh-blue)] border border-[var(--rh-blue)]/30 flex items-center gap-1 text-[10px]">
-                    <Languages className="w-3 h-3" /> {langMeta.flag} {langMeta.label}
-                  </Badge>
-                )}
-                <Badge className="bg-[var(--rh-green)]/20 text-[var(--rh-green)] border-0 flex items-center gap-1">
-                  <CheckCircle2 className="w-3 h-3" /> Pending SME Review
-                </Badge>
-              </div>
-              <div className="flex gap-2">
-                <Button size="sm" variant="outline" className="border-[var(--rh-charcoal-light)] text-[var(--rh-silver)] h-7">
-                  <Edit3 className="w-3 h-3 mr-1" /> Edit
-                </Button>
-                <Button size="sm" variant="outline" className="border-[var(--rh-charcoal-light)] text-[var(--rh-silver)] h-7">
-                  <Download className="w-3 h-3 mr-1" /> Copy
-                </Button>
-              </div>
-            </div>
-            <div className="flex-1 overflow-y-auto bg-[var(--rh-charcoal-mid)] rounded-lg border border-[var(--rh-charcoal-light)] p-5">
-              <pre className="text-sm text-[var(--rh-silver)] whitespace-pre-wrap leading-relaxed font-sans">
-                {output.split(/(\*\*[^*]+\*\*)/).map((part, i) =>
-                  part.startsWith("**") && part.endsWith("**")
-                    ? <strong key={i} className="text-white font-semibold">{part.slice(2, -2)}</strong>
-                    : <span key={i}>{part}</span>
-                )}
-              </pre>
-            </div>
-          </div>
-        )}
-      </div>
+      <SlideProgressPanel
+        generationState={generationState}
+        outline={outline}
+        slideCards={slideCards}
+        comprehension={comprehension}
+        deckPreviewUrl={deckPreviewUrl}
+        deckDownloadUrl={deckDownloadUrl}
+        deckPath={deckPath}
+        deckFilename={deckFilename}
+        fallbackTitle={slide.title}
+        fallbackSubtitle={slide.subtitle}
+        outputLang={outputLang}
+      />
     </div>
   );
 }

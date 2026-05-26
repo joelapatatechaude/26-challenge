@@ -10,7 +10,9 @@ Usage:
 
 from __future__ import annotations
 
+import logging
 import re
+from collections.abc import Callable
 from pathlib import Path
 from typing import Any
 
@@ -27,6 +29,30 @@ from generator.layout_context import (
     SlideRenderContext,
     TypographyScale,
 )
+
+log = logging.getLogger("ppt.deck_builder")
+
+
+def resolve_slide_layout_name(
+    prs: Presentation,
+    layout_name: str,
+    template_id: str | None = None,
+    *,
+    on_warn: Callable[[str], None] | None = None,
+) -> str:
+    """Validate layout name against the presentation; fall back to first layout."""
+    available_layouts = {layout.name for layout in prs.slide_layouts}
+    if layout_name not in available_layouts:
+        log.warning(
+            "Layout '%s' not found in template '%s'. Available: %s. Falling back to first layout.",
+            layout_name,
+            template_id,
+            sorted(available_layouts),
+        )
+        if on_warn:
+            on_warn(layout_name)
+        return prs.slide_layouts[0].name
+    return layout_name
 
 
 # ---------------------------------------------------------------------------
@@ -1787,6 +1813,8 @@ def build_deck(
                 skills_root=Path(skills_root) if skills_root else None,
                 template_id=template_id,
             )
+            if layout_name and template_id and str(template_id).startswith("upload-"):
+                layout_name = resolve_slide_layout_name(prs, layout_name, template_id)
             bp_layout = (blueprints.get("layouts") or {}).get(layout_name or "")
             slide_master_idx = master_idx
             if bp_layout:

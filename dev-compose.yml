@@ -45,11 +45,11 @@ services:
     restart: unless-stopped
     working_dir: /app
     environment:
-      - LLM_MODEL=${LLM_MODEL:-gpt-4o}
-      - LLM_API_BASE=${LLM_API_BASE:-}
-      - LLM_MAX_TOKENS=${LLM_MAX_TOKENS:-4096}
-      - LLM_TEMPERATURE=${LLM_TEMPERATURE:-0.1}
-      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - LLM_MODEL=deepseek-r1-distill-qwen-14b
+      - LLM_API_BASE=https://litellm-prod.apps.maas.redhatworkshops.io
+      - LLM_MAX_TOKENS=4096
+      - LLM_TEMPERATURE=0.1
+      - OPENAI_API_KEY=sk-rE-VLBSFoB2SeFt6ZvJ51g
       - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
       - AZURE_API_KEY=${AZURE_API_KEY:-}
       - AZURE_API_BASE=${AZURE_API_BASE:-}
@@ -59,6 +59,9 @@ services:
       - PYTHONUNBUFFERED=1
       - DECKS_DIR=/app/decks
       - SKILLS_ROOT=/app/skills
+      - PLANNING_USE_LLM=true
+      - PLANNING_COMPREHENSION=true
+      - PLANNING_LLM_TIMEOUT=90
     ports:
       - "8200:8080"
     volumes:
@@ -71,7 +74,7 @@ services:
     command: >
       bash -c "apt-get update -qq && apt-get install -y -qq curl &&
                pip install --quiet -r /app/requirements.txt &&
-               uvicorn api.app:app --host 0.0.0.0 --port 8080 --reload"
+               uvicorn agent.api:app --host 0.0.0.0 --port 8080 --reload"
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
       interval: 15s

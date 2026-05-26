@@ -3,12 +3,14 @@
 from __future__ import annotations
 
 import asyncio
+import dataclasses
 import json
 import logging
 import os
 import re
 import sys
 import time
+from dataclasses import dataclass
 from pathlib import Path
 from urllib.parse import quote
 from typing import Annotated, Any, Sequence
@@ -31,9 +33,11 @@ from agent.deck_types import (  # noqa: E402
 )
 from agent.llm import create_llm  # noqa: E402
 from agent.prompts import (  # noqa: E402
+    COMPREHENSION_PROMPT,
     CONTENT_WRITER_PROMPT,
     GEO_CONTEXT_PROMPT,
     OUTLINE_PLANNER_PROMPT,
+    TEMPLATE_FIDELITY_INSTRUCTION,
     VALIDATOR_PROMPT,
     WEB_RESEARCH_PROMPT,
 )
@@ -64,6 +68,18 @@ def _append_lists(left: list | None, right: list | None) -> list:
     return (left or []) + (right or [])
 
 
+@dataclass
+class ComprehensionResult:
+    deck_mode: str
+    customer: str
+    audience: str
+    geo_context: str
+    document_ref: str
+    summary: str
+    themes_status: str
+    gaps: list[str]
+
+
 class DeckState(TypedDict):
     messages: Annotated[Sequence[BaseMessage], add_messages]
     topic: str
@@ -74,6 +90,9 @@ class DeckState(TypedDict):
     language: str
     include_web_research: bool
     source_documents: list[str]
+    uploaded_files_description: str
+    intent_summary: dict | None
+    deck_mode: str
     research_context: Annotated[dict, _merge_dicts]
     outline: list[dict]
     slide_specs: list[dict]
@@ -101,6 +120,21 @@ def _parse_json_block(text: str) -> Any:
     return json.loads(text)
 
 
+def _normalize_outline_slides(slides: list[dict]) -> list[dict]:
+    """Ensure slide_index/order and preserve enriched fields from LLM output."""
+    normalized: list[dict] = []
+    for i, slide in enumerate(slides, start=1):
+        entry = dict(slide)
+        if "slide_index" not in entry and "order" in entry:
+            entry["slide_index"] = entry["order"]
+        elif "slide_index" not in entry:
+            entry["slide_index"] = i
+        if "order" not in entry:
+            entry["order"] = entry["slide_index"]
+        normalized.append(entry)
+    return normalized
+
+
 def _slugify(text: str, max_len: int = 40) -> str:
     slug = re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")
     return slug[:max_len] or "deck"
@@ -109,6 +143,11 @@ def _slugify(text: str, max_len: int = 40) -> str:
 log = logging.getLogger("ppt.agent")
 
 _PLANNING_USE_LLM = os.environ.get("PLANNING_USE_LLM", "").lower() in ("1", "true", "yes")
+_PLANNING_COMPREHENSION = os.environ.get("PLANNING_COMPREHENSION", "true").lower() not in (
+    "0",
+    "false",
+    "no",
+)
 _PLANNING_LLM_TIMEOUT_S = float(os.environ.get("PLANNING_LLM_TIMEOUT", "45"))
 
 
@@ -395,6 +434,69 @@ def _make_workflow_nodes(llm):
             "research_context": {"documents": {"content": combined, "file_count": len(docs)}},
         }
 
+    async def comprehension_node(state: DeckState, config: RunnableConfig):
+        if not _PLANNING_COMPREHENSION:
+            return {}
+
+        topic = state.get("topic", "")
+        geo = state.get("geo") or ""
+        customer = state.get("customer") or ""
+        deck_type = state.get("deck_type", "competitive")
+        uploaded_files_description = state.get("uploaded_files_description") or ""
+
+        research = state.get("research_context", {})
+        docs = research.get("documents", {})
+        doc_excerpt = (docs.get("content") or "")[:2000]
+
+        await _progress(config, "comprehension", "🧠 Summarising user intent before planning...")
+
+        prompt_text = COMPREHENSION_PROMPT.format(
+            topic=topic,
+            customer=customer,
+            geo=geo,
+            deck_type=deck_type,
+            uploaded_files_description=uploaded_files_description or "(none)",
+            doc_excerpt=doc_excerpt or "(none)",
+        )
+
+        try:
+            response = await llm.ainvoke(
+                [SystemMessage(content=prompt_text)],
+                config,
+            )
+            parsed = _parse_json_block(_message_content(response.content))
+            if not isinstance(parsed, dict):
+                raise ValueError("comprehension response must be a JSON object")
+
+            result = ComprehensionResult(
+                deck_mode=str(parsed.get("deck_mode") or "fresh"),
+                customer=str(parsed.get("customer") or customer),
+                audience=str(parsed.get("audience") or ""),
+                geo_context=str(parsed.get("geo_context") or ""),
+                document_ref=str(parsed.get("document_ref") or "no documents"),
+                summary=str(parsed.get("summary") or ""),
+                themes_status="to_be_extracted",
+                gaps=list(parsed.get("gaps") or []),
+            )
+            intent_dict = dataclasses.asdict(result)
+            await _emit(config, "comprehension", intent_dict)
+            await _progress(
+                config,
+                "comprehension",
+                f"🧠 Intent understood ({result.deck_mode})",
+                detail=result.summary[:120],
+            )
+            update: dict[str, Any] = {
+                "intent_summary": intent_dict,
+                "deck_mode": result.deck_mode,
+            }
+            if result.customer and not state.get("customer"):
+                update["customer"] = result.customer
+            return update
+        except Exception as exc:
+            log.warning("comprehension_node failed: %s", exc)
+            return {"intent_summary": None}
+
     async def outline_planner(state: DeckState, config: RunnableConfig):
         deck_type = state.get("deck_type", "competitive")
         spec = get_deck_type(deck_type)
@@ -430,22 +532,28 @@ def _make_workflow_nodes(llm):
             )
 
         if _PLANNING_USE_LLM:
-            docs = research.get("documents", {})
-            doc_summary = ""
-            if docs and docs.get("content"):
-                doc_summary = f"\nSource document excerpt:\n{docs['content'][:3000]}\n"
-            geo_line = f"Geography: {geo}"
-            if customer:
-                geo_line += f" | Customer: {customer}"
-            user_prompt = (
-                f"Topic: {state.get('topic')}\n"
-                f"Deck type: {deck_type} ({spec.slide_count_min}-{spec.slide_count_max} slides)\n"
-                f"Language: {language}\n"
-                f"{geo_line}\n\n"
-                f"Base outline:\n{json.dumps(outline, indent=2)}\n"
-                f"{doc_summary}\n"
-                "Return the final outline as a JSON array. Add a short 'purpose' per slide. "
-                "Keep elements and order as-is."
+            docs = research.get("documents", {}) or {}
+            doc_excerpt = (docs.get("content") or "")[:3000]
+            geo_raw = research.get("geo", "")
+            if isinstance(geo_raw, dict):
+                geo_context = geo_raw.get("content") or json.dumps(geo_raw, default=str)
+            else:
+                geo_context = str(geo_raw) if geo_raw else ""
+            skills_raw = research.get("skills", "")
+            if isinstance(skills_raw, dict):
+                skills_context = (skills_raw.get("summary") or "")[:1000]
+            else:
+                skills_context = str(skills_raw)[:1000] if skills_raw else ""
+            prompt = OUTLINE_PLANNER_PROMPT.format(
+                topic=state.get("topic", ""),
+                customer=state.get("customer", "") or customer,
+                geo=state.get("geo", "") or geo,
+                deck_type=state.get("deck_type", "competitive") or deck_type,
+                language=language,
+                base_outline_json=json.dumps(outline, indent=2),
+                doc_excerpt=doc_excerpt,
+                geo_context=geo_context,
+                skills_context=skills_context,
             )
             await _progress(
                 config,
@@ -457,10 +565,7 @@ def _make_workflow_nodes(llm):
             try:
                 response = await asyncio.wait_for(
                     llm.ainvoke(
-                        [
-                            SystemMessage(content=OUTLINE_PLANNER_PROMPT),
-                            HumanMessage(content=user_prompt),
-                        ],
+                        [HumanMessage(content=prompt)],
                         config,
                     ),
                     timeout=_PLANNING_LLM_TIMEOUT_S,
@@ -468,7 +573,7 @@ def _make_workflow_nodes(llm):
                 elapsed = round(time.perf_counter() - t0, 1)
                 parsed = _parse_json_block(_message_content(response.content))
                 if isinstance(parsed, list) and len(parsed) > 0:
-                    outline = parsed
+                    outline = _normalize_outline_slides(parsed)
                     await _progress(
                         config,
                         "outline_planner",
@@ -505,6 +610,9 @@ def _make_workflow_nodes(llm):
 
     async def content_writer(state: DeckState, config: RunnableConfig):
         template_id = state.get("template_id") or DEFAULT_TEMPLATE_ID
+        deck_mode = state.get("deck_mode") or ""
+        if not deck_mode and str(template_id).startswith("upload-"):
+            deck_mode = "baseline"
         outline = state.get("outline") or default_outline(state.get("deck_type", "competitive"))
         research = state.get("research_context", {})
         feedback = state.get("validation_feedback") or ""
@@ -514,6 +622,10 @@ def _make_workflow_nodes(llm):
         research_text = json.dumps(research, indent=2, default=str)[:10000]
         slide_specs: list[dict] = []
         progress_events: list[dict] = []
+
+        system_prompt = CONTENT_WRITER_PROMPT
+        if deck_mode == "baseline" or str(template_id).startswith("upload-"):
+            system_prompt = f"{TEMPLATE_FIDELITY_INSTRUCTION}\n\n{CONTENT_WRITER_PROMPT}"
 
         await _progress(
             config,
@@ -555,7 +667,7 @@ def _make_workflow_nodes(llm):
 
             try:
                 response = await llm.ainvoke(
-                    [SystemMessage(content=CONTENT_WRITER_PROMPT), HumanMessage(content=user_prompt)],
+                    [SystemMessage(content=system_prompt), HumanMessage(content=user_prompt)],
                     config,
                 )
             except Exception as llm_exc:
@@ -740,6 +852,7 @@ def _make_workflow_nodes(llm):
         "geo_context_node_llm": geo_context_node_llm,
         "web_research_node": web_research_node,
         "document_reader_node": document_reader_node,
+        "comprehension_node": comprehension_node,
         "outline_planner": outline_planner,
         "content_writer": content_writer,
         "deck_builder_node": deck_builder_node,
@@ -803,6 +916,7 @@ def create_planning_graph(llm=None):
     workflow.add_node("geo_context", nodes["geo_context_node"])
     workflow.add_node("web_research", nodes["web_research_node"])
     workflow.add_node("document_reader", nodes["document_reader_node"])
+    workflow.add_node("comprehension_node", nodes["comprehension_node"])
     workflow.add_node("outline_planner", nodes["outline_planner"])
 
     workflow.add_conditional_edges(
@@ -813,7 +927,8 @@ def create_planning_graph(llm=None):
     workflow.add_edge("skills_context", "outline_planner")
     workflow.add_edge("geo_context", "outline_planner")
     workflow.add_edge("web_research", "outline_planner")
-    workflow.add_edge("document_reader", "outline_planner")
+    workflow.add_edge("document_reader", "comprehension_node")
+    workflow.add_edge("comprehension_node", "outline_planner")
     workflow.add_edge("outline_planner", END)
 
     return workflow.compile()
@@ -920,6 +1035,7 @@ def build_initial_state(
     language: str = "en",
     include_web_research: bool = False,
     source_documents: list[str] | None = None,
+    uploaded_files_description: str = "",
 ) -> DeckState:
     return DeckState(
         messages=[],
@@ -931,6 +1047,9 @@ def build_initial_state(
         language=language,
         include_web_research=include_web_research,
         source_documents=source_documents or [],
+        uploaded_files_description=uploaded_files_description,
+        intent_summary=None,
+        deck_mode="",
         research_context={},
         outline=[],
         slide_specs=[],

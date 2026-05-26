@@ -177,6 +177,10 @@ class GenerateRequest(BaseModel):
     template_id: str = Field(default=DEFAULT_TEMPLATE_ID, description="Skills template ID")
     include_web_research: bool = Field(default=False, description="Opt-in web research")
     source_documents: list[str] = Field(default_factory=list)
+    uploaded_files_description: str = Field(
+        default="",
+        description="Human-readable summary of uploaded files and their roles",
+    )
 
 
 class ApproveRequest(BaseModel):
@@ -202,6 +206,7 @@ def _build_request_state(req: GenerateRequest, language: str) -> dict:
         language=language,
         include_web_research=req.include_web_research,
         source_documents=req.source_documents,
+        uploaded_files_description=req.uploaded_files_description,
     )
 
 

@@ -1,22 +1,70 @@
-/** Mock SSE response for POST /api/v1/generate */
-function mockGenerateSSE(slideCount = 3) {
+/** Mock SSE for planning phase (comprehension + outline) */
+function mockPlanningSSE(opts: {
+  jobId?: string;
+  slideCount?: number;
+  deckMode?: 'baseline' | 'localise' | 'fresh';
+  gaps?: string[];
+  templateFilename?: string;
+} = {}) {
+  const {
+    jobId = 'job-plan-1',
+    slideCount = 6,
+    deckMode = 'fresh',
+    gaps = [],
+    templateFilename,
+  } = opts;
+
+  const outline = Array.from({ length: slideCount }, (_, i) => ({
+    slide_index: i + 1,
+    element: `slide-${i + 1}`,
+    purpose: `Purpose for slide ${i + 1}`,
+  }));
+
+  const comprehension: Record<string, unknown> = {
+    deck_mode: deckMode,
+    summary: 'I understand you want a sovereign cloud presentation for the target account.',
+    geo_context: 'Germany',
+    document_ref: 'none',
+    audience: 'CTO',
+    gaps,
+  };
+  if (templateFilename) comprehension.template_filename = templateFilename;
+
+  return [
+    'event: progress',
+    'data: {"status":"Analysing your request..."}',
+    '',
+    'event: comprehension',
+    `data: ${JSON.stringify(comprehension)}`,
+    '',
+    'event: outline_ready',
+    `data: ${JSON.stringify({ job_id: jobId, outline })}`,
+    '',
+    'event: completed',
+    'data: {"status":"outline_ready"}',
+    '',
+  ].join('\n');
+}
+
+/** Mock SSE for approve/build phase */
+function mockApproveSSE(slideCount = 3) {
   const lines: string[] = [
     'event: progress',
-    'data: {"status":"Starting deck generation..."}',
+    'data: {"status":"Building slides..."}',
     '',
   ];
 
-  for (let i = 0; i < slideCount; i++) {
+  for (let i = 1; i <= slideCount; i++) {
     lines.push(
       'event: slide_spec',
-      `data: {"slide_index":${i},"title":"Slide ${i + 1}"}`,
+      `data: {"slide_index":${i},"title":"Slide ${i}"}`,
       '',
     );
   }
 
   lines.push(
     'event: deck_ready',
-    'data: {"path":"/tmp/sovereignty-deck.pptx","slides":' + slideCount + ',"size_kb":512}',
+    'data: {"path":"/tmp/sovereignty-deck.pptx","download_url":"/api/v1/download?path=%2Ftmp%2Fsovereignty-deck.pptx","filename":"sovereignty-deck.pptx","size_kb":512}',
     '',
     'event: completed',
     'data: {"status":"completed"}',
@@ -39,15 +87,51 @@ function goToAIToolkit() {
   cy.contains('h1', 'AI Content Toolkit').should('be.visible');
 }
 
-function interceptGenerateMock(slideCount = 3, delayMs = 0) {
+function visitPresentationTab() {
+  cy.visit('/ai-toolkit');
+  cy.get('[data-testid="composer-input"]').should('be.visible');
+}
+
+function interceptUploadMock(uploadId = 'upload-1', paths = ['/uploads/ref.pdf']) {
+  cy.intercept('POST', '/api/v1/upload', {
+    statusCode: 200,
+    body: { upload_id: uploadId, paths },
+  }).as('uploadFile');
+}
+
+function interceptPlanningMock(opts: Parameters<typeof mockPlanningSSE>[0] = {}) {
   cy.intercept('POST', '/api/v1/generate', (req) => {
+    req.reply({
+      statusCode: 200,
+      headers: { 'content-type': 'text/event-stream', 'cache-control': 'no-cache' },
+      body: mockPlanningSSE(opts),
+    });
+  }).as('generatePlan');
+}
+
+function interceptApproveMock(slideCount = 3, delayMs = 0) {
+  cy.intercept('POST', '/api/v1/generate/*/approve', (req) => {
     req.reply({
       delay: delayMs,
       statusCode: 200,
       headers: { 'content-type': 'text/event-stream', 'cache-control': 'no-cache' },
-      body: mockGenerateSSE(slideCount),
+      body: mockApproveSSE(slideCount),
     });
-  }).as('generateDeck');
+  }).as('approveBuild');
+}
+
+function interceptRefineMock(newSlideCount = 4) {
+  cy.intercept('POST', '/api/v1/generate/*/refine', {
+    statusCode: 200,
+    body: {
+      message: 'Updated outline',
+      outline: Array.from({ length: newSlideCount }, (_, i) => ({
+        slide_index: i + 1,
+        element: `slide-${i + 1}`,
+        purpose: `Refined slide ${i + 1}`,
+      })),
+    },
+  }).as('refineOutline');
 }
 
 describe('AI Toolkit', () => {
@@ -64,74 +148,228 @@ describe('AI Toolkit', () => {
       cy.contains('[role="tab"]', 'Draft Creator').should('exist');
     });
 
-    it('default tab is Presentation Generator', () => {
+    it('default tab is Presentation Generator with chat composer', () => {
       cy.visit('/ai-toolkit');
       cy.contains('[role="tab"]', 'Presentation Generator')
         .should('have.attr', 'data-state', 'active');
-      cy.contains('label', 'Prompt Context').should('be.visible');
+      cy.get('[data-testid="composer-input"]').should('be.visible');
+      cy.get('[data-testid="preview-panel"]').should('be.visible');
+      cy.get('[data-testid="preview-state-idle"]').should('be.visible');
     });
   });
 
-  describe('B. Presentation Generator', () => {
+  describe('B. PresentationChat — ChatComposer', () => {
+    beforeEach(() => visitPresentationTab());
+
+    it('shows Plan my presentation send label when idle', () => {
+      cy.get('[data-testid="composer-send"]').should('contain.text', 'Plan my presentation');
+    });
+
+    it('Enter sends message, Shift+Enter inserts newline', () => {
+      interceptPlanningMock();
+      cy.get('[data-testid="composer-input"]').type('Germany sovereign cloud deck{enter}');
+      cy.wait('@generatePlan');
+      cy.get('[data-testid="composer-input"]').should('contain.value', '');
+    });
+
+    it('disables composer during planning', () => {
+      interceptPlanningMock();
+      cy.intercept('POST', '/api/v1/generate', (req) => {
+        req.reply({
+          delay: 2000,
+          statusCode: 200,
+          headers: { 'content-type': 'text/event-stream' },
+          body: mockPlanningSSE(),
+        });
+      }).as('slowPlan');
+      cy.get('[data-testid="composer-input"]').type('Germany market overview{enter}');
+      cy.get('[data-testid="composer-input"]').should('have.class', 'pointer-events-none');
+      cy.get('[data-testid="preview-state-planning"]').should('be.visible');
+    });
+
+    it('New presentation button resets state', () => {
+      interceptPlanningMock();
+      cy.get('[data-testid="composer-input"]').type('France telecom pitch{enter}');
+      cy.wait('@generatePlan');
+      cy.get('[data-testid="outline-card"]').should('be.visible');
+      cy.get('[data-testid="new-presentation-btn"]').click();
+      cy.get('[data-testid="outline-card"]').should('not.exist');
+      cy.get('[data-testid="preview-state-idle"]').should('be.visible');
+      cy.get('[data-testid="composer-send"]').should('contain.text', 'Plan my presentation');
+    });
+  });
+
+  describe('C. PresentationChat — ClarificationCard', () => {
+    beforeEach(() => visitPresentationTab());
+
+    it('shows clarification when geo cannot be inferred', () => {
+      cy.get('[data-testid="composer-input"]').type('Build a deck about OpenShift sovereignty{enter}');
+      cy.get('[data-testid="clarification-card"]').should('be.visible');
+      cy.get('[data-testid="clarification-card"]').should(
+        'contain.text',
+        'Before I start planning, which region is this presentation for?',
+      );
+      cy.get('[data-testid="preview-state-clarifying"]').should('be.visible');
+    });
+
+    it('region chip triggers generate with inferred geo', () => {
+      interceptPlanningMock();
+      cy.get('[data-testid="composer-input"]').type('OpenShift overview{enter}');
+      cy.get('[data-testid="region-chip-de"]').click();
+      cy.wait('@generatePlan').its('request.body').then((body) => {
+        expect(body.geo).to.eq('de');
+      });
+      cy.get('[data-testid="clarification-card"]').should('not.exist');
+    });
+
+    it('skips clarification when geo is in message', () => {
+      interceptPlanningMock();
+      cy.get('[data-testid="composer-input"]').type('German market OpenShift deck{enter}');
+      cy.wait('@generatePlan');
+      cy.get('[data-testid="clarification-card"]').should('not.exist');
+    });
+  });
+
+  describe('D. PresentationChat — FileRoleChip', () => {
     beforeEach(() => {
-      interceptGenerateMock();
-      cy.visit('/ai-toolkit');
+      interceptUploadMock('tpl-1', ['/uploads/theme.pptx']);
+      visitPresentationTab();
     });
 
-    it('form elements render', () => {
-      cy.contains('label', 'Prompt Context').should('be.visible');
-      cy.contains('label', 'Region Target').should('be.visible');
-      cy.contains('label', 'Industry').should('be.visible');
-      cy.contains('label', 'Slide Count').should('be.visible');
-      cy.contains('label', 'Audience').should('be.visible');
-      cy.contains('button', 'Generate Presentation').should('be.visible');
+    it('uploads PDF as reference chip without dropdown', () => {
+      cy.intercept('POST', '/api/v1/upload', {
+        statusCode: 200,
+        body: { upload_id: 'ref-1', paths: ['/uploads/brief.pdf'] },
+      }).as('uploadPdf');
+
+      cy.get('[data-testid="composer-attach"]').click();
+      cy.get('input[type="file"]').selectFile(
+        {
+          contents: Cypress.Buffer.from('pdf'),
+          fileName: 'brief.pdf',
+          mimeType: 'application/pdf',
+        },
+        { force: true },
+      );
+      cy.wait('@uploadPdf');
+      cy.get('[data-testid="file-chip-brief.pdf"]').should('be.visible');
+      cy.get('[data-testid="file-chip-brief.pdf"]').should('contain.text', 'Reference');
+      cy.get('[data-testid="file-role-toggle-brief.pdf"]').should('not.exist');
     });
 
-    it('Generate button triggers loading state', () => {
-      interceptGenerateMock(3, 2000);
-      cy.contains('button', 'Generate Presentation').click();
-      cy.contains('Generating...').should('be.visible');
-      cy.get('.animate-spin').should('exist');
-    });
-
-    it('SSE progress messages display', () => {
-      cy.contains('button', 'Generate Presentation').click();
-      cy.wait('@generateDeck');
-      cy.get('[data-testid="sse-progress"]', { timeout: 10000 })
-        .should('be.visible')
-        .and('contain.text', 'Starting deck generation');
-      cy.contains('Slide 3/10 generated').should('be.visible');
-    });
-
-    it('deck ready shows download', () => {
-      cy.contains('button', 'Generate Presentation').click();
-      cy.wait('@generateDeck');
-      cy.get('[data-testid="deck-download"]', { timeout: 10000 })
-        .should('be.visible')
-        .and('contain.text', 'Download Deck');
-    });
-
-    it('preview card renders after generation', () => {
-      cy.contains('button', 'Generate Presentation').click();
-      cy.wait('@generateDeck');
-      cy.contains('h3', 'Preview', { timeout: 10000 }).should('be.visible');
-      cy.contains('.font-black', 'RH').should('be.visible');
-      cy.contains('Deutsche Telekom').should('be.visible');
-      cy.contains('Digital Sovereignty with OpenShift').should('be.visible');
-      cy.contains('EMEA Sales Enablement').should('be.visible');
-    });
-
-    it('language selector changes output', () => {
-      cy.contains('Output:').parent().find('button').first().click({ force: true });
-      cy.contains('[role="option"]', 'Deutsch').click({ force: true });
-      cy.contains('button', 'Generate Presentation').click();
-      cy.wait('@generateDeck');
-      cy.contains('Digitale Souveränität mit OpenShift', { timeout: 10000 }).should('be.visible');
-      cy.contains('EMEA Vertriebsbefähigung').should('be.visible');
+    it('uploads PPTX with theme toggle and remove', () => {
+      cy.get('[data-testid="composer-attach"]').click();
+      cy.get('input[type="file"]').selectFile(
+        {
+          contents: Cypress.Buffer.from('pptx'),
+          fileName: 'theme.pptx',
+          mimeType: 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+        },
+        { force: true },
+      );
+      cy.wait('@uploadFile');
+      cy.get('[data-testid="file-chip-theme.pptx"]').should('be.visible');
+      cy.get('[data-testid="file-role-toggle-theme.pptx"]').should('contain.text', 'Theme template');
+      cy.get('[data-testid="file-chip-theme.pptx"]').find('button').contains('✕').click();
+      cy.get('[data-testid="file-chip-theme.pptx"]').should('not.exist');
     });
   });
 
-  describe('C. Asset Customizer', () => {
+  describe('E. PresentationChat — Comprehension & Outline cards', () => {
+    beforeEach(() => {
+      interceptPlanningMock({ slideCount: 7, deckMode: 'baseline', templateFilename: 'corp-theme.pptx', gaps: ['timeline', 'budget'] });
+      visitPresentationTab();
+      cy.get('[data-testid="composer-input"]').type('Germany sovereign cloud{enter}');
+      cy.wait('@generatePlan');
+    });
+
+    it('shows comprehension card with template locked pill in baseline mode', () => {
+      cy.get('[data-testid="comprehension-card"]').should('be.visible');
+      cy.get('[data-testid="template-locked-pill"]').should('contain.text', 'corp-theme.pptx');
+      cy.get('[data-testid="gaps-nudge"]').should('contain.text', 'timeline');
+      cy.get('[data-testid="gaps-nudge"]').find('button').contains('✕').click();
+      cy.get('[data-testid="gaps-nudge"]').should('not.exist');
+    });
+
+    it('shows outline card with collapse and action chips', () => {
+      cy.get('[data-testid="outline-card"]').should('be.visible');
+      cy.get('[data-testid="outline-slide-0"]').should('be.visible');
+      cy.get('[data-testid="outline-slide-4"]').should('be.visible');
+      cy.get('[data-testid="outline-slide-5"]').should('not.exist');
+      cy.contains('Show all 7 slides').click();
+      cy.get('[data-testid="outline-slide-5"]').should('be.visible');
+      cy.get('[data-testid="chip-generate"]').should('be.visible');
+      cy.get('[data-testid="chip-fewer"]').should('be.visible');
+      cy.get('[data-testid="chip-add-section"]').should('be.visible');
+    });
+
+    it('reviewing state shows outline in preview panel', () => {
+      cy.get('[data-testid="preview-state-reviewing"]').should('be.visible');
+      cy.contains('Reviewing outline').should('be.visible');
+      cy.get('[data-testid="composer-send"]').should('contain.text', 'Refine');
+    });
+  });
+
+  describe('F. PresentationChat — Generate flow', () => {
+    beforeEach(() => {
+      interceptPlanningMock({ slideCount: 3 });
+      visitPresentationTab();
+      cy.get('[data-testid="composer-input"]').type('Spain market deck{enter}');
+      cy.wait('@generatePlan');
+    });
+
+    it('Generate slides chip triggers approve SSE', () => {
+      interceptApproveMock(3, 1500);
+      cy.get('[data-testid="chip-generate"]').click();
+      cy.get('[data-testid="preview-state-building"]').should('be.visible');
+      cy.wait('@approveBuild');
+      cy.get('[data-testid="slide-card-0"]', { timeout: 10000 }).should('be.visible');
+      cy.get('[data-testid="preview-state-done"]', { timeout: 10000 }).should('be.visible');
+      cy.get('[data-testid="deck-download"]').should('contain.text', 'Download PPTX');
+    });
+
+    it('generate intent in composer triggers approve', () => {
+      interceptApproveMock(3);
+      cy.get('[data-testid="composer-input"]').type('looks good{enter}');
+      cy.wait('@approveBuild');
+      cy.get('[data-testid="preview-state-done"]', { timeout: 10000 }).should('be.visible');
+    });
+
+    it('Fewer slides chip calls refine API', () => {
+      interceptRefineMock(2);
+      cy.get('[data-testid="chip-fewer"]').click();
+      cy.wait('@refineOutline').its('request.body').then((body) => {
+        expect(body.instruction).to.contain('shorter');
+      });
+    });
+
+    it('Add a section chip focuses composer', () => {
+      cy.get('[data-testid="chip-add-section"]').click();
+      cy.get('[data-testid="composer-input"]').should('be.focused');
+    });
+  });
+
+  describe('G. PresentationChat — Geo inference', () => {
+    beforeEach(() => visitPresentationTab());
+
+    const cases: Array<{ text: string; geo: string }> = [
+      { text: 'French market overview', geo: 'fr' },
+      { text: 'UK telecom briefing', geo: 'uk' },
+      { text: 'APAC expansion plan', geo: 'apac' },
+    ];
+
+    cases.forEach(({ text, geo }) => {
+      it(`infers geo "${geo}" from "${text}"`, () => {
+        interceptPlanningMock();
+        cy.get('[data-testid="composer-input"]').type(`${text}{enter}`);
+        cy.wait('@generatePlan').its('request.body').then((body) => {
+          expect(body.geo).to.eq(geo);
+        });
+      });
+    });
+  });
+
+  describe('H. Asset Customizer', () => {
     beforeEach(() => {
       cy.visit('/ai-toolkit');
       cy.contains('[role="tab"]', 'Asset Customizer').click();
@@ -155,7 +393,7 @@ describe('AI Toolkit', () => {
     });
   });
 
-  describe('D. Draft Creator', () => {
+  describe('I. Draft Creator', () => {
     beforeEach(() => {
       cy.visit('/ai-toolkit');
       cy.contains('[role="tab"]', 'Draft Creator').click();
@@ -187,7 +425,7 @@ describe('AI Toolkit', () => {
     });
   });
 
-  describe('E. Language Selector', () => {
+  describe('J. Language Selector', () => {
     beforeEach(() => {
       cy.visit('/ai-toolkit');
     });

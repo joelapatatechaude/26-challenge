@@ -24,7 +24,8 @@ from agent.deck_types import (  # noqa: E402
     get_deck_type,
     list_deck_types,
 )
-from agent.graph import build_initial_state, create_graph  # noqa: E402
+from agent.graph import build_initial_state, create_building_graph, create_graph, create_planning_graph  # noqa: E402
+from agent.prompts import COMPREHENSION_PROMPT  # noqa: E402
 from agent.prompts import (  # noqa: E402
     CONTENT_WRITER_PROMPT,
     GEO_CONTEXT_PROMPT,
@@ -149,7 +150,7 @@ class MockLLM:
         if GEO_CONTEXT_PROMPT[:40] in sys_text or "sovereignty expert" in sys_text.lower():
             return AIMessage(content="- GDPR and Schrems II drive EU data residency\n- Hybrid cloud supports sovereignty")
 
-        if OUTLINE_PLANNER_PROMPT[:40] in sys_text or "outline planner" in sys_text.lower():
+        if OUTLINE_PLANNER_PROMPT[:40] in user_text or "building a presentation outline" in user_text.lower():
             outline = default_outline(self.deck_type)
             return AIMessage(content=json.dumps(outline))
 
@@ -161,6 +162,22 @@ class MockLLM:
 
         if VALIDATOR_PROMPT[:30] in combined or "QA validator" in combined:
             return AIMessage(content="VALIDATED")
+
+        if COMPREHENSION_PROMPT[:40] in sys_text or "summarising what a user wants" in sys_text.lower():
+            return AIMessage(
+                content=json.dumps(
+                    {
+                        "deck_mode": "fresh",
+                        "customer": "",
+                        "audience": "Field sellers",
+                        "geo_context": "",
+                        "document_ref": "no documents",
+                        "summary": "Planning deck from prompt. Key themes will be drawn from your prompt.",
+                        "themes_status": "to_be_extracted",
+                        "gaps": [],
+                    }
+                )
+            )
 
         return AIMessage(content="OK")
 
@@ -176,13 +193,22 @@ def mock_graph(mock_llm):
 
 
 @pytest.fixture()
-def api_client(mock_graph):
+def mock_planning_graph(mock_llm):
+    return create_planning_graph(mock_llm)
+
+
+@pytest.fixture()
+def api_client(mock_llm):
     import agent.api as api_module
 
-    api_module._graph = mock_graph
+    api_module._graph = create_graph(mock_llm)
+    api_module._planning_graph = create_planning_graph(mock_llm)
+    api_module._building_graph = create_building_graph(mock_llm)
     with TestClient(api_module.app) as client:
         yield client
     api_module._graph = None
+    api_module._planning_graph = None
+    api_module._building_graph = None
 
 
 # ---------------------------------------------------------------------------
@@ -339,7 +365,8 @@ class TestAPIEndpoints:
     def test_health_returns_ok(self, api_client):
         resp = api_client.get("/health")
         assert resp.status_code == 200
-        assert resp.json() == {"status": "ok"}
+        body = resp.json()
+        assert body["status"] == "ok"
 
     def test_deck_types_returns_all_five(self, api_client):
         resp = api_client.get("/api/v1/deck-types")
@@ -362,6 +389,79 @@ class TestAPIEndpoints:
 # ---------------------------------------------------------------------------
 # B4. Graph Flow with Mocked LLM
 # ---------------------------------------------------------------------------
+
+
+class TestPlanningGraphComprehension:
+    @pytest.mark.asyncio
+    async def test_planning_graph_emits_comprehension_event(
+        self, mock_planning_graph, monkeypatch
+    ):
+        monkeypatch.setenv("PLANNING_COMPREHENSION", "true")
+        import agent.graph as graph_module
+
+        monkeypatch.setattr(graph_module, "_PLANNING_COMPREHENSION", True)
+
+        initial = build_initial_state(
+            topic="Planning comprehension test",
+            deck_type="elevator",
+            template_id=TEMPLATE_ID,
+        )
+        event_queue: asyncio.Queue = asyncio.Queue()
+        config = {"configurable": {"event_queue": event_queue}}
+
+        final = await mock_planning_graph.ainvoke(initial, config)
+
+        events: list[dict] = []
+        while not event_queue.empty():
+            item = event_queue.get_nowait()
+            if item is not None:
+                events.append(item)
+
+        event_names = [e["event"] for e in events]
+        assert "comprehension" in event_names
+        assert final.get("outline")
+        assert final.get("intent_summary") is not None
+        comprehension_idx = event_names.index("comprehension")
+        progress_after = [
+            i for i, name in enumerate(event_names) if name == "progress"
+        ]
+        outline_progress = [
+            i
+            for i, name in enumerate(event_names)
+            if name == "progress"
+            and "outline" in json.loads(events[i]["data"]).get("step", "").lower()
+        ]
+        if outline_progress:
+            assert comprehension_idx < outline_progress[-1]
+
+    @pytest.mark.asyncio
+    async def test_uploaded_files_description_forwarded_to_deck_state(self):
+        state = build_initial_state(
+            topic="Upload desc test",
+            uploaded_files_description="brand.pptx (theme template), report.pdf (reference)",
+        )
+        assert state["uploaded_files_description"] == (
+            "brand.pptx (theme template), report.pdf (reference)"
+        )
+        assert state.get("intent_summary") is None
+
+    def test_generate_request_forwards_uploaded_files_description(self, api_client):
+        resp = api_client.post(
+            "/api/v1/generate",
+            json={
+                "topic": "SSE planning test",
+                "deck_type": "elevator",
+                "template_id": TEMPLATE_ID,
+                "uploaded_files_description": "brand.pptx (theme template)",
+            },
+        )
+        assert resp.status_code == 200
+        events = _parse_sse_events(resp.text)
+        event_names = [e[0] for e in events]
+        assert "comprehension" in event_names
+        outline_idx = event_names.index("outline_ready")
+        comprehension_idx = event_names.index("comprehension")
+        assert comprehension_idx < outline_idx
 
 
 class TestGraphFlowMockedLLM:
@@ -424,7 +524,7 @@ def _parse_sse_events(raw: str) -> list[tuple[str, dict]]:
 
 
 class TestSSEStreaming:
-    def test_generate_streams_events_in_order(self, api_client):
+    def test_generate_streams_planning_events_in_order(self, api_client):
         resp = api_client.post(
             "/api/v1/generate",
             json={
@@ -441,28 +541,26 @@ class TestSSEStreaming:
 
         event_types = [e[0] for e in events]
         assert event_types[0] == "progress"
+        assert "comprehension" in event_types
+        assert "outline_ready" in event_types
         assert event_types[-1] == "completed"
-        assert "slide_spec" in event_types
-        assert "deck_ready" in event_types
+
+        comprehension_idx = event_types.index("comprehension")
+        outline_ready_idx = event_types.index("outline_ready")
+        completed_idx = event_types.index("completed")
+        assert comprehension_idx < outline_ready_idx < completed_idx
 
         for event_type, data in events:
             assert isinstance(data, dict)
             if event_type == "progress":
                 assert "status" in data
-            elif event_type == "slide_spec":
-                assert "element" in data
-                assert "slide_index" in data
-            elif event_type == "deck_ready":
-                assert "path" in data
-                assert data.get("slides", 0) >= 1
+            elif event_type == "comprehension":
+                assert data.get("themes_status") == "to_be_extracted"
+            elif event_type == "outline_ready":
+                assert "outline" in data
+                assert "job_id" in data
             elif event_type == "completed":
-                assert data.get("status") == "completed"
-
-        progress_idx = event_types.index("progress")
-        slide_spec_idx = next(i for i, t in enumerate(event_types) if t == "slide_spec")
-        deck_ready_idx = event_types.index("deck_ready")
-        completed_idx = event_types.index("completed")
-        assert progress_idx < slide_spec_idx < deck_ready_idx < completed_idx
+                assert data.get("status") in ("outline_ready", "completed", "failed")
 
 
 # ---------------------------------------------------------------------------

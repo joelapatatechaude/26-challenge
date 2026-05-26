@@ -28,17 +28,57 @@ Focus on:
 Summarise findings as bullet points suitable for slide content. Flag anything uncertain.
 Only include information that strengthens the Red Hat narrative — avoid unsourced claims."""
 
-OUTLINE_PLANNER_PROMPT = """You are the deck outline planner for Red Hat field enablement presentations.
+OUTLINE_PLANNER_PROMPT = """You are a senior Red Hat solutions architect building a presentation outline.
 
-Given research context and a deck type, produce an ordered list of slide elements.
-Each slide entry must include: slide_index (int), element (string), purpose (string), optional section_marker (string).
+Given the base outline structure, topic, context, and any document extracts, produce an ENRICHED outline where every slide has:
+- A specific, meaningful **title** (not the element type name)
+- A **summary**: 1-2 sentences describing what this slide communicates
+- **key_points**: 3-5 bullet points of the actual content/talking points for this slide
+- **speaker_notes**: 1-2 sentences of guidance for the presenter
+
+Return ONLY valid JSON — a list of slide objects matching this schema:
+[
+  {{
+    "order": <int>,
+    "element": "<element type from base outline>",
+    "title": "<specific slide title>",
+    "purpose": "<original purpose from base outline>",
+    "summary": "<what this slide communicates in 1-2 sentences>",
+    "key_points": ["<point 1>", "<point 2>", "<point 3>"],
+    "speaker_notes": "<presenter guidance>"
+  }},
+  ...
+]
 
 Rules:
-- Follow the deck type's element sequence and slide count range exactly unless research strongly suggests a minor adjustment.
-- Always start with title-block and end with closing.
-- Use dividers between major sections in longer decks.
-- section_marker values should be short labels like "01", "02", "Context", "Solutions".
-- Output ONLY a JSON array — no markdown fences or commentary."""
+- Keep the same slide count and element types as the base outline — do NOT add or remove slides
+- Make titles and content SPECIFIC to the topic, customer, geo, and competitor (if any)
+- For competitive decks: include actual Red Hat differentiators vs the named competitor
+- For the title slide: title = customer name + deck topic (e.g. "Deutsche Telekom: OpenShift vs VMware")
+- For agenda slides: key_points = the actual agenda items (slide titles of the content slides)
+- For divider slides: title = the section name, key_points = [] (no bullets needed)
+- Localise content for the target region when geo is set (regulatory context, local market factors)
+- If document content is provided, ground the key_points in that content where relevant
+- Output language: {language}
+
+Topic: {topic}
+Customer: {customer}
+Region / geo: {geo}
+Deck type: {deck_type}
+Output language: {language}
+
+Base outline (preserve element types and order):
+{base_outline_json}
+
+Document extract (may be empty):
+{doc_excerpt}
+
+Geo / competitive context:
+{geo_context}
+
+Skills / template context:
+{skills_context}
+"""
 
 CONTENT_WRITER_PROMPT = """You are the slide content writer for Red Hat field enablement decks.
 
@@ -54,6 +94,50 @@ Output valid JSON matching the element's fields schema exactly:
 - Apply sovereignty and customer context from research where relevant
 
 Output ONLY the JSON object — no markdown fences or commentary."""
+
+COMPREHENSION_PROMPT = """You are summarising what a user wants before building a presentation.
+Respond with valid JSON only — no markdown, no extra text.
+
+Return this exact structure:
+{{
+  "deck_mode": "<baseline|localise|fresh>",
+  "customer": "<customer name or empty string>",
+  "audience": "<inferred audience role>",
+  "geo_context": "<one phrase, e.g. 'German market — DSGVO / BSI C5' or empty>",
+  "document_ref": "<e.g. 'uploaded PPTX baseline deck' or 'uploaded PDF reference' or 'no documents'>",
+  "summary": "<one or two natural sentences — see rules below>",
+  "themes_status": "to_be_extracted",
+  "gaps": ["<missing info that would sharpen the deck>"]
+}}
+
+Rules for deck_mode:
+- "baseline": a PPTX template was provided to use as a visual starting point
+- "localise": goal is to adapt content for a local market/regulations, reference docs provided
+- "fresh": starting from scratch, prompt only
+
+Rules for summary:
+- NEVER invent or list themes. Always end with one of:
+  "Key themes will be extracted from the presentation." (baseline)
+  "Key themes will be extracted from the document." (localise)
+  "Key themes will be drawn from your prompt." (fresh)
+- If deck_mode is "baseline", add a second sentence: "The template's assets, layouts, and brand styles will be applied strictly throughout the deck."
+- Include geo/legal context when geo is set (e.g. "Germany — DSGVO", "France — RGPD / SecNumCloud")
+- Keep to two sentences maximum.
+
+Input:
+User request: {topic}
+Customer: {customer}
+Region: {geo}
+Deck type: {deck_type}
+Uploaded files: {uploaded_files_description}
+Document extract (first 2000 chars): {doc_excerpt}
+"""
+
+TEMPLATE_FIDELITY_INSTRUCTION = (
+    "IMPORTANT: You MUST use only the slide layouts, placeholder names, fonts, "
+    "and colour tokens defined in the provided template. "
+    "Do not introduce any styles, colours, images, or assets not present in the template."
+)
 
 VALIDATOR_PROMPT = """You are the QA validator for Red Hat presentation slide specs.
 
