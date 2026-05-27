@@ -6,6 +6,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
+import redhatLogo from "@/assets/redhat-logo.svg";
 import {
   LogIn, Globe, Shield, ArrowRight, X, Package,
   CheckCircle2, Languages,
@@ -351,9 +352,7 @@ export default function LoginPage() {
       {/* ── Top Bar ── */}
       <div className="absolute top-0 w-full h-14 flex items-center justify-between px-8 z-20 pointer-events-none">
         <div className="flex items-center gap-3">
-          <div className="w-7 h-7 bg-[var(--rh-red)] flex items-center justify-center rounded-sm">
-            <span className="text-[10px] font-black leading-none uppercase tracking-tighter text-white">RH</span>
-          </div>
+          <img src={redhatLogo} alt="Red Hat" className="w-7 h-7" />
           <span className="font-bold tracking-tight uppercase text-[#6A6E73] text-sm">
             <span className="text-[#151515]">Red Hat</span> · Digital Sovereignty Field Enablement
           </span>
@@ -675,9 +674,7 @@ export default function LoginPage() {
       } ${selectedData ? "pointer-events-none -translate-x-40 opacity-60" : ""}`}>
         <div className="w-full max-w-sm bg-white/97 backdrop-blur-sm p-7 rounded-xl border border-[#E0E0E0] shadow-xl">
           <div className="flex flex-col items-center mb-6">
-            <div className="w-11 h-11 bg-[var(--rh-red)] flex items-center justify-center rounded-md mb-3">
-              <span className="text-lg font-black leading-none uppercase text-white">RH</span>
-            </div>
+            <img src={redhatLogo} alt="Red Hat" className="w-11 h-11 mb-3" />
             <h2 className="text-xl font-bold text-[#151515]">Field Enablement</h2>
             <p className="text-[#6A6E73] text-xs mt-1.5 text-center">
               Geo-personalized sovereign cloud sales intelligence
@@ -710,7 +707,7 @@ export default function LoginPage() {
             </div>
 
             <Button type="submit" disabled={loggingIn}
-              className="w-full bg-[var(--rh-red)] hover:bg-[var(--rh-red-dark)] text-white h-11 text-sm font-bold tracking-wide mt-1">
+              className="w-full bg-[var(--rh-red)] hover:bg-[var(--rh-red-dark)] text-on-dark h-11 text-sm font-bold tracking-wide mt-1">
               {loggingIn ? (
                 <span className="flex items-center gap-2">
                   <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />

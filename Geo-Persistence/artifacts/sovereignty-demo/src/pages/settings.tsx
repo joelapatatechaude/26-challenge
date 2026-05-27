@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { AppLayout } from "@/components/AppLayout";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -18,7 +17,6 @@ export default function Settings() {
   };
 
   return (
-    <AppLayout activePath="/settings">
       <div className="p-6 max-w-4xl mx-auto">
 
         <div className="flex items-center justify-between mb-6">
@@ -28,7 +26,7 @@ export default function Settings() {
           </div>
           <Button
             onClick={handleSave}
-            className="bg-[var(--rh-red)] hover:bg-[var(--rh-red-dark)] text-white px-6 h-10"
+            className="bg-[var(--rh-red)] hover:bg-[var(--rh-red-dark)] text-on-dark px-6 h-10"
           >
             {saved
               ? <span className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4" /> Saved</span>
@@ -227,7 +225,6 @@ export default function Settings() {
           </TabsContent>
         </Tabs>
       </div>
-    </AppLayout>
   );
 }
 

@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from "react";
-import { AppLayout } from "@/components/AppLayout";
 import {
   FileText, Link2, Upload, Plus, Search, Sparkles, BookOpen,
   MessageSquare, ChevronRight, Mic, ListChecks, AlignLeft,
@@ -180,7 +179,6 @@ export default function ContentLibrary() {
   ));
 
   return (
-    <AppLayout activePath="/content">
       <div className="flex h-full overflow-hidden">
 
         {/* LEFT — Sources */}
@@ -257,7 +255,7 @@ export default function ContentLibrary() {
                 <button className="flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-[var(--rh-charcoal-light)] text-[11px] text-[var(--rh-silver)] hover:text-white transition-all">
                   <Globe className="w-3 h-3" /> EMEA Focus <ChevronDown className="w-3 h-3" />
                 </button>
-                <button onClick={() => { sessionIdRef.current = null; setMessages([{ role: "ai", text: "New session started. I'm ready to help with your EMEA territory questions." }]); }} className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[var(--rh-red)] text-white text-[11px] font-medium hover:bg-[var(--rh-red-dark)] transition-all">
+                <button onClick={() => { sessionIdRef.current = null; setMessages([{ role: "ai", text: "New session started. I'm ready to help with your EMEA territory questions." }]); }} className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[var(--rh-red)] text-on-dark text-[11px] font-medium hover:bg-[var(--rh-red-dark)] transition-all">
                   <RefreshCcw className="w-3 h-3" /> New Session
                 </button>
               </div>
@@ -291,7 +289,7 @@ export default function ContentLibrary() {
                     <Sparkles className="w-3.5 h-3.5 text-white" />
                   </div>
                 )}
-                <div className={`max-w-[80%] rounded-xl px-4 py-3 text-sm leading-relaxed ${m.role === "user" ? "bg-[var(--rh-red)] text-white rounded-tr-sm" : "bg-[var(--rh-charcoal-mid)] text-[var(--rh-silver)] rounded-tl-sm border border-[var(--rh-charcoal-light)]"}`}>
+                <div className={`max-w-[80%] rounded-xl px-4 py-3 text-sm leading-relaxed ${m.role === "user" ? "bg-[var(--rh-red)] text-on-dark rounded-tr-sm" : "bg-[var(--rh-charcoal-mid)] text-[var(--rh-silver)] rounded-tl-sm border border-[var(--rh-charcoal-light)]"}`}>
                   {renderText(m.text)}
                 </div>
                 {m.role === "user" && (
@@ -320,7 +318,7 @@ export default function ContentLibrary() {
               <textarea value={input} onChange={e => setInput(e.target.value)} onKeyDown={e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); handleSend(); } }} placeholder={`Ask about ${selectedSources.size} selected sources…`} rows={2} className="flex-1 bg-transparent text-sm text-white placeholder:text-[var(--rh-silver)]/40 resize-none focus:outline-none" />
               <div className="flex items-center gap-1.5 shrink-0">
                 <button className="p-1.5 rounded-md text-[var(--rh-silver)] hover:text-white hover:bg-[var(--rh-charcoal-light)] transition-all"><Mic className="w-4 h-4" /></button>
-                <button onClick={() => handleSend()} disabled={!input.trim()} className="p-1.5 rounded-md bg-[var(--rh-red)] text-white hover:bg-[var(--rh-red-dark)] disabled:opacity-30 disabled:cursor-not-allowed transition-all"><Send className="w-4 h-4" /></button>
+                <button onClick={() => handleSend()} disabled={!input.trim()} className="p-1.5 rounded-md bg-[var(--rh-red)] text-on-dark hover:bg-[var(--rh-red-dark)] disabled:opacity-30 disabled:cursor-not-allowed transition-all"><Send className="w-4 h-4" /></button>
               </div>
             </div>
             <p className="text-[10px] text-[var(--rh-silver)]/40 mt-1.5 text-center">AI responses are grounded in your selected sources · Requires SME review before field use</p>
@@ -367,7 +365,7 @@ export default function ContentLibrary() {
                 <h3 className="font-semibold text-sm text-white mb-3">{activeNote.title}</h3>
                 <div className="text-[11px] text-[var(--rh-silver)] leading-relaxed">{renderText(activeNote.body)}</div>
                 <div className="mt-4 pt-3 border-t border-[var(--rh-charcoal-light)] flex flex-col gap-1.5">
-                  <button className="w-full flex items-center justify-center gap-1.5 py-2 rounded-md bg-[var(--rh-red)] text-white text-[10px] font-medium hover:bg-[var(--rh-red-dark)] transition-all">
+                  <button className="w-full flex items-center justify-center gap-1.5 py-2 rounded-md bg-[var(--rh-red)] text-on-dark text-[10px] font-medium hover:bg-[var(--rh-red-dark)] transition-all">
                     <Send className="w-3 h-3" /> Send to AI Toolkit
                   </button>
                   <button className="w-full flex items-center justify-center gap-1.5 py-2 rounded-md border border-[var(--rh-charcoal-light)] text-[var(--rh-silver)] text-[10px] hover:text-white hover:border-white/20 transition-all">
@@ -407,6 +405,5 @@ export default function ContentLibrary() {
           </div>
         </aside>
       </div>
-    </AppLayout>
   );
 }

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { AppLayout } from "@/components/AppLayout";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -181,8 +180,8 @@ function MultiSelect({ options, selected, onChange }: {
           onClick={() => toggle(opt)}
           className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-all ${
             selected.includes(opt)
-              ? "bg-[var(--rh-red)] border-[var(--rh-red)] text-white"
-              : "bg-[var(--rh-charcoal)] border-[var(--rh-charcoal-light)] text-[var(--rh-silver)] hover:border-[var(--rh-silver)] hover:text-white"
+              ? "bg-[var(--rh-red)] border-[var(--rh-red)] text-on-dark"
+              : "bg-[var(--rh-charcoal)] border-[var(--rh-charcoal-light)] text-[var(--rh-silver)] hover:border-[var(--rh-silver)]"
           }`}
         >
           {selected.includes(opt) && <span className="mr-1">✓</span>}
@@ -258,7 +257,6 @@ export default function DealQualifier() {
   const reset = () => { setStep(1); setForm({ ...EMPTY }); setReport(null); };
 
   return (
-    <AppLayout activePath="/deal-qualifier">
       <div className="p-6 h-full overflow-y-auto">
         <div className="max-w-3xl mx-auto">
 
@@ -330,13 +328,13 @@ export default function DealQualifier() {
                       }}
                       className={`flex items-center justify-between px-4 py-3 rounded-lg border text-left transition-all ${
                         form.regulations.includes(reg.id)
-                          ? "bg-[var(--rh-red)]/10 border-[var(--rh-red)] text-white"
+                          ? "bg-[var(--rh-red)]/10 border-[var(--rh-red)] text-[var(--rh-red)]"
                           : "bg-[var(--rh-charcoal)] border-[var(--rh-charcoal-light)] text-[var(--rh-silver)] hover:border-[var(--rh-silver)]"
                       }`}
                     >
                       <span className="text-sm font-medium">{reg.label}</span>
                       <span className={`text-[10px] px-1.5 py-0.5 rounded font-mono ${
-                        form.regulations.includes(reg.id) ? "bg-[var(--rh-red)]/30 text-white" : "bg-[var(--rh-charcoal-light)] text-[var(--rh-silver)]"
+                        form.regulations.includes(reg.id) ? "bg-[var(--rh-red)]/30 text-[var(--rh-red)]" : "bg-[var(--rh-charcoal-light)] text-[var(--rh-silver)]"
                       }`}>{reg.region}</span>
                     </button>
                   ))}
@@ -361,7 +359,7 @@ export default function DealQualifier() {
                       }}
                       className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg border text-left text-sm transition-all ${
                         form.painPoints.includes(pt)
-                          ? "bg-[var(--rh-red)]/10 border-[var(--rh-red)] text-white"
+                          ? "bg-[var(--rh-red)]/10 border-[var(--rh-red)] text-[var(--rh-red)]"
                           : "bg-[var(--rh-charcoal)] border-[var(--rh-charcoal-light)] text-[var(--rh-silver)] hover:border-[var(--rh-silver)]"
                       }`}
                     >
@@ -387,7 +385,7 @@ export default function DealQualifier() {
               <Button variant="outline" onClick={back} disabled={step === 1} className="border-[var(--rh-charcoal-light)] text-[var(--rh-silver)] hover:text-white">
                 <ChevronLeft className="w-4 h-4 mr-1" /> Back
               </Button>
-              <Button onClick={next} disabled={!canNext(step)} className="bg-[var(--rh-red)] hover:bg-[var(--rh-red-dark)] text-white px-8">
+              <Button onClick={next} disabled={!canNext(step)} className="bg-[var(--rh-red)] hover:bg-[var(--rh-red-dark)] text-on-dark px-8">
                 {step === 4 ? (
                   <span className="flex items-center gap-2"><Sparkles className="w-4 h-4" /> Generate Report</span>
                 ) : (
@@ -399,7 +397,6 @@ export default function DealQualifier() {
 
         </div>
       </div>
-    </AppLayout>
   );
 }
 

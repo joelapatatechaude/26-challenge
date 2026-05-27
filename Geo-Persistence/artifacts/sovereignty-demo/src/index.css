@@ -252,8 +252,8 @@ html.light {
 
   /* RH brand surface overrides — main content goes light */
   --rh-charcoal:       #FFFFFF;
-  --rh-charcoal-mid:   #F5F5F5;
-  --rh-charcoal-light: #E0E0E0;
+  --rh-charcoal-mid:   #F7F7F8;
+  --rh-charcoal-light: #EBEBEB;
   --rh-silver:         #6A6E73;
 
   /* Sidebar stays dark in light mode */
@@ -280,13 +280,12 @@ html.light {
   --shadow-2xl: 0 24px 64px rgba(0,0,0,0.12);
 }
 
-/* ── Light-mode text inversions ──────────────────────────────────── */
-/* Hard-coded text-white in main content should flip dark */
-html.light main .text-white          { color: #151515 !important; }
-html.light .placeholder\:text-white  { --tw-placeholder-opacity: 1; }
+/* ── Light-mode fixes ────────────────────────────────────────────── */
+/* Flip text-white to dark on light backgrounds */
+html.light .text-white { color: #151515 !important; }
 
-/* Sidebar keeps white text in light mode — no inversion */
-html.light aside .text-white         { color: #FFFFFF !important; }
+/* Utility: force white text on colored backgrounds (immune to light override) */
+.text-on-dark { color: #FFFFFF !important; }
 
 /* Input placeholder text */
 html.light input::placeholder,
