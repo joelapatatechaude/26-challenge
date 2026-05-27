@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { AppLayout } from "@/components/AppLayout";
+import redhatLogo from "@/assets/redhat-logo.svg";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -85,7 +85,6 @@ export default function AIToolkit() {
   const [outputLang] = useState<OutputLang>("en");
 
   return (
-    <AppLayout activePath="/ai-toolkit">
       <div className="h-full flex flex-col w-full overflow-hidden">
         <div className="flex items-center gap-3 px-4 py-2 border-b border-[var(--rh-charcoal-light)] shrink-0">
           <h1 className="text-base font-bold">AI Content Toolkit</h1>
@@ -96,7 +95,6 @@ export default function AIToolkit() {
           <PresentationChat outputLang={outputLang} />
         </div>
       </div>
-    </AppLayout>
   );
 }
 
@@ -196,7 +194,7 @@ function DeckPreviewPanel({
 }) {
   if (previewUrl) {
     return (
-      <div className="flex-1 flex flex-col min-h-0 rounded-md overflow-hidden border border-[var(--rh-charcoal-light)] bg-[#151515]">
+      <div className="flex-1 flex flex-col min-h-0 rounded-md overflow-hidden border border-[var(--rh-charcoal-light)] bg-[var(--rh-charcoal-mid)]">
         <iframe
           src={previewUrl}
           title={filename ? `Preview: ${filename}` : "Presentation preview"}
@@ -215,7 +213,7 @@ function DeckPreviewPanel({
   return (
     <div className="flex-1 bg-white rounded-md shadow-lg flex flex-col p-8 text-black overflow-hidden min-h-[320px]">
       <div className="mb-auto">
-        <div className="w-12 h-12 bg-[var(--rh-red)] text-white font-black flex items-center justify-center text-xl mb-12">RH</div>
+        <img src={redhatLogo} alt="Red Hat" className="w-12 h-12 mb-12" />
       </div>
       <div>
         <h2 className="text-3xl font-bold mb-4 tracking-tight whitespace-pre-line">{fallbackTitle}</h2>
@@ -637,7 +635,7 @@ function ClarificationCard({
             type="button"
             data-testid={`region-chip-${r.code}`}
             onClick={() => onRegionSelect(r.code, selectedLang ?? r.language)}
-            className="text-xs px-3 py-1.5 rounded-full border border-[var(--rh-charcoal-light)] bg-[var(--rh-charcoal)] hover:border-[var(--rh-blue)]/50 text-white"
+            className="text-xs px-3 py-1.5 rounded-full border border-[var(--rh-charcoal-light)] bg-[var(--rh-charcoal)] hover:border-[var(--rh-blue)]/50 text-[var(--rh-silver)]"
           >
             {r.flag} {r.label}
           </button>
@@ -762,7 +760,7 @@ function DeckTypeMenu({ onSelect }: { onSelect: (entry: DeckTypeEntry) => void }
               onClick={() => handleSelect(entry)}
               className="text-left rounded-lg border border-[var(--rh-charcoal-light)] bg-[var(--rh-charcoal)] px-3 py-2.5 hover:border-[var(--rh-blue)]/50 hover:bg-[var(--rh-charcoal-mid)] transition-colors"
             >
-              <p className="text-sm font-medium text-white">
+              <p className="text-sm font-medium text-[var(--foreground)]">
                 {entry.icon} {entry.label}
               </p>
               <p className="text-[11px] text-[var(--rh-silver)] mt-1 line-clamp-2">{entry.description}</p>
@@ -784,7 +782,7 @@ function DeckTypeQuickStartChips({ onSelect }: { onSelect: (entry: DeckTypeEntry
             type="button"
             data-testid={`deck-type-chip-${entry.id}`}
             onClick={() => onSelect(entry)}
-            className="shrink-0 text-xs px-3 py-1.5 rounded-full border border-[var(--rh-charcoal-light)] bg-[var(--rh-charcoal)] text-white hover:border-[var(--rh-blue)]/50 whitespace-nowrap"
+            className="shrink-0 text-xs px-3 py-1.5 rounded-full border border-[var(--rh-charcoal-light)] bg-[var(--rh-charcoal)] text-[var(--rh-silver)] hover:border-[var(--rh-blue)]/50 whitespace-nowrap"
           >
             {entry.icon} {entry.label}
           </button>

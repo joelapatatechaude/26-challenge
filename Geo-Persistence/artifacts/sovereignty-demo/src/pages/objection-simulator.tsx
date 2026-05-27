@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from "react";
-import { AppLayout } from "@/components/AppLayout";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -295,7 +294,6 @@ export default function ObjectionSimulator() {
     s >= 4 ? "bg-[var(--rh-green)]/10 border-[var(--rh-green)]/30" : s >= 3 ? "bg-yellow-500/10 border-yellow-500/30" : s >= 2 ? "bg-[var(--rh-orange)]/10 border-[var(--rh-orange)]/30" : "bg-[var(--rh-red)]/10 border-[var(--rh-red)]/30";
 
   return (
-    <AppLayout activePath="/objection-simulator">
       <div className="p-6 h-full overflow-y-auto">
         <div className="max-w-3xl mx-auto">
 
@@ -388,7 +386,7 @@ export default function ObjectionSimulator() {
               {/* Response input */}
               <div className="flex gap-3">
                 <div className="w-9 h-9 rounded-full bg-[var(--rh-red)] flex items-center justify-center shrink-0 mt-1">
-                  <User className="w-4 h-4 text-white" />
+                  <User className="w-4 h-4 text-on-dark" />
                 </div>
                 <div className="flex-1 space-y-2">
                   <Textarea
@@ -541,6 +539,5 @@ export default function ObjectionSimulator() {
 
         </div>
       </div>
-    </AppLayout>
   );
 }

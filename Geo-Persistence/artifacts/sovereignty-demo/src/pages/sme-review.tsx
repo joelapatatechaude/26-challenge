@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { AppLayout } from "@/components/AppLayout";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -49,7 +48,6 @@ export default function SMEReview() {
   const pending = data.filter(d => d.status === "Pending Review" || d.status === "Under Review").length;
 
   return (
-    <AppLayout activePath="/sme-review">
       <div className="p-6 h-full flex flex-col max-w-7xl mx-auto">
 
         <div className="flex items-center justify-between mb-4">
@@ -167,7 +165,7 @@ export default function SMEReview() {
                           <div className="w-[280px] flex flex-col gap-3">
                             <h4 className="font-bold text-sm uppercase tracking-wider text-[var(--rh-silver)]">Review Actions</h4>
                             <Button
-                              className="w-full bg-[var(--rh-green)] hover:bg-green-700 text-white justify-start"
+                              className="w-full bg-[var(--rh-green)] hover:bg-green-700 text-on-dark justify-start"
                               onClick={() => updateStatus(item.id, "Approved")}
                             >
                               <Check className="w-4 h-4 mr-2" /> Approve for Field
@@ -197,6 +195,5 @@ export default function SMEReview() {
           </Table>
         </div>
       </div>
-    </AppLayout>
   );
 }

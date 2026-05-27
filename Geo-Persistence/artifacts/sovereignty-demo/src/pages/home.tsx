@@ -1,4 +1,3 @@
-import { AppLayout } from "@/components/AppLayout";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -9,7 +8,6 @@ export default function HomeDashboard() {
   const [, setLocation] = useLocation();
 
   return (
-    <AppLayout activePath="/home">
       <div className="p-6 h-full flex flex-col gap-6 max-w-7xl mx-auto">
 
         <div className="flex-1 flex gap-6 min-h-0">
@@ -69,13 +67,13 @@ export default function HomeDashboard() {
 
           {/* RIGHT: Quick Actions & Alerts */}
           <div className="flex-1 flex flex-col gap-6">
-            <Card className="bg-[var(--rh-charcoal-mid)] border-[var(--rh-charcoal-light)] text-white">
+            <Card className="bg-[var(--rh-charcoal-mid)] border-[var(--rh-charcoal-light)]">
               <CardHeader className="pb-3">
                 <CardTitle className="text-lg">Quick Actions</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
                 <Button
-                  className="w-full justify-start gap-3 bg-[var(--rh-red)] hover:bg-[var(--rh-red-dark)] text-white h-11"
+                  className="w-full justify-start gap-3 bg-[var(--rh-red)] hover:bg-[var(--rh-red-dark)] text-on-dark h-11"
                   onClick={() => setLocation("/ai-toolkit")}
                 >
                   <Plus className="w-4 h-4" />
@@ -83,7 +81,7 @@ export default function HomeDashboard() {
                 </Button>
                 <Button
                   variant="outline"
-                  className="w-full justify-start gap-3 border-[var(--rh-charcoal-light)] hover:bg-[var(--rh-charcoal-light)] hover:text-white h-11 text-[var(--rh-silver)] bg-[var(--rh-charcoal)]"
+                  className="w-full justify-start gap-3 border-[var(--rh-charcoal-light)] hover:bg-[var(--rh-charcoal-mid)] h-11 text-[var(--rh-silver)] bg-[var(--rh-charcoal)]"
                   onClick={() => setLocation("/ai-toolkit")}
                 >
                   <Edit className="w-4 h-4" />
@@ -91,7 +89,7 @@ export default function HomeDashboard() {
                 </Button>
                 <Button
                   variant="outline"
-                  className="w-full justify-start gap-3 border-[var(--rh-charcoal-light)] hover:bg-[var(--rh-charcoal-light)] hover:text-white h-11 text-[var(--rh-silver)] bg-[var(--rh-charcoal)]"
+                  className="w-full justify-start gap-3 border-[var(--rh-charcoal-light)] hover:bg-[var(--rh-charcoal-mid)] h-11 text-[var(--rh-silver)] bg-[var(--rh-charcoal)]"
                   onClick={() => setLocation("/content")}
                 >
                   <FileText className="w-4 h-4" />
@@ -100,10 +98,10 @@ export default function HomeDashboard() {
               </CardContent>
             </Card>
 
-            <Card className="bg-[var(--rh-charcoal-mid)] border-[var(--rh-charcoal-light)] text-white flex-1">
+            <Card className="bg-[var(--rh-charcoal-mid)] border-[var(--rh-charcoal-light)] flex-1">
               <CardHeader className="pb-3 flex flex-row items-center justify-between">
                 <CardTitle className="text-lg">Governance</CardTitle>
-                <Badge className="bg-[var(--rh-orange)] text-white border-0">3 Pending</Badge>
+                <Badge className="bg-[var(--rh-orange)] text-on-dark border-0">3 Pending</Badge>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
@@ -136,7 +134,6 @@ export default function HomeDashboard() {
           <Stat label="Content Generated This Month" value="47" icon={FileText} />
         </div>
       </div>
-    </AppLayout>
   );
 }
 
