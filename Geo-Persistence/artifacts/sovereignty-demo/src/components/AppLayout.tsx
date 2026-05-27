@@ -17,19 +17,19 @@ export function AppLayout({ children, activePath }: AppLayoutProps) {
 
   return (
     <div className="flex h-screen w-full font-sans bg-[var(--rh-charcoal)] overflow-hidden">
-      {/* ── Sidebar ── */}
-      <aside className="w-64 flex flex-col border-r border-[var(--rh-charcoal-light)] bg-[var(--rh-charcoal-mid)] shrink-0">
-        <div className="h-16 flex items-center px-4 border-b border-[var(--rh-charcoal-light)]">
-          <Link href="/home" className="flex items-center gap-2 font-bold text-lg">
+      {/* ── Sidebar (always dark) ── */}
+      <aside className="w-64 flex flex-col border-r border-[var(--rh-sidebar-border)] bg-[var(--rh-sidebar-bg)] shrink-0">
+        <div className="h-16 flex items-center px-4 border-b border-[var(--rh-sidebar-border)]">
+          <Link href="/home" className="flex items-center gap-2 font-bold text-lg text-[var(--rh-sidebar-text-active)]">
             <div className="w-6 h-6 bg-[var(--rh-red)] flex items-center justify-center rounded-sm">
               <span className="text-[10px] font-black leading-none uppercase text-white">RH</span>
             </div>
-            <span>Sales Enablement</span>
+            <span>Sales Hub</span>
           </Link>
         </div>
 
         <div className="p-4 py-6 flex-1 flex flex-col gap-2 overflow-y-auto">
-          <div className="text-[10px] font-bold text-[var(--rh-silver)] uppercase tracking-wider mb-2 px-3">
+          <div className="text-[10px] font-bold text-[var(--rh-sidebar-text)] uppercase tracking-wider mb-2 px-3">
             Navigation
           </div>
           <NavItem href="/home"               icon={LayoutDashboard} label="Home"               active={activePath === "/home"} />
@@ -38,18 +38,18 @@ export function AppLayout({ children, activePath }: AppLayoutProps) {
           <NavItem href="/content"             icon={Search}          label="Content Library"    active={activePath === "/content"} />
           <NavItem href="/sme-review"          icon={CheckCircle}     label="SME Review"         active={activePath === "/sme-review"} badge="3" />
 
-          <div className="text-[10px] font-bold text-[var(--rh-silver)] uppercase tracking-wider mt-4 mb-2 px-3">
+          <div className="text-[10px] font-bold text-[var(--rh-sidebar-text)] uppercase tracking-wider mt-4 mb-2 px-3">
             Training
           </div>
           <NavItem href="/deal-qualifier"      icon={Target}          label="Deal Qualifier"     active={activePath === "/deal-qualifier"} />
           <NavItem href="/objection-simulator" icon={Swords}          label="Objection Sim"      active={activePath === "/objection-simulator"} />
         </div>
 
-        <div className="p-4 border-t border-[var(--rh-charcoal-light)] flex flex-col gap-2">
+        <div className="p-4 border-t border-[var(--rh-sidebar-border)] flex flex-col gap-2">
           <NavItem href="/settings" icon={Settings} label="Settings" active={activePath === "/settings"} />
           <button
             onClick={() => navigate("/login")}
-            className="flex items-center gap-3 px-3 py-2 w-full rounded-md text-[var(--rh-silver)] hover:bg-[var(--rh-charcoal-light)] hover:text-white transition-colors text-sm"
+            className="flex items-center gap-3 px-3 py-2 w-full rounded-md text-[var(--rh-sidebar-text)] hover:bg-[var(--rh-sidebar-surface)] hover:text-[var(--rh-sidebar-text-active)] transition-colors text-sm"
           >
             <LogOut className="w-4 h-4" />
             <span>Logout</span>
@@ -123,8 +123,8 @@ function NavItem({
       href={href}
       className={`flex items-center justify-between px-3 py-2 w-full rounded-md transition-colors text-sm cursor-pointer ${
         active
-          ? "bg-[var(--rh-charcoal-light)] border-l-4 border-[var(--rh-red)] font-medium"
-          : "text-[var(--rh-silver)] hover:bg-[var(--rh-charcoal-light)] border-l-4 border-transparent"
+          ? "bg-[var(--rh-sidebar-surface)] border-l-4 border-[var(--rh-red)] font-medium text-[var(--rh-sidebar-text-active)]"
+          : "text-[var(--rh-sidebar-text)] hover:bg-[var(--rh-sidebar-surface)] hover:text-[var(--rh-sidebar-text-active)] border-l-4 border-transparent"
       }`}
     >
       <div className="flex items-center gap-3">

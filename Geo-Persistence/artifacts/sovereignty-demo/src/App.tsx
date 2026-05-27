@@ -35,7 +35,7 @@ function Router() {
 
 function App() {
   return (
-    <ThemeProvider attribute="class" defaultTheme="dark" themes={["dark", "light"]}>
+    <ThemeProvider attribute="class" defaultTheme="light" storageKey="rh-theme" themes={["dark", "light"]}>
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
           <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>

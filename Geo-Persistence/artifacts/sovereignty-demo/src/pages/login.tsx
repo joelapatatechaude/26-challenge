@@ -282,24 +282,24 @@ const COUNTRY_DATA: Record<string, CountryData> = {
 /* Countries coloured by urgency */
 const URGENCY_FILL: Record<Urgency, { default: string; hover: string; active: string }> = {
   critical: {
-    default: "rgba(238,0,0,0.20)",
-    hover:   "rgba(238,0,0,0.38)",
-    active:  "rgba(238,0,0,0.50)",
+    default: "rgba(238,0,0,0.15)",
+    hover:   "rgba(238,0,0,0.30)",
+    active:  "rgba(238,0,0,0.40)",
   },
   high: {
-    default: "rgba(236,122,8,0.18)",
-    hover:   "rgba(236,122,8,0.34)",
-    active:  "rgba(236,122,8,0.48)",
+    default: "rgba(236,122,8,0.14)",
+    hover:   "rgba(236,122,8,0.28)",
+    active:  "rgba(236,122,8,0.38)",
   },
   medium: {
-    default: "rgba(0,102,204,0.14)",
-    hover:   "rgba(0,102,204,0.28)",
-    active:  "rgba(0,102,204,0.40)",
+    default: "rgba(0,102,204,0.12)",
+    hover:   "rgba(0,102,204,0.24)",
+    active:  "rgba(0,102,204,0.34)",
   },
   low: {
-    default: "rgba(62,134,53,0.12)",
-    hover:   "rgba(62,134,53,0.24)",
-    active:  "rgba(62,134,53,0.36)",
+    default: "rgba(62,134,53,0.10)",
+    hover:   "rgba(62,134,53,0.22)",
+    active:  "rgba(62,134,53,0.32)",
   },
 };
 
@@ -346,16 +346,16 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="relative w-full h-screen bg-[#0d0d0d] overflow-hidden font-sans text-white select-none">
+    <div className="relative w-full h-screen bg-[#F8F9FA] overflow-hidden font-sans text-[#151515] select-none">
 
       {/* ── Top Bar ── */}
       <div className="absolute top-0 w-full h-14 flex items-center justify-between px-8 z-20 pointer-events-none">
         <div className="flex items-center gap-3">
           <div className="w-7 h-7 bg-[var(--rh-red)] flex items-center justify-center rounded-sm">
-            <span className="text-[10px] font-black leading-none uppercase tracking-tighter">RH</span>
+            <span className="text-[10px] font-black leading-none uppercase tracking-tighter text-white">RH</span>
           </div>
-          <span className="font-bold tracking-tight uppercase text-white/70 text-sm">
-            <span className="text-white">Red Hat</span> · Digital Sovereignty Field Enablement
+          <span className="font-bold tracking-tight uppercase text-[#6A6E73] text-sm">
+            <span className="text-[#151515]">Red Hat</span> · Digital Sovereignty Field Enablement
           </span>
         </div>
         {/* Legend */}
@@ -366,7 +366,7 @@ export default function LoginPage() {
               {URGENCY_LABEL[u]}
             </span>
           ))}
-          <span className="text-white/30 ml-1">Sovereignty Urgency</span>
+          <span className="text-[#6A6E73] ml-1">Sovereignty Urgency</span>
         </div>
       </div>
 
@@ -379,7 +379,7 @@ export default function LoginPage() {
         >
           <defs>
             <pattern id="mapgrid" width="50" height="50" patternUnits="userSpaceOnUse">
-              <path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(255,255,255,0.03)" strokeWidth="0.5" />
+              <path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(0,0,0,0.04)" strokeWidth="0.5" />
             </pattern>
           </defs>
           <rect width="100%" height="100%" fill="url(#mapgrid)" />
@@ -424,19 +424,19 @@ export default function LoginPage() {
                       style={{
                         default: {
                           fill: isSelected
-                            ? (fills?.active ?? "rgba(255,255,255,0.07)")
-                            : (fills?.default ?? "rgba(255,255,255,0.04)"),
+                            ? (fills?.active ?? "#E8E8E8")
+                            : (fills?.default ?? "#EAEAEA"),
                           stroke: isSelected
-                            ? "rgba(255,255,255,0.5)"
-                            : (fills ? "rgba(255,255,255,0.18)" : "rgba(255,255,255,0.08)"),
+                            ? "rgba(0,0,0,0.4)"
+                            : (fills ? "rgba(0,0,0,0.15)" : "rgba(0,0,0,0.08)"),
                           strokeWidth: isSelected ? 0.8 : fills ? 0.5 : 0.3,
                           outline: "none",
                           cursor: data ? "pointer" : "default",
                           transition: "fill 0.15s ease",
                         },
                         hover: {
-                          fill: fills?.hover ?? "rgba(255,255,255,0.10)",
-                          stroke: fills ? "rgba(255,255,255,0.35)" : "rgba(255,255,255,0.15)",
+                          fill: fills?.hover ?? "#E0E0E0",
+                          stroke: fills ? "rgba(0,0,0,0.3)" : "rgba(0,0,0,0.12)",
                           strokeWidth: 0.6,
                           outline: "none",
                           cursor: data ? "pointer" : "default",
@@ -477,7 +477,7 @@ export default function LoginPage() {
                     style={{
                       default: {
                         fill: isSelected ? fills.active : fills.default,
-                        stroke: isSelected ? "rgba(255,255,255,0.5)" : "rgba(255,255,255,0.18)",
+                        stroke: isSelected ? "rgba(0,0,0,0.4)" : "rgba(0,0,0,0.15)",
                         strokeWidth: isSelected ? 0.8 : 0.5,
                         outline: "none",
                         cursor: "pointer",
@@ -485,7 +485,7 @@ export default function LoginPage() {
                       },
                       hover: {
                         fill: fills.hover,
-                        stroke: "rgba(255,255,255,0.35)",
+                        stroke: "rgba(0,0,0,0.3)",
                         strokeWidth: 0.6,
                         outline: "none",
                         cursor: "pointer",
@@ -517,7 +517,7 @@ export default function LoginPage() {
 
         {/* vignette */}
         <div className="absolute inset-0 pointer-events-none"
-          style={{ background: "radial-gradient(ellipse at center, transparent 35%, rgba(13,13,13,0.65) 100%)" }} />
+          style={{ background: "radial-gradient(ellipse at center, transparent 45%, rgba(248,249,250,0.7) 100%)" }} />
       </div>
 
       {/* ── Hover Tooltip ── */}
@@ -526,13 +526,13 @@ export default function LoginPage() {
           className="fixed z-50 pointer-events-none"
           style={{ left: tooltip.x + 14, top: tooltip.y - 10 }}
         >
-          <div className="bg-[#1a1a1a]/95 backdrop-blur border border-white/15 rounded-lg px-3 py-2.5 shadow-xl min-w-[200px] max-w-[260px]">
+          <div className="bg-white/97 backdrop-blur-sm border border-[#E0E0E0] rounded-lg px-3 py-2.5 shadow-lg min-w-[200px] max-w-[260px]">
             {(() => {
               const d = COUNTRY_DATA[tooltip.id];
               return (
                 <>
                   <div className="flex items-center justify-between gap-2 mb-2">
-                    <span className="font-bold text-sm">{d.name}</span>
+                    <span className="font-bold text-sm text-[#151515]">{d.name}</span>
                     <Badge variant="outline" className={`text-[9px] shrink-0 ${URGENCY_BADGE[d.urgency]}`}>
                       {URGENCY_LABEL[d.urgency]}
                     </Badge>
@@ -541,14 +541,14 @@ export default function LoginPage() {
                     {d.regulations.slice(0, 3).map(r => (
                       <div key={r.name} className="flex items-center gap-1.5">
                         <div className="w-1 h-1 rounded-full bg-[var(--rh-red)] shrink-0" />
-                        <span className="text-[11px] text-white/70">{r.name}</span>
+                        <span className="text-[11px] text-[#4A4A4A]">{r.name}</span>
                       </div>
                     ))}
                     {d.regulations.length > 3 && (
-                      <span className="text-[10px] text-white/40">+{d.regulations.length - 3} more</span>
+                      <span className="text-[10px] text-[#6A6E73]">+{d.regulations.length - 3} more</span>
                     )}
                   </div>
-                  <p className="text-[10px] text-white/40">Click for full breakdown</p>
+                  <p className="text-[10px] text-[#6A6E73]">Click for full breakdown</p>
                 </>
               );
             })()}
@@ -559,18 +559,18 @@ export default function LoginPage() {
       {/* ── Country Detail Panel ── */}
       {selectedData && !zoomed && (
         <div className="absolute top-16 right-4 bottom-4 w-80 z-40 flex flex-col">
-          <div className="bg-[#141414]/96 backdrop-blur-md border border-white/10 rounded-xl overflow-hidden flex flex-col h-full shadow-2xl">
+          <div className="bg-white/97 backdrop-blur-sm border border-[#E0E0E0] rounded-xl overflow-hidden flex flex-col h-full shadow-xl">
 
             {/* Panel header */}
-            <div className="px-4 pt-4 pb-3 border-b border-white/10 shrink-0">
+            <div className="px-4 pt-4 pb-3 border-b border-[#E8E8E8] shrink-0">
               <div className="flex items-start justify-between gap-2">
                 <div>
                   <div className="flex items-center gap-2">
-                    <h2 className="font-bold text-base">
+                    <h2 className="font-bold text-base text-[#151515]">
                       {showNative && selectedData.nativeName ? selectedData.nativeName : selectedData.name}
                     </h2>
                     {showNative && selectedData.nativeLang && (
-                      <span className="text-[10px] px-1.5 py-0.5 rounded bg-[var(--rh-blue)]/20 text-[var(--rh-blue)] border border-[var(--rh-blue)]/30 font-medium">
+                      <span className="text-[10px] px-1.5 py-0.5 rounded bg-[var(--rh-blue)]/15 text-[var(--rh-blue)] border border-[var(--rh-blue)]/30 font-medium">
                         {selectedData.nativeLang}
                       </span>
                     )}
@@ -579,19 +579,18 @@ export default function LoginPage() {
                     <Badge variant="outline" className={`text-[10px] ${URGENCY_BADGE[selectedData.urgency]}`}>
                       {URGENCY_LABEL[selectedData.urgency]} Sovereignty Urgency
                     </Badge>
-                    <span className="text-[10px] text-white/40">{selectedData.region}</span>
+                    <span className="text-[10px] text-[#6A6E73]">{selectedData.region}</span>
                   </div>
                 </div>
                 <div className="flex items-center gap-1 shrink-0">
-                  {/* Language toggle — only show when native content is available */}
                   {selectedData.nativeLang && (
                     <button
                       onClick={() => setShowNative(v => !v)}
                       title={showNative ? "Switch to English" : `Switch to ${selectedData.nativeLang}`}
                       className={`flex items-center gap-1 px-2 py-1 rounded text-[10px] font-medium border transition-colors ${
                         showNative
-                          ? "bg-[var(--rh-blue)]/20 border-[var(--rh-blue)]/40 text-[var(--rh-blue)]"
-                          : "bg-white/5 border-white/15 text-white/50 hover:border-white/30"
+                          ? "bg-[var(--rh-blue)]/15 border-[var(--rh-blue)]/40 text-[var(--rh-blue)]"
+                          : "bg-[#F5F5F5] border-[#E0E0E0] text-[#6A6E73] hover:border-[#BDBDBD]"
                       }`}
                     >
                       <Languages className="w-3 h-3" />
@@ -599,13 +598,13 @@ export default function LoginPage() {
                     </button>
                   )}
                   <button onClick={() => { setSelectedCountry(null); setShowNative(false); }}
-                    className="p-1 rounded hover:bg-white/10 transition-colors">
-                    <X className="w-4 h-4 text-white/50" />
+                    className="p-1 rounded hover:bg-[#F5F5F5] transition-colors">
+                    <X className="w-4 h-4 text-[#6A6E73]" />
                   </button>
                 </div>
               </div>
 
-              <p className="text-xs text-white/60 leading-relaxed mt-2.5">
+              <p className="text-xs text-[#4A4A4A] leading-relaxed mt-2.5">
                 {showNative && selectedData.nativeSummary ? selectedData.nativeSummary : selectedData.summary}
               </p>
             </div>
@@ -615,20 +614,20 @@ export default function LoginPage() {
 
               {/* Regulations */}
               <div>
-                <p className="text-[10px] font-bold text-white/40 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                <p className="text-[10px] font-bold text-[#6A6E73] uppercase tracking-wider mb-2 flex items-center gap-1.5">
                   <Shield className="w-3 h-3" />
                   {showNative && selectedData.nativeLang ? `Applicable Regulations · ${selectedData.nativeLang}` : "Applicable Regulations"}
                 </p>
                 <div className="space-y-2">
                   {(showNative && selectedData.nativeRegulations ? selectedData.nativeRegulations : selectedData.regulations).map(r => (
-                    <div key={r.name} className="p-2.5 rounded-lg bg-white/5 border border-white/8">
+                    <div key={r.name} className="p-2.5 rounded-lg bg-[#F8F9FA] border border-[#E8E8E8]">
                       <div className="flex items-start justify-between gap-2">
-                        <span className="text-xs font-semibold leading-snug">{r.name}</span>
+                        <span className="text-xs font-semibold leading-snug text-[#151515]">{r.name}</span>
                         {r.deadline && (
-                          <span className="text-[9px] bg-white/10 px-1.5 py-0.5 rounded font-mono shrink-0">{r.deadline}</span>
+                          <span className="text-[9px] bg-[#E8E8E8] text-[#4A4A4A] px-1.5 py-0.5 rounded font-mono shrink-0">{r.deadline}</span>
                         )}
                       </div>
-                      <p className="text-[11px] text-white/50 mt-0.5">{r.shortDesc}</p>
+                      <p className="text-[11px] text-[#6A6E73] mt-0.5">{r.shortDesc}</p>
                     </div>
                   ))}
                 </div>
@@ -636,12 +635,12 @@ export default function LoginPage() {
 
               {/* RH Products */}
               <div>
-                <p className="text-[10px] font-bold text-white/40 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                <p className="text-[10px] font-bold text-[#6A6E73] uppercase tracking-wider mb-2 flex items-center gap-1.5">
                   <Package className="w-3 h-3" /> Recommended Red Hat Stack
                 </p>
                 <div className="flex flex-wrap gap-1.5">
                   {selectedData.rhProducts.map(p => (
-                    <span key={p} className="text-[10px] px-2 py-1 rounded-full bg-[var(--rh-red)]/15 border border-[var(--rh-red)]/30 text-[var(--rh-red)] font-medium">
+                    <span key={p} className="text-[10px] px-2 py-1 rounded-full bg-[var(--rh-red)]/10 border border-[var(--rh-red)]/25 text-[var(--rh-red)] font-medium">
                       {p}
                     </span>
                   ))}
@@ -651,20 +650,20 @@ export default function LoginPage() {
               {/* Partner */}
               {selectedData.rhPartner && (
                 <div>
-                  <p className="text-[10px] font-bold text-white/40 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                  <p className="text-[10px] font-bold text-[#6A6E73] uppercase tracking-wider mb-2 flex items-center gap-1.5">
                     <Globe className="w-3 h-3" /> Sovereign Cloud Partner
                   </p>
-                  <div className="flex items-center gap-2 p-2.5 rounded-lg bg-[var(--rh-blue)]/10 border border-[var(--rh-blue)]/20">
+                  <div className="flex items-center gap-2 p-2.5 rounded-lg bg-[var(--rh-blue)]/8 border border-[var(--rh-blue)]/20">
                     <CheckCircle2 className="w-3.5 h-3.5 text-[var(--rh-blue)] shrink-0" />
-                    <span className="text-xs text-white/80">{selectedData.rhPartner}</span>
+                    <span className="text-xs text-[#151515]">{selectedData.rhPartner}</span>
                   </div>
                 </div>
               )}
             </div>
 
             {/* Panel footer */}
-            <div className="px-4 pb-4 pt-3 border-t border-white/10 shrink-0">
-              <p className="text-[10px] text-white/30 text-center">Log in to generate a {selectedData.name} deal brief</p>
+            <div className="px-4 pb-4 pt-3 border-t border-[#E8E8E8] shrink-0">
+              <p className="text-[10px] text-[#6A6E73] text-center">Log in to generate a {selectedData.name} deal brief</p>
             </div>
           </div>
         </div>
@@ -674,40 +673,40 @@ export default function LoginPage() {
       <div className={`absolute inset-0 flex items-center justify-center z-30 transition-all duration-700 ${
         zoomed ? "opacity-0 pointer-events-none scale-105 blur-sm" : "opacity-100"
       } ${selectedData ? "pointer-events-none -translate-x-40 opacity-60" : ""}`}>
-        <div className="w-full max-w-sm bg-[#141414]/92 backdrop-blur-md p-7 rounded-xl border border-white/12 shadow-2xl">
+        <div className="w-full max-w-sm bg-white/97 backdrop-blur-sm p-7 rounded-xl border border-[#E0E0E0] shadow-xl">
           <div className="flex flex-col items-center mb-6">
             <div className="w-11 h-11 bg-[var(--rh-red)] flex items-center justify-center rounded-md mb-3">
-              <span className="text-lg font-black leading-none uppercase">RH</span>
+              <span className="text-lg font-black leading-none uppercase text-white">RH</span>
             </div>
-            <h2 className="text-xl font-bold">Field Enablement</h2>
-            <p className="text-white/50 text-xs mt-1.5 text-center">
+            <h2 className="text-xl font-bold text-[#151515]">Field Enablement</h2>
+            <p className="text-[#6A6E73] text-xs mt-1.5 text-center">
               Geo-personalized sovereign cloud sales intelligence
             </p>
           </div>
 
           {!selectedData && (
-            <p className="text-[11px] text-white/30 text-center mb-4 flex items-center justify-center gap-1.5">
+            <p className="text-[11px] text-[#9EA5AD] text-center mb-4 flex items-center justify-center gap-1.5">
               <Globe className="w-3 h-3" /> Hover a country to explore sovereignty regulations
             </p>
           )}
           {selectedData && (
-            <div className="mb-4 p-2.5 rounded-lg bg-white/5 border border-white/10 text-center">
-              <p className="text-[11px] text-white/60">
-                Viewing <span className="text-white font-semibold">{selectedData.name}</span> — {selectedData.regulations.length} active regulations
+            <div className="mb-4 p-2.5 rounded-lg bg-[#F8F9FA] border border-[#E0E0E0] text-center">
+              <p className="text-[11px] text-[#4A4A4A]">
+                Viewing <span className="text-[#151515] font-semibold">{selectedData.name}</span> — {selectedData.regulations.length} active regulations
               </p>
             </div>
           )}
 
           <form onSubmit={handleLogin} className="space-y-3.5">
             <div className="space-y-1.5">
-              <label className="text-[10px] font-semibold text-white/50 uppercase tracking-wider">Corporate ID</label>
+              <label className="text-[10px] font-semibold text-[#6A6E73] uppercase tracking-wider">Corporate ID</label>
               <Input defaultValue="sarah.k@redhat.com"
-                className="bg-white/6 border-white/12 focus-visible:ring-[var(--rh-red)] font-mono text-sm h-9" />
+                className="bg-[#F8F9FA] border-[#E0E0E0] text-[#151515] focus-visible:ring-[var(--rh-red)] font-mono text-sm h-9" />
             </div>
             <div className="space-y-1.5">
-              <label className="text-[10px] font-semibold text-white/50 uppercase tracking-wider">Password / Token</label>
+              <label className="text-[10px] font-semibold text-[#6A6E73] uppercase tracking-wider">Password / Token</label>
               <Input type="password" defaultValue="••••••••••••"
-                className="bg-white/6 border-white/12 focus-visible:ring-[var(--rh-red)] h-9" />
+                className="bg-[#F8F9FA] border-[#E0E0E0] text-[#151515] focus-visible:ring-[var(--rh-red)] h-9" />
             </div>
 
             <Button type="submit" disabled={loggingIn}
@@ -725,7 +724,7 @@ export default function LoginPage() {
             </Button>
           </form>
 
-          <div className="mt-4 flex items-center justify-center gap-2 text-[11px] text-white/30">
+          <div className="mt-4 flex items-center justify-center gap-2 text-[11px] text-[#9EA5AD]">
             <Shield className="w-3 h-3" />
             <span>Secured by Red Hat Identity</span>
           </div>
@@ -736,18 +735,18 @@ export default function LoginPage() {
       <div className={`absolute bottom-10 right-10 z-40 transition-all duration-700 delay-300 ${
         zoomed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6 pointer-events-none"
       }`}>
-        <div className="bg-[#141414]/96 backdrop-blur border border-white/12 p-5 rounded-xl shadow-2xl w-76">
-          <h3 className="font-bold text-base mb-1.5 flex items-center gap-2">
+        <div className="bg-white/97 backdrop-blur-sm border border-[#E0E0E0] p-5 rounded-xl shadow-xl w-76">
+          <h3 className="font-bold text-base mb-1.5 flex items-center gap-2 text-[#151515]">
             <Globe className="w-4 h-4 text-[var(--rh-blue)]" />
             EMEA Context Active
           </h3>
-          <p className="text-xs text-white/55 mb-3">Western Europe regulatory ruleset applied.</p>
+          <p className="text-xs text-[#6A6E73] mb-3">Western Europe regulatory ruleset applied.</p>
           <div className="flex flex-wrap gap-1.5 mb-4">
             {["GDPR", "NIS2", "EU Data Act", "BSI C5"].map(tag => (
-              <span key={tag} className="text-[10px] px-2 py-0.5 rounded-full bg-[var(--rh-red)]/20 text-[var(--rh-red)] border border-[var(--rh-red)]/30 font-medium">{tag}</span>
+              <span key={tag} className="text-[10px] px-2 py-0.5 rounded-full bg-[var(--rh-red)]/10 text-[var(--rh-red)] border border-[var(--rh-red)]/25 font-medium">{tag}</span>
             ))}
           </div>
-          <Button variant="outline" className="w-full border-white/15 hover:bg-white/10 hover:text-white text-white/70 h-9 text-xs"
+          <Button variant="outline" className="w-full border-[#E0E0E0] hover:bg-[#F5F5F5] hover:text-[#151515] text-[#4A4A4A] h-9 text-xs"
             onClick={() => setLocation("/home")}>
             Enter Dashboard <ArrowRight className="w-3.5 h-3.5 ml-2" />
           </Button>

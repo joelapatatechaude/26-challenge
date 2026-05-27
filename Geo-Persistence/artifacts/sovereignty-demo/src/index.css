@@ -122,6 +122,12 @@
   --rh-green: #3E8635;
   --rh-orange: #EC7A08;
 
+  --rh-sidebar-bg: #151515;
+  --rh-sidebar-surface: #1E1E1E;
+  --rh-sidebar-border: #3C3F42;
+  --rh-sidebar-text: #D2D2D2;
+  --rh-sidebar-text-active: #FFFFFF;
+
   --app-font-sans: 'Red Hat Text', sans-serif;
   --app-font-serif: Georgia, serif;
   --app-font-mono: 'Red Hat Mono', monospace;
@@ -214,61 +220,74 @@ html.light {
   color-scheme: light;
 
   /* Semantic Tailwind vars */
-  --background:          0 0% 98%;
-  --foreground:          0 0% 9%;
-  --card:                0 0% 96%;
-  --card-foreground:     0 0% 9%;
-  --card-border:         0 0% 87%;
-  --border:              0 0% 87%;
-  --sidebar:             0 0% 96%;
-  --sidebar-foreground:  0 0% 9%;
-  --sidebar-border:      0 0% 87%;
+  --background:          0 0% 100%;
+  --foreground:          0 0% 12%;
+  --card:                0 0% 100%;
+  --card-foreground:     0 0% 12%;
+  --card-border:         0 0% 90%;
+  --border:              0 0% 90%;
+  --sidebar:             0 0% 8%;
+  --sidebar-foreground:  0 0% 100%;
+  --sidebar-border:      210 4% 24%;
   --sidebar-primary:     0 100% 47%;
   --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent:      0 0% 90%;
-  --sidebar-accent-foreground:  0 0% 30%;
+  --sidebar-accent:      210 4% 24%;
+  --sidebar-accent-foreground:  0 0% 82%;
   --sidebar-ring:        0 100% 47%;
   --popover:             0 0% 100%;
-  --popover-foreground:  0 0% 9%;
-  --popover-border:      0 0% 87%;
+  --popover-foreground:  0 0% 12%;
+  --popover-border:      0 0% 90%;
   --primary:             0 100% 47%;
   --primary-foreground:  0 0% 100%;
-  --secondary:           0 0% 90%;
-  --secondary-foreground: 0 0% 9%;
-  --muted:               0 0% 95%;
-  --muted-foreground:    0 0% 40%;
-  --accent:              0 0% 90%;
-  --accent-foreground:   0 0% 9%;
+  --secondary:           0 0% 96%;
+  --secondary-foreground: 0 0% 12%;
+  --muted:               0 0% 96%;
+  --muted-foreground:    0 0% 45%;
+  --accent:              0 0% 96%;
+  --accent-foreground:   0 0% 12%;
   --destructive:         0 100% 47%;
   --destructive-foreground: 0 0% 100%;
-  --input:               0 0% 87%;
+  --input:               0 0% 90%;
   --ring:                0 100% 47%;
 
-  /* RH brand surface overrides */
+  /* RH brand surface overrides — main content goes light */
   --rh-charcoal:       #FFFFFF;
   --rh-charcoal-mid:   #F5F5F5;
-  --rh-charcoal-light: #D2D2D2;
+  --rh-charcoal-light: #E0E0E0;
   --rh-silver:         #6A6E73;
 
+  /* Sidebar stays dark in light mode */
+  --rh-sidebar-bg: #151515;
+  --rh-sidebar-surface: #1E1E1E;
+  --rh-sidebar-border: #3C3F42;
+  --rh-sidebar-text: #D2D2D2;
+  --rh-sidebar-text-active: #FFFFFF;
+
   /* Elevation helpers */
-  --button-outline:    rgba(0,0,0,0.12);
-  --badge-outline:     rgba(0,0,0,0.08);
-  --elevate-1:         rgba(0,0,0,0.04);
-  --elevate-2:         rgba(0,0,0,0.08);
+  --button-outline:    rgba(0,0,0,0.10);
+  --badge-outline:     rgba(0,0,0,0.06);
+  --elevate-1:         rgba(0,0,0,0.03);
+  --elevate-2:         rgba(0,0,0,0.06);
 
   /* Shadows visible on light bg */
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
-  --shadow:    0 2px 6px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06);
-  --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.06);
-  --shadow-lg: 0 8px 24px rgba(0,0,0,0.10), 0 4px 8px rgba(0,0,0,0.06);
+  --shadow-2xs: 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-xs: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow:    0 2px 6px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.04);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.09), 0 4px 8px rgba(0,0,0,0.04);
+  --shadow-xl: 0 16px 48px rgba(0,0,0,0.10), 0 8px 16px rgba(0,0,0,0.05);
+  --shadow-2xl: 0 24px 64px rgba(0,0,0,0.12);
 }
 
 /* ── Light-mode text inversions ──────────────────────────────────── */
-/* Most components hard-code text-white for headings/labels on dark  */
-html.light .text-white               { color: #151515 !important; }
+/* Hard-coded text-white in main content should flip dark */
+html.light main .text-white          { color: #151515 !important; }
 html.light .placeholder\:text-white  { --tw-placeholder-opacity: 1; }
 
-/* Nav active border already uses var(--rh-red) — stays correct.     */
+/* Sidebar keeps white text in light mode — no inversion */
+html.light aside .text-white         { color: #FFFFFF !important; }
+
 /* Input placeholder text */
 html.light input::placeholder,
 html.light textarea::placeholder { color: #9ea5ad; }

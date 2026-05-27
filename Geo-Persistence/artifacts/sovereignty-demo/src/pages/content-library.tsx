@@ -55,10 +55,10 @@ const RH_PRODUCTS = [
 ];
 
 const noteTypeBadge: Record<NoteCard["type"], string> = {
-  summary: "bg-[#0066CC]/20 text-[#5599dd]",
-  guide: "bg-[#3E8635]/20 text-[#6bbf62]",
-  faq: "bg-[#EC7A08]/20 text-[#f0a050]",
-  brief: "bg-[var(--rh-red)]/20 text-[#ff6666]",
+  summary: "bg-[var(--rh-blue)]/15 text-[var(--rh-blue)]",
+  guide: "bg-[var(--rh-green)]/15 text-[var(--rh-green)]",
+  faq: "bg-[var(--rh-orange)]/15 text-[var(--rh-orange)]",
+  brief: "bg-[var(--rh-red)]/15 text-[var(--rh-red)]",
   outline: "bg-[var(--rh-silver)]/10 text-[var(--rh-silver)]",
 };
 const noteTypeLabel: Record<NoteCard["type"], string> = {
@@ -243,7 +243,7 @@ export default function ContentLibrary() {
                     title="Response language context"
                   >
                     {OUTPUT_LANGS.map(l => (
-                      <option key={l.value} value={l.value} className="bg-[#1a1a1a]">
+                      <option key={l.value} value={l.value} className="bg-[var(--rh-charcoal-mid)]">
                         {l.flag} {l.label}
                       </option>
                     ))}

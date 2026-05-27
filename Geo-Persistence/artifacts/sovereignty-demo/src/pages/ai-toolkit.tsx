@@ -196,7 +196,7 @@ function DeckPreviewPanel({
 }) {
   if (previewUrl) {
     return (
-      <div className="flex-1 flex flex-col min-h-0 rounded-md overflow-hidden border border-[var(--rh-charcoal-light)] bg-[#151515]">
+      <div className="flex-1 flex flex-col min-h-0 rounded-md overflow-hidden border border-[var(--rh-charcoal-light)] bg-[var(--rh-charcoal-mid)]">
         <iframe
           src={previewUrl}
           title={filename ? `Preview: ${filename}` : "Presentation preview"}
