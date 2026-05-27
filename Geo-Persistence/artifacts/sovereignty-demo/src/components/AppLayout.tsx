@@ -61,7 +61,7 @@ export function AppLayout({ children }: AppLayoutProps) {
         {/* Nav items */}
         <div className={`flex flex-col gap-1 ${expanded ? "px-2" : "items-center"}`}>
           <NavItem href="/home"               icon={LayoutDashboard} label="Home"            active={activePath === "/home"}           expanded={expanded} />
-          <NavItem href="/login"              icon={Map}             label="Sovereignty Map" active={activePath === "/login"}          expanded={expanded} />
+          <NavItem href="/sovereignty-map"     icon={Map}             label="Sovereignty Map" active={activePath === "/sovereignty-map"} expanded={expanded} />
           <NavItem href="/ai-toolkit"          icon={FileText}        label="AI Toolkit"      active={activePath === "/ai-toolkit"}     expanded={expanded} />
           <NavItem href="/content"             icon={Search}          label="Content Library" active={activePath === "/content"}        expanded={expanded} />
           <NavItem href="/sme-review"          icon={CheckCircle}     label="SME Review"      active={activePath === "/sme-review"}    expanded={expanded} badge="3" />

@@ -5,7 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { AppLayout } from "@/components/AppLayout";
 
-import LoginPage from "@/pages/login";
+import LoginPage, { SovereigntyMapPage } from "@/pages/login";
 import HomeDashboard from "@/pages/home";
 import AIToolkit from "@/pages/ai-toolkit";
 import ContentLibrary from "@/pages/content-library";
@@ -33,6 +33,7 @@ function Router() {
     <AppLayout>
       <Switch>
         <Route path="/home" component={HomeDashboard} />
+        <Route path="/sovereignty-map" component={SovereigntyMapPage} />
         <Route path="/ai-toolkit" component={AIToolkit} />
         <Route path="/content" component={ContentLibrary} />
         <Route path="/sme-review" component={SMEReview} />

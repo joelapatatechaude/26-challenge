@@ -325,12 +325,20 @@ const MARKERS = [
 
 type TooltipState = { x: number; y: number; id: string } | null;
 
+export function SovereigntyMapPage() {
+  return <SovereigntyView mapOnly />;
+}
+
 export default function LoginPage() {
+  return <SovereigntyView mapOnly={false} />;
+}
+
+function SovereigntyView({ mapOnly }: { mapOnly: boolean }) {
   const [, setLocation] = useLocation();
   const [loggingIn, setLoggingIn] = useState(false);
-  const [zoomed, setZoomed] = useState(false);
-  const [mapZoom, setMapZoom] = useState(1);
-  const [mapCenter, setMapCenter] = useState<[number, number]>([10, 20]);
+  const [zoomed, setZoomed] = useState(mapOnly);
+  const [mapZoom, setMapZoom] = useState(mapOnly ? 4.5 : 1);
+  const [mapCenter, setMapCenter] = useState<[number, number]>(mapOnly ? [14, 51] : [10, 20]);
   const [tooltip, setTooltip] = useState<TooltipState>(null);
   const [selectedCountry, setSelectedCountry] = useState<string | null>(null);
   const [showNative, setShowNative] = useState(false);
@@ -347,10 +355,10 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="relative w-full h-screen bg-[#F8F9FA] overflow-hidden font-sans text-[#151515] select-none">
+    <div className={`relative w-full ${mapOnly ? "h-full" : "h-screen"} bg-[#F8F9FA] overflow-hidden font-sans text-[#151515] select-none`}>
 
-      {/* ── Top Bar ── */}
-      <div className="absolute top-0 w-full h-14 flex items-center justify-between px-8 z-20 pointer-events-none">
+      {/* ── Top Bar (login page only) ── */}
+      {!mapOnly && <div className="absolute top-0 w-full h-14 flex items-center justify-between px-8 z-20 pointer-events-none">
         <div className="flex items-center gap-3">
           <img src={redhatLogo} alt="Red Hat" className="w-7 h-7" />
           <span className="font-bold tracking-tight uppercase text-[#6A6E73] text-sm">
@@ -367,7 +375,7 @@ export default function LoginPage() {
           ))}
           <span className="text-[#6A6E73] ml-1">Sovereignty Urgency</span>
         </div>
-      </div>
+      </div>}
 
       {/* ── World Map ── */}
       <div className="absolute inset-0">
@@ -669,7 +677,7 @@ export default function LoginPage() {
       )}
 
       {/* ── Login Card ── */}
-      <div className={`absolute inset-0 flex items-center justify-center z-30 transition-all duration-700 ${
+      {!mapOnly && <div className={`absolute inset-0 flex items-center justify-center z-30 transition-all duration-700 ${
         zoomed ? "opacity-0 pointer-events-none scale-105 blur-sm" : "opacity-100"
       } ${selectedData ? "pointer-events-none -translate-x-40 opacity-60" : ""}`}>
         <div className="w-full max-w-sm bg-white/97 backdrop-blur-sm p-7 rounded-xl border border-[#E0E0E0] shadow-xl">
@@ -726,10 +734,10 @@ export default function LoginPage() {
             <span>Secured by Red Hat Identity</span>
           </div>
         </div>
-      </div>
+      </div>}
 
       {/* ── Post-login EMEA card ── */}
-      <div className={`absolute bottom-10 right-10 z-40 transition-all duration-700 delay-300 ${
+      {!mapOnly && <div className={`absolute bottom-10 right-10 z-40 transition-all duration-700 delay-300 ${
         zoomed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6 pointer-events-none"
       }`}>
         <div className="bg-white/97 backdrop-blur-sm border border-[#E0E0E0] p-5 rounded-xl shadow-xl w-76">
@@ -748,7 +756,7 @@ export default function LoginPage() {
             Enter Dashboard <ArrowRight className="w-3.5 h-3.5 ml-2" />
           </Button>
         </div>
-      </div>
+      </div>}
 
       <style>{`
         @keyframes pulse-ring {
